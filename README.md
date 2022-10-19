@@ -17,20 +17,23 @@ Ephemeral is a design system for building modern and elegant desktop application
 
 ### Theming
 
-* [Skin overview](docs/theming/skins/overview.md)
 * [Component states](docs/theming/skins/componentstates.md)
-* [Color schemes](docs/theming/skins/colorschemes.md)
-* [Color scheme association kinds](docs/theming/skins/colorschemeassociationkinds.md)
-* [Color scheme file format](docs/theming/skins/colorschemes-fileformat.md)
-* [Color scheme bundles](docs/theming/skins/colorschemebundles.md)
-* [Light skins](docs/theming/skins/toneddown.md)
-* [Dark skins](docs/theming/skins/dark.md)
-* [Painter overview](docs/theming/painters/overview.md)
-* [Fill painters](docs/theming/painters/fill.md)
-* [Highlight painters](docs/theming/painters/highlight.md)
-* [Border painters](docs/theming/painters/border.md)
-* [Decoration painters](docs/theming/painters/decoration.md)
-* [Overlay painters](docs/theming/painters/overlay.md)
+* Colors
+  * [Color schemes](docs/theming/skins/colorschemes.md)
+  * [Color scheme association kinds](docs/theming/skins/colorschemeassociationkinds.md)
+  * [Color scheme file format](docs/theming/skins/colorschemes-fileformat.md)
+  * [Color scheme bundles](docs/theming/skins/colorschemebundles.md)
+* Skins
+  * [Skin overview](docs/theming/skins/overview.md)
+  * [Light skins](docs/theming/skins/toneddown.md)
+  * [Dark skins](docs/theming/skins/dark.md)
+* Painters
+  * [Painter overview](docs/theming/painters/overview.md)
+  * [Fill painters](docs/theming/painters/fill.md)
+  * [Highlight painters](docs/theming/painters/highlight.md)
+  * [Border painters](docs/theming/painters/border.md)
+  * [Decoration painters](docs/theming/painters/decoration.md)
+  * [Overlay painters](docs/theming/painters/overlay.md)
 * [Themed states](docs/theming/themed-states.md)
 
 ## Using Ephemeral
