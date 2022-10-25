@@ -36,6 +36,27 @@ Ephemeral is a design system for building modern and elegant desktop application
   * [Overlay painters](docs/theming/painters/overlay.md)
 * [Themed states](docs/theming/themed-states.md)
 
+### Components
+
+* Intro
+  * [Basic concepts](docs/component/Intro.md)
+  * [Sample app](docs/component/Sample.md)
+  * [Another sample app](docs/component/AnotherSample.md)
+* Commands
+  * [Command overview](docs/component/Command.md)
+  * [Command projections](docs/component/CommandProjections.md)
+  * [Command button presentation models](docs/component/CommandButtonPresentation.md)
+* Projections
+  * [Model and projection overview](docs/component/ModelProjectionOverview.md)
+  * [All component projections](docs/component/ComponentProjections.md)
+* More components
+  * [Command strips](docs/component/CommandStrip.md)
+  * [Command panels](docs/component/CommandPanel.md)
+  * [Command popup menus](docs/component/CommandPopupMenu.md)
+  * [Breadcrumb bars](docs/component/BreadcrumbBar.md)
+* Miscellaneous
+  * [Context menus](docs/component/ContextMenu.md)
+
 ## Using Ephemeral
 
 Ephemeral is implemented in the following projects:
