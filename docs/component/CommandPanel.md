@@ -16,6 +16,26 @@ The panel on the right arranges commands in columns. When we don't have any more
 
 `CommandPanelPresentationModel` is the presentation model for command button panels.
 
+|  | Attribute | Type |
+| --- | --- | --- |
+| **Panel configuration** | layoutSpec | PanelLayoutSpec |
+|  | contentPadding | Toolkit dependent |
+|  | contentGap | Toolkit dependent |
+|  | showGroupLabels | Boolean |
+| **Configuration applied on each button** | commandPresentationState | CommandButtonPresentationState |
+|  | commandIconDimension | Toolkit dependent
+|  | commandContentPadding | Toolkit dependent |
+|  | commandTextStyle | Toolkit dependent
+|  | commandHorizontalAlignment | HorizontalAlignment |
+|  | commandHorizontalGapScaleFactor | Float |
+|  | commandVerticalGapScaleFactor | Float |
+|  | iconActiveFilterStrategy | IconFilterStrategy
+|  | iconEnabledFilterStrategy | IconFilterStrategy
+|  | iconDisabledFilterStrategy | IconFilterStrategy
+|  | backgroundAppearanceStrategy | BackgroundAppearanceStrategy
+|  | popupPlacementStrategy | PopupPlacementStrategy |
+|  | menu | Boolean |
+
 The `layoutSpec` attribute can be used to specify whether the button content of each group should be laid out horizontally or vertically:
 
 * `PanelLayoutSpec.RowFill` arranges the buttons in each group by rows, and kicks in vertical scrolling of the overall panel content when needed.
