@@ -56,6 +56,7 @@ Ephemeral is a design system for building modern and elegant desktop application
   * [Breadcrumb bars](docs/component/BreadcrumbBar.md)
 * Miscellaneous
   * [Context menus](docs/component/ContextMenu.md)
+  * [Popup positioning](docs/component/PopupPositioning.md)
 
 ## Using Ephemeral
 

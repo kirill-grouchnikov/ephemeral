@@ -7,7 +7,7 @@ A command is the most basic building block of Ephemeral components.
 Commands are created by populating all required, as well as zero or more optional attributes on the `Command` class. The following attributes are available:
 
 |  | Attribute | Type | Required? |
-| --- | --- | --- | --- |
+| --- | --- | --- | :-: |
 | **Base** | text | String | yes |
 |  | extraText | String | no |
 |  | icon | Toolkit dependent | no |

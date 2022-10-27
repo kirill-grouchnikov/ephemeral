@@ -181,6 +181,7 @@ What do we have here?
 - The second overlay entry we have is for the `commandPaste` which is the top-level command for the third button in our command button strip (the one with this complex popup menu).
 - Here, our `Overlay` has a `popupMenuPresentationModel` that configures its inner `panelPresentationModel` with our specific visuals (icon size, presentation state, icon filter strategy, column and row count, showing group labels, etc).
 
+
 ### Next
 
 Continue to [breadcrumb bar](BreadcrumbBar.md).
