@@ -36,6 +36,10 @@ Ephemeral is a design system for building modern and elegant desktop application
   * [Overlay painters](docs/theming/painters/overlay.md)
 * [Themed states](docs/theming/themed-states.md)
 
+### Window
+
+* [Window title panes](docs/window/titlepane.md)
+
 ### Components
 
 * Intro
