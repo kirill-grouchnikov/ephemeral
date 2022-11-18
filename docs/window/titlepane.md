@@ -89,7 +89,7 @@ The following configuration APIs are available:
 * `titleControlButtonGroupVerticalGravity` - vertical gravity for the control buttons |
 * `titlePaneHeight` - title pane height
 * `getTitlePaneControlInsets` to configure your application content to not overlap the area occupied by the title pane control buttons
-* optionally, mark the part of the application content that extends into the integrated title pane with [`DecorationAreaType.TitlePane`](../skins/overview.md#decoration-areas) to be styled consistently with how Aurora styles plain title panes.
+* optionally, mark the part of the application content that extends into the integrated title pane with [`DecorationAreaType.TitlePane`](../skins/overview.md#decoration-areas) to be styled consistently with how Ephemeral styles plain title panes.
 * optionally, use implementation-specific APIs for placing visually consistent text and buttons into the integrated title pane
 
 Taking another look at this integrated title pane:
@@ -112,5 +112,5 @@ Let's take a look at another example of an integrated title pane and the moving 
 * Taller than default height for the title pane to accommodate the text box
 * `Leading` horizontal gravity for the control buttons
 * `Centered` vertical gravity for the control buttons
-* There is no "unified" visual appearance to the title pane area, so none of these panes use `DecorationAreaType.TitlePane`. Instead, each individual pane is wrapped in its own `AuroraDecorationArea` that is used to apply a separate styling on all the elements in that pane (bluish-grey with yellow highlights in the left, metal grey with blue highlights in the middle).
+* There is no "unified" visual appearance to the title pane area, so none of these panes use `DecorationAreaType.TitlePane`. Instead, each individual pane is wrapped in its own decoration area that is used to apply a separate styling on all the elements in that pane (bluish-grey with yellow highlights in the left, metal grey with blue highlights in the middle).
 * Using the implementation-specific API for the consistently styled refresh button placed into the top-right corner of the left pane.
