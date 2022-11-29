@@ -1,7 +1,7 @@
 
 # Ephemeral design system
 
-Ephemeral is a design system for building modern and elegant desktop applications.
+**Ephemeral** is a design system for building modern and elegant desktop applications.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/kirill-grouchnikov/ephemeral/breeze/docs/images/theming/skins/nebula1.png" width="340" height="258" border=0>
