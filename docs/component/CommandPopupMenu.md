@@ -184,4 +184,4 @@ What do we have here?
 
 ### Next
 
-Continue to [breadcrumb bar](BreadcrumbBar.md).
+Continue to the [model and projection overview](ModelProjectionOverview.md).

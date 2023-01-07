@@ -159,4 +159,4 @@ This creates a command panel that:
 
 ### Next
 
-Continue to [command popup menus](CommandPopupMenu.md).
+Continue to [breadcrumb bar](BreadcrumbBar.md).
