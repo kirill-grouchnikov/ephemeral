@@ -36,6 +36,7 @@ This configuration provides further control over where each part of the title pa
 | **titleTextHorizontalGravity** | **Leading** | Horizontal gravity for the title |
 | **titleControlButtonGroupHorizontalGravity** | **Trailing** | Horizontal gravity for the control buttons |
 | **titleIconHorizontalGravity** | **OppositeControlButtons** | Horizontal gravity for the icon |
+| **titlePaneButtonsProvider** | **DefaultTitlePaneButtonsProvider** | Icon provider for the buttons |
 
 The default values for these parameters result in the layout that places:
 
@@ -85,9 +86,13 @@ In this configuration, the title pane displays the window control buttons (minim
 
 The following configuration APIs are available:
 
-* `titleControlButtonGroupHorizontalGravity` - horizontal gravity for the control buttons |
-* `titleControlButtonGroupVerticalGravity` - vertical gravity for the control buttons |
-* `titlePaneHeight` - title pane height
+| Parameter | Default value | Meaning |
+| --- | --- | --- |
+| **titleControlButtonGroupHorizontalGravity** | **Trailing** | Horizontal gravity for the control buttons |
+| **titleControlButtonGroupVerticalGravity** | **Centered** | Vertical gravity for the control buttons |
+| **titlePaneHeight** | **WindowTitlePaneSizingConstants. MinimumTitlePaneHeight** | Title pane height, cannot be less than `MinimumTitlePaneHeight` |
+| **titlePaneButtonsProvider** | **DefaultTitlePaneButtonsProvider** | Icon provider for the buttons |
+
 * `getTitlePaneControlInsets` to configure your application content to not overlap the area occupied by the title pane control buttons
 * optionally, mark the part of the application content that extends into the integrated title pane with [`DecorationAreaType.TitlePane`](../skins/overview.md#decoration-areas) to be styled consistently with how Ephemeral styles plain title panes.
 * optionally, use implementation-specific APIs for placing visually consistent text and buttons into the integrated title pane
@@ -114,3 +119,19 @@ Let's take a look at another example of an integrated title pane and the moving 
 * `Centered` vertical gravity for the control buttons
 * There is no "unified" visual appearance to the title pane area, so none of these panes use `DecorationAreaType.TitlePane`. Instead, each individual pane is wrapped in its own decoration area that is used to apply a separate styling on all the elements in that pane (bluish-grey with yellow highlights in the left, metal grey with blue highlights in the middle).
 * Using the implementation-specific API for the consistently styled refresh button placed into the top-right corner of the left pane.
+
+
+### Customizing title pane buttons
+
+<img src="https://raw.githubusercontent.com/kirill-grouchnikov/ephemeral/breeze/docs/images/theming/titlepane/titlepane-button-icons.png" border=0>
+
+**Aurora Plain** and **Aurora Integrated** modes also support an additional parameter that allows controlling the visual appearance of the icons used on the title pane buttons.
+
+The **TitlePaneButtonsProvider** and **TitlePaneButtonProvider** define the app-facing APIs for providing the icons for these four actions:
+
+* Close the window
+* Maximize the window
+* Restore the maximized window to its previous state
+* Iconify / minimize the window
+
+You can either implement the **TitlePaneButtonsProvider** interface, or extend the **DefaultTitlePaneButtonsProvider** implementation to tweak the visuals of these four icons based on your design needs.
