@@ -125,7 +125,7 @@ Let's take a look at another example of an integrated title pane and the moving 
 
 <img src="https://raw.githubusercontent.com/kirill-grouchnikov/ephemeral/breeze/docs/images/theming/titlepane/titlepane-button-icons.png" border=0>
 
-**Aurora Plain** and **Aurora Integrated** modes also support an additional parameter that allows controlling the visual appearance of the icons used on the title pane buttons.
+**Ephemeral Plain** and **Ephemeral Integrated** modes also support an additional parameter that allows controlling the visual appearance of the icons used on the title pane buttons.
 
 The **TitlePaneButtonsProvider** and **TitlePaneButtonProvider** define the app-facing APIs for providing the icons for these four actions:
 
