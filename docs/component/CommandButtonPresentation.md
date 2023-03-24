@@ -40,6 +40,7 @@ Command button presentation models are created by populating attributes on the `
 |  | iconEnabledFilterStrategy | IconFilterStrategy
 |  | iconDisabledFilterStrategy | IconFilterStrategy
 |  | textStyle | Toolkit dependent
+|  | selectedStateHighlight | SelectedStateHighlight
 | **Layout metrics** | horizontalAlignment | HorizontalAlignment |
 |  | horizontalGapScaleFactor | Float |
 |  | verticalGapScaleFactor | Float |
@@ -47,7 +48,6 @@ Command button presentation models are created by populating attributes on the `
 |  | minWidth | Toolkit dependent |
 |  | forceAllocateSpaceForIcon | Boolean
 | **Interaction** | focusable | Boolean |
-|  | menu | Boolean |
 |  | textClick | TextClick |
 |  | popupMenuPresentationModel | CommandPopupMenuPresentationModel |
 |  | popupPlacementStrategy | PopupPlacementStrategy |
@@ -57,7 +57,8 @@ Command button presentation models are created by populating attributes on the `
 |  | autoRepeatAction | Boolean |
 |  | autoRepeatInitialInterval | Long |
 |  | autoRepeatSubsequentInterval | Long |
-|  | fireActionTrigger | FireActionTrigger |
+|  | actionFireTrigger | ActionFireTrigger |
+|  | popupFireTrigger | PopupFireTrigger |
 
 ### Visual attributes
 
@@ -112,8 +113,8 @@ In some cases, the design calls for facilitating repeated activation of the comm
 Command button presentation models come with four attributes that aim to address such scenarios.
 
 * `autoRepeatAction=true` will result in a repeated, continuous activation of the command action as long as the projected button is activated.
-* `fireActionTrigger = FireActionTrigger.OnRollover` will result in command action activation when the mouse is moved over the projected button - without the need to press the mouse button itself.
-* Alternatively, `fireActionTrigger = FireActionTrigger.OnPressed` will result in command action activation when the mouse button is pressed - as opposed to the usual click which is a combination of pressing the button and then releasing it.
+* `actionFireTrigger = ActionFireTrigger.OnRollover` will result in command action activation when the mouse is moved over the projected button - without the need to press the mouse button itself.
+* Alternatively, `actionFireTrigger = ActionFireTrigger.OnPressed` will result in command action activation when the mouse button is pressed - as opposed to the usual click which is a combination of pressing the button and then releasing it.
 * Finally, `autoRepeatInitialInterval` and `autoRepeatSubsequentInterval` can be used to configure the projection-specific initial and subsequent intervals between action activation.
 
 #### Working with popups
