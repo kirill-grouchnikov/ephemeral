@@ -40,7 +40,9 @@ Command button presentation models are created by populating attributes on the `
 |  | iconEnabledFilterStrategy | IconFilterStrategy
 |  | iconDisabledFilterStrategy | IconFilterStrategy
 |  | textStyle | Toolkit dependent
+|  | showPopupIcon | Boolean
 |  | selectedStateHighlight | SelectedStateHighlight
+|  | sides | Sides
 | **Layout metrics** | horizontalAlignment | HorizontalAlignment |
 |  | horizontalGapScaleFactor | Float |
 |  | verticalGapScaleFactor | Float |
@@ -51,6 +53,7 @@ Command button presentation models are created by populating attributes on the `
 |  | textClick | TextClick |
 |  | popupMenuPresentationModel | CommandPopupMenuPresentationModel |
 |  | popupPlacementStrategy | PopupPlacementStrategy |
+|  | popupAnchorBoundsProvider | Toolkit dependent |
 |  | toDismissPopupsOnActivation | Boolean |
 |  | actionRichTooltipPresentationModel | RichTooltipPresentationModel |
 |  | popupRichTooltipPresentationModel | RichTooltipPresentationModel |
