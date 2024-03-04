@@ -12,21 +12,14 @@ A particular implementation of a specific border painter may decide to ignore th
 
 ### Core border painters
 
-* **Standard** - a vertical gradient with three points:
-  * The very top
-  * Half height
-  * The very bottom
-* **Classic** - extends standard, using a less contrasty vertical gradient
-* **Flat** - extends standard, using the same color for all the points, resulting in a single-color / flat look
-* **Glass** - extends standard, using a harder vertical gradient
-* **Delegate** - wraps a standard border painter, applying the following on each three points:
-  * Color scheme transformation - allows changing the color scheme colors with shifting, tinting, saturation, etc
-  * Bitwise mask that is applied on the color returned by the transformed color scheme
-* **Composite** - uses two border painters, the first one to draw the outer contour, and the second one to draw the inner contour
 * **Fraction-based** - based on an array of color query stops. Every stop has:
   * Float fraction in 0.0-1.0 range
   * Mapping from a color scheme to a specific color to use
 * **Delegate fraction-based** - combines color scheme transformation and bitwise masks on top of a wrapped fraction-based border painter
+* **Classic** - uses the same color for all the points, resulting in a single-color / flat look
+* **Flat** - uses the same color for all the points, resulting in a single-color / flat look
+* **Glass** - uses the same color for all the points, resulting in a single-color / flat look
+* **Composite** - uses two border painters, the first one to draw the outer contour, and the second one to draw the inner contour
 
 ### Working with border painters
 
