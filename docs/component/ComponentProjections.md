@@ -14,9 +14,10 @@ The full list of component projections provided by Ephemeral depends on the part
 | **Tri-state checkbox** | TriStateSelectorContentModel | SelectorPresentationModel | TriStateCheckBoxProjection |
 | **Radio button** | SelectorContentModel | SelectorPresentationModel | RadioButtonProjection |
 | **Switch** | SwitchContentModel | SwitchPresentationModel | SwitchProjection |
-| **Circular progress** | ProgressIndeterminateContentModel | ProgressCircularPresentationModel | CircularProgressProjection |
+| **Indeterminate circular progress** | ProgressIndeterminateContentModel | ProgressCircularPresentationModel | IndeterminateCircularProgressProjection |
+| **Determinate circular progress** | ProgressDeterminateContentModel | ProgressCircularPresentationModel | DeterminateCircularProgressProjection |
 | **Indeterminate linear progress** | ProgressIndeterminateContentModel | ProgressLinearPresentationModel | IndeterminateLinearProgressProjection |
-| **Determinate linear progress** | ProgressDeterminateContentModel | ProgressLinearPresentationModel | CircularProgressProjection |
+| **Determinate linear progress** | ProgressDeterminateContentModel | ProgressLinearPresentationModel | DeterminateLinearProgressProjection |
 | **Icon** | IconContentModel | IconPresentationModel | IconProjection |
 | **Label** | LabelContentModel | LabelPresentationModel | LabelProjection |
 | **Vertical separator** | SeparatorContentModel | SeparatorPresentationModel | VerticalSeparatorProjection |
