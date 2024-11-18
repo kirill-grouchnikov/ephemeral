@@ -1,0 +1,141 @@
+/*
+ * Copyright (c) 2022-2024 Ephemeral Kirill Grouchnikov. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath libs.mavenpublish.gradlePlugin
+        classpath libs.versionchecker.gradlePlugin
+    }
+}
+
+allprojects {
+    version = findProperty('VERSION_NAME')
+
+    repositories {
+        mavenCentral()
+    }
+
+    defaultTasks 'build', 'jar'
+
+    // Configure Java compilation for all the projects
+    tasks.withType(JavaCompile) {
+        // enforce Java 9 as the source + target + compile time level
+        javaCompiler = javaToolchains.compilerFor {
+            languageVersion = JavaLanguageVersion.of(9)
+        }
+        sourceCompatibility = JavaVersion.VERSION_1_9
+        targetCompatibility = JavaVersion.VERSION_1_9
+
+        compileJava.doFirst {
+            if (javaCompiler.get().getMetadata().getLanguageVersion() != JavaLanguageVersion.of(9))
+                throw new IllegalStateException("Compiler version mismatch; required is "
+                        + JavaLanguageVersion.of(9) + ", but using "
+                        + javaCompiler.get().getMetadata().getLanguageVersion())
+        }
+
+        // flag all usage of deprecated APIs as errors
+        options.deprecation = true
+        options.compilerArgs += ['-Werror']
+
+        clean {
+            delete 'out'     // interpreted relative to the project directory
+        }
+
+        disableAutoTargetJvm()
+    }
+
+    // Configure the jar task for all the projects
+    tasks.withType(Jar) {
+        // create reproducible builds by removing timestamps and doing cross-platform file order
+        preserveFileTimestamps = false
+        reproducibleFileOrder = true
+        archiveBaseName = "${rootProject.name}-${project.name}"
+
+        manifest {
+            // add Ephemeral version, build JDK and build JDK vendor into the manifest file
+            attributes("Ephemeral-Version": "${findProperty('VERSION_NAME')} [${findProperty('CODENAME')}]",    \
+                 "Build-JDK": System.getProperty('java.version'),    \
+                 "Build-JDK-Vendor": System.getProperty('java.vendor'), \
+                 "Automatic-Module-Name": "org.pushingpixels." + "${findProperty('POM_ARTIFACT_ID')}".replace("-", "."))
+        }
+    }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked"
+        }
+    }
+}
+
+subprojects {
+    task allDeps(type: DependencyReportTask) {}
+}
+
+// To generate report about available dependency updates, run
+// ./gradlew dependencyUpdates  -Drevision=release
+apply plugin: "com.github.ben-manes.versions"
+
+// Copies the compiled jars from all the modules into the drop folder. The compiled
+// jars are grouped into three folders: 'core' for app-facing modules (such as Animation,
+// Common, Theming, Component), 'demo' for modules that have demos and 'tools' for
+// modules with various tools.
+task copyJars(type: Copy) {
+    delete "drop/${project.version}"
+    subprojects {
+        project ->
+            project.afterEvaluate {
+                copy {
+                    def projectName = project.name
+                    from file("${project.buildDir}/libs/${rootProject.name}-${projectName}-${project.version}.jar")
+                    into file("drop/${project.version}")
+                }
+            }
+    }
+}
+
+// Collects all the dependencies in build/libs
+task getDependencies(type: Copy) {
+    into 'build/libs'
+    from {
+        subprojects.collect { it.configurations.compileClasspath }
+    }
+    doLast {
+        println("Copied all dependencies to build/libs")
+    }
+}
+
+task printRuntimeDependencies {
+    doLast {
+        println "Project runtime dependencies:"
+        allprojects.each { p ->
+            println()
+            println " $p.name ".center(45, '-')
+            p.configurations.findAll { it.name == "runtimeClasspath" }.findAll { !it.allDependencies.empty }.each { c ->
+                c.allDependencies.each { dep ->
+                    if (dep.group != null) {
+                        println "$dep.group:$dep.name:$dep.version"
+                    }
+                }
+            }
+        }
+    }
+}
