@@ -20,73 +20,54 @@ import org.pushingpixels.ephemeral.chroma.hct.Hct;
 import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
 import org.pushingpixels.ephemeral.chroma.utils.MathUtils;
 
-import java.util.Optional;
+// This is a modified version of the original source code, changed to fit the Chroma needs
 
 /**
- * Provides important settings for creating colors dynamically, and 6 color palettes. Requires: 1. A
- * color. (source color) 2. A theme. (Variant) 3. Whether or not its dark mode. 4. Contrast level.
- * (-1 to 1, currently contrast ratio 3.0 and 7.0)
+ * Provides important settings for creating colors dynamically, and 8 color palettes. Requires:
+ * 1. A color. (source color)
+ * 2. Whether or not its dark mode.
+ * 3. Contrast level. (-1 to 1, currently contrast ratio 3.0 and 7.0)
  */
 public class DynamicScheme {
   public final int sourceColorArgb;
   public final Hct sourceColorHct;
-  public final Variant variant;
   public final boolean isDark;
   public final double contrastLevel;
 
   public final TonalPalette primaryPalette;
-  public final TonalPalette secondaryPalette;
-  public final TonalPalette tertiaryPalette;
   public final TonalPalette neutralPalette;
   public final TonalPalette neutralVariantPalette;
-  public final TonalPalette errorPalette;
+  public final TonalPalette systemInfoPalette;
+  public final TonalPalette systemWarningPalette;
+  public final TonalPalette systemErrorPalette;
+  public final TonalPalette systemSuccessPalette;
+  public final TonalPalette systemEmergencyPalette;
 
   public DynamicScheme(
       Hct sourceColorHct,
-      Variant variant,
       boolean isDark,
       double contrastLevel,
       TonalPalette primaryPalette,
-      TonalPalette secondaryPalette,
-      TonalPalette tertiaryPalette,
-      TonalPalette neutralPalette,
-      TonalPalette neutralVariantPalette) {
-    this(
-        sourceColorHct,
-        variant,
-        isDark,
-        contrastLevel,
-        primaryPalette,
-        secondaryPalette,
-        tertiaryPalette,
-        neutralPalette,
-        neutralVariantPalette,
-        Optional.empty());
-  }
-
-  public DynamicScheme(
-      Hct sourceColorHct,
-      Variant variant,
-      boolean isDark,
-      double contrastLevel,
-      TonalPalette primaryPalette,
-      TonalPalette secondaryPalette,
-      TonalPalette tertiaryPalette,
       TonalPalette neutralPalette,
       TonalPalette neutralVariantPalette,
-      Optional<TonalPalette> errorPalette) {
+      TonalPalette systemInfoPalette,
+      TonalPalette systemWarningPalette,
+      TonalPalette systemErrorPalette,
+      TonalPalette systemSuccessPalette,
+      TonalPalette systemEmergencyPalette) {
     this.sourceColorArgb = sourceColorHct.toInt();
     this.sourceColorHct = sourceColorHct;
-    this.variant = variant;
     this.isDark = isDark;
     this.contrastLevel = contrastLevel;
 
     this.primaryPalette = primaryPalette;
-    this.secondaryPalette = secondaryPalette;
-    this.tertiaryPalette = tertiaryPalette;
     this.neutralPalette = neutralPalette;
     this.neutralVariantPalette = neutralVariantPalette;
-    this.errorPalette = errorPalette.orElse(TonalPalette.fromHueAndChroma(25.0, 84.0));
+    this.systemInfoPalette = systemInfoPalette;
+    this.systemWarningPalette = systemWarningPalette;
+    this.systemErrorPalette = systemErrorPalette;
+    this.systemSuccessPalette = systemSuccessPalette;
+    this.systemEmergencyPalette = systemEmergencyPalette;
   }
 
   /**
@@ -125,251 +106,304 @@ public class DynamicScheme {
     return dynamicColor.getArgb(this);
   }
 
-  public int getPrimaryPaletteKeyColor() {
-    return getArgb(new MaterialDynamicColors().primaryPaletteKeyColor());
-  }
-
-  public int getSecondaryPaletteKeyColor() {
-    return getArgb(new MaterialDynamicColors().secondaryPaletteKeyColor());
-  }
-
-  public int getTertiaryPaletteKeyColor() {
-    return getArgb(new MaterialDynamicColors().tertiaryPaletteKeyColor());
-  }
-
-  public int getNeutralPaletteKeyColor() {
-    return getArgb(new MaterialDynamicColors().neutralPaletteKeyColor());
-  }
-
-  public int getNeutralVariantPaletteKeyColor() {
-    return getArgb(new MaterialDynamicColors().neutralVariantPaletteKeyColor());
-  }
-
-  public int getBackground() {
-    return getArgb(new MaterialDynamicColors().background());
-  }
-
-  public int getOnBackground() {
-    return getArgb(new MaterialDynamicColors().onBackground());
-  }
-
   public int getSurface() {
-    return getArgb(new MaterialDynamicColors().surface());
+    return getArgb(new EphemeralChromaDynamicColors().surface());
   }
 
   public int getSurfaceDim() {
-    return getArgb(new MaterialDynamicColors().surfaceDim());
+    return getArgb(new EphemeralChromaDynamicColors().surfaceDim());
   }
 
   public int getSurfaceBright() {
-    return getArgb(new MaterialDynamicColors().surfaceBright());
+    return getArgb(new EphemeralChromaDynamicColors().surfaceBright());
   }
 
   public int getSurfaceContainerLowest() {
-    return getArgb(new MaterialDynamicColors().surfaceContainerLowest());
+    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerLowest());
   }
 
   public int getSurfaceContainerLow() {
-    return getArgb(new MaterialDynamicColors().surfaceContainerLow());
+    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerLow());
   }
 
   public int getSurfaceContainer() {
-    return getArgb(new MaterialDynamicColors().surfaceContainer());
+    return getArgb(new EphemeralChromaDynamicColors().surfaceContainer());
   }
 
   public int getSurfaceContainerHigh() {
-    return getArgb(new MaterialDynamicColors().surfaceContainerHigh());
+    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerHigh());
   }
 
   public int getSurfaceContainerHighest() {
-    return getArgb(new MaterialDynamicColors().surfaceContainerHighest());
+    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerHighest());
   }
 
-  public int getOnSurface() {
-    return getArgb(new MaterialDynamicColors().onSurface());
+  public int getOnSurfaceContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onSurfaceContainer());
   }
 
-  public int getSurfaceVariant() {
-    return getArgb(new MaterialDynamicColors().surfaceVariant());
+  public int getOnSurfaceContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onSurfaceContainerVariant());
   }
 
-  public int getOnSurfaceVariant() {
-    return getArgb(new MaterialDynamicColors().onSurfaceVariant());
+  public int getSurfaceContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerOutline());
   }
 
-  public int getInverseSurface() {
-    return getArgb(new MaterialDynamicColors().inverseSurface());
+  public int getSurfaceContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerOutlineVariant());
   }
 
-  public int getInverseOnSurface() {
-    return getArgb(new MaterialDynamicColors().inverseOnSurface());
+  public int getMutedContainerLowest() {
+    return getArgb(new EphemeralChromaDynamicColors().mutedContainerLowest());
   }
 
-  public int getOutline() {
-    return getArgb(new MaterialDynamicColors().outline());
+  public int getMutedContainerLow() {
+    return getArgb(new EphemeralChromaDynamicColors().mutedContainerLow());
   }
 
-  public int getOutlineVariant() {
-    return getArgb(new MaterialDynamicColors().outlineVariant());
+  public int getMutedContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().mutedContainer());
   }
 
-  public int getShadow() {
-    return getArgb(new MaterialDynamicColors().shadow());
+  public int getMutedContainerHigh() {
+    return getArgb(new EphemeralChromaDynamicColors().mutedContainerHigh());
   }
 
-  public int getScrim() {
-    return getArgb(new MaterialDynamicColors().scrim());
+  public int getMutedContainerHighest() {
+    return getArgb(new EphemeralChromaDynamicColors().mutedContainerHighest());
   }
 
-  public int getSurfaceTint() {
-    return getArgb(new MaterialDynamicColors().surfaceTint());
+  public int getOnMutedContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onMutedContainer());
   }
 
-  public int getPrimary() {
-    return getArgb(new MaterialDynamicColors().primary());
+  public int getOnMutedContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onMutedContainerVariant());
   }
 
-  public int getOnPrimary() {
-    return getArgb(new MaterialDynamicColors().onPrimary());
+  public int getMutedContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().mutedContainerOutline());
   }
 
-  public int getPrimaryContainer() {
-    return getArgb(new MaterialDynamicColors().primaryContainer());
+  public int getMutedContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().mutedContainerOutlineVariant());
   }
 
-  public int getOnPrimaryContainer() {
-    return getArgb(new MaterialDynamicColors().onPrimaryContainer());
+  public int getTonalContainerLowest() {
+    return getArgb(new EphemeralChromaDynamicColors().tonalContainerLowest());
   }
 
-  public int getInversePrimary() {
-    return getArgb(new MaterialDynamicColors().inversePrimary());
+  public int getTonalContainerLow() {
+    return getArgb(new EphemeralChromaDynamicColors().tonalContainerLow());
   }
 
-  public int getSecondary() {
-    return getArgb(new MaterialDynamicColors().secondary());
+  public int getTonalContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().tonalContainer());
   }
 
-  public int getOnSecondary() {
-    return getArgb(new MaterialDynamicColors().onSecondary());
+  public int getTonalContainerHigh() {
+    return getArgb(new EphemeralChromaDynamicColors().tonalContainerHigh());
   }
 
-  public int getSecondaryContainer() {
-    return getArgb(new MaterialDynamicColors().secondaryContainer());
+  public int getTonalContainerHighest() {
+    return getArgb(new EphemeralChromaDynamicColors().tonalContainerHighest());
   }
 
-  public int getOnSecondaryContainer() {
-    return getArgb(new MaterialDynamicColors().onSecondaryContainer());
+  public int getOnTonalContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onTonalContainer());
   }
 
-  public int getTertiary() {
-    return getArgb(new MaterialDynamicColors().tertiary());
+  public int getOnTonalContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onTonalContainerVariant());
   }
 
-  public int getOnTertiary() {
-    return getArgb(new MaterialDynamicColors().onTertiary());
+  public int getTonalContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().tonalContainerOutline());
   }
 
-  public int getTertiaryContainer() {
-    return getArgb(new MaterialDynamicColors().tertiaryContainer());
+  public int getTonalContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().tonalContainerOutlineVariant());
   }
 
-  public int getOnTertiaryContainer() {
-    return getArgb(new MaterialDynamicColors().onTertiaryContainer());
+  public int getSystemInfoContainerLowest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemInfoContainerLowest());
   }
 
-  public int getError() {
-    return getArgb(new MaterialDynamicColors().error());
+  public int getSystemInfoContainerLow() {
+    return getArgb(new EphemeralChromaDynamicColors().systemInfoContainerLow());
   }
 
-  public int getOnError() {
-    return getArgb(new MaterialDynamicColors().onError());
+  public int getSystemInfoContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().systemInfoContainer());
   }
 
-  public int getErrorContainer() {
-    return getArgb(new MaterialDynamicColors().errorContainer());
+  public int getSystemInfoContainerHigh() {
+    return getArgb(new EphemeralChromaDynamicColors().systemInfoContainerHigh());
   }
 
-  public int getOnErrorContainer() {
-    return getArgb(new MaterialDynamicColors().onErrorContainer());
+  public int getSystemInfoContainerHighest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemInfoContainerHighest());
   }
 
-  public int getPrimaryFixed() {
-    return getArgb(new MaterialDynamicColors().primaryFixed());
+  public int getOnSystemInfoContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemInfoContainer());
   }
 
-  public int getPrimaryFixedDim() {
-    return getArgb(new MaterialDynamicColors().primaryFixedDim());
+  public int getOnSystemInfoContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemInfoContainerVariant());
   }
 
-  public int getOnPrimaryFixed() {
-    return getArgb(new MaterialDynamicColors().onPrimaryFixed());
+  public int getSystemInfoContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().systemInfoContainerOutline());
   }
 
-  public int getOnPrimaryFixedVariant() {
-    return getArgb(new MaterialDynamicColors().onPrimaryFixedVariant());
+  public int getSystemInfoContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().systemInfoContainerOutlineVariant());
   }
 
-  public int getSecondaryFixed() {
-    return getArgb(new MaterialDynamicColors().secondaryFixed());
+  public int getSystemWarningContainerLowest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemWarningContainerLowest());
   }
 
-  public int getSecondaryFixedDim() {
-    return getArgb(new MaterialDynamicColors().secondaryFixedDim());
+  public int getSystemWarningContainerLow() {
+    return getArgb(new EphemeralChromaDynamicColors().systemWarningContainerLow());
   }
 
-  public int getOnSecondaryFixed() {
-    return getArgb(new MaterialDynamicColors().onSecondaryFixed());
+  public int getSystemWarningContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().systemWarningContainer());
   }
 
-  public int getOnSecondaryFixedVariant() {
-    return getArgb(new MaterialDynamicColors().onSecondaryFixedVariant());
+  public int getSystemWarningContainerHigh() {
+    return getArgb(new EphemeralChromaDynamicColors().systemWarningContainerHigh());
   }
 
-  public int getTertiaryFixed() {
-    return getArgb(new MaterialDynamicColors().tertiaryFixed());
+  public int getSystemWarningContainerHighest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemWarningContainerHighest());
   }
 
-  public int getTertiaryFixedDim() {
-    return getArgb(new MaterialDynamicColors().tertiaryFixedDim());
+  public int getOnSystemWarningContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemWarningContainer());
   }
 
-  public int getOnTertiaryFixed() {
-    return getArgb(new MaterialDynamicColors().onTertiaryFixed());
+  public int getOnSystemWarningContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemWarningContainerVariant());
   }
 
-  public int getOnTertiaryFixedVariant() {
-    return getArgb(new MaterialDynamicColors().onTertiaryFixedVariant());
+  public int getSystemWarningContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().systemWarningContainerOutline());
   }
 
-  public int getControlActivated() {
-    return getArgb(new MaterialDynamicColors().controlActivated());
+  public int getSystemWarningContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().systemWarningContainerOutlineVariant());
   }
 
-  public int getControlNormal() {
-    return getArgb(new MaterialDynamicColors().controlNormal());
+  public int getSystemErrorContainerLowest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemErrorContainerLowest());
   }
 
-  public int getControlHighlight() {
-    return getArgb(new MaterialDynamicColors().controlHighlight());
+  public int getSystemErrorContainerLow() {
+    return getArgb(new EphemeralChromaDynamicColors().systemErrorContainerLow());
   }
 
-  public int getTextPrimaryInverse() {
-    return getArgb(new MaterialDynamicColors().textPrimaryInverse());
+  public int getSystemErrorContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().systemErrorContainer());
   }
 
-  public int getTextSecondaryAndTertiaryInverse() {
-    return getArgb(new MaterialDynamicColors().textSecondaryAndTertiaryInverse());
+  public int getSystemErrorContainerHigh() {
+    return getArgb(new EphemeralChromaDynamicColors().systemErrorContainerHigh());
   }
 
-  public int getTextPrimaryInverseDisableOnly() {
-    return getArgb(new MaterialDynamicColors().textPrimaryInverseDisableOnly());
+  public int getSystemErrorContainerHighest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemErrorContainerHighest());
   }
 
-  public int getTextSecondaryAndTertiaryInverseDisabled() {
-    return getArgb(new MaterialDynamicColors().textSecondaryAndTertiaryInverseDisabled());
+  public int getOnSystemErrorContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemErrorContainer());
   }
 
-  public int getTextHintInverse() {
-    return getArgb(new MaterialDynamicColors().textHintInverse());
+  public int getOnSystemErrorContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemErrorContainerVariant());
   }
+
+  public int getSystemErrorContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().systemErrorContainerOutline());
+  }
+
+  public int getSystemErrorContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().systemErrorContainerOutlineVariant());
+  }
+
+  public int getSystemSuccessContainerLowest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemSuccessContainerLowest());
+  }
+
+  public int getSystemSuccessContainerLow() {
+    return getArgb(new EphemeralChromaDynamicColors().systemSuccessContainerLow());
+  }
+
+  public int getSystemSuccessContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().systemSuccessContainer());
+  }
+
+  public int getSystemSuccessContainerHigh() {
+    return getArgb(new EphemeralChromaDynamicColors().systemSuccessContainerHigh());
+  }
+
+  public int getSystemSuccessContainerHighest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemSuccessContainerHighest());
+  }
+
+  public int getOnSystemSuccessContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemSuccessContainer());
+  }
+
+  public int getOnSystemSuccessContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemSuccessContainerVariant());
+  }
+
+  public int getSystemSuccessContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().systemSuccessContainerOutline());
+  }
+
+  public int getSystemSuccessContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().systemSuccessContainerOutlineVariant());
+  }
+
+  public int getSystemEmergencyContainerLowest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemEmergencyContainerLowest());
+  }
+
+  public int getSystemEmergencyContainerLow() {
+    return getArgb(new EphemeralChromaDynamicColors().systemEmergencyContainerLow());
+  }
+
+  public int getSystemEmergencyContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().systemEmergencyContainer());
+  }
+
+  public int getSystemEmergencyContainerHigh() {
+    return getArgb(new EphemeralChromaDynamicColors().systemEmergencyContainerHigh());
+  }
+
+  public int getSystemEmergencyContainerHighest() {
+    return getArgb(new EphemeralChromaDynamicColors().systemEmergencyContainerHighest());
+  }
+
+  public int getOnSystemEmergencyContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemEmergencyContainer());
+  }
+
+  public int getOnSystemEmergencyContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onSystemEmergencyContainerVariant());
+  }
+
+  public int getSystemEmergencyContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().systemEmergencyContainerOutline());
+  }
+
+  public int getSystemEmergencyContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().systemEmergencyContainerOutlineVariant());
+  }
+
 }
