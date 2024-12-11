@@ -26,7 +26,7 @@ public final class EphemeralChromaDynamicColors {
   private final boolean isExtendedFidelity;
 
   public EphemeralChromaDynamicColors() {
-    this.isExtendedFidelity = false;
+    this.isExtendedFidelity = true;
   }
 
   // Temporary constructor to support extended fidelity experiment.
@@ -351,14 +351,10 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "muted_container",
         /* palette= */ (s) -> s.neutralVariantPalette,
-        /* tone= */ (s) -> {
-      if (isFidelity(s)) {
-        return s.sourceColorHct.getTone();
-      }
-      return s.isDark
-          ? new ContrastCurve(18.0, 18.0, 22.0, 24.0).get(s.contrastLevel)
-          : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.contrastLevel);
-    },
+        /* tone= */ (s) ->
+         s.isDark
+            ? new ContrastCurve(18.0, 18.0, 22.0, 24.0).get(s.contrastLevel)
+            : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.contrastLevel),
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -448,10 +444,16 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "tonal_container_lowest",
         /* palette= */ (s) -> s.primaryPalette,
-        /* tone= */ (s) ->
-        s.isDark
-            ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.contrastLevel)
-            : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel),
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.sourceColorHct.getTone() - 8.0
+                : s.sourceColorHct.getTone() + 10.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.contrastLevel)
+              : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -463,10 +465,16 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "tonal_container_low",
         /* palette= */ (s) -> s.primaryPalette,
-        /* tone= */ (s) ->
-        s.isDark
-            ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.contrastLevel)
-            : new ContrastCurve(92.0, 92.0, 90.0, 88.0).get(s.contrastLevel),
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.sourceColorHct.getTone() - 2.0
+                : s.sourceColorHct.getTone() + 4.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.contrastLevel)
+              : new ContrastCurve(92.0, 92.0, 90.0, 88.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -497,10 +505,16 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "tonal_container_high",
         /* palette= */ (s) -> s.primaryPalette,
-        /* tone= */ (s) ->
-        s.isDark
-            ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.contrastLevel)
-            : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.contrastLevel),
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.sourceColorHct.getTone() + 5.0
+                : s.sourceColorHct.getTone() - 2.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.contrastLevel)
+              : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -512,10 +526,16 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "tonal_container_highest",
         /* palette= */ (s) -> s.primaryPalette,
-        /* tone= */ (s) ->
-        s.isDark
-            ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.contrastLevel)
-            : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.contrastLevel),
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.sourceColorHct.getTone() + 10.0
+                : s.sourceColorHct.getTone() - 4.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.contrastLevel)
+              : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,

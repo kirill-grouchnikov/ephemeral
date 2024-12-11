@@ -226,6 +226,42 @@ public class DynamicScheme {
     return getArgb(new EphemeralChromaDynamicColors().tonalContainerOutlineVariant());
   }
 
+  public int getPrimaryContainerLowest() {
+    return getArgb(new EphemeralChromaDynamicColors().primaryContainerLowest());
+  }
+
+  public int getPrimaryContainerLow() {
+    return getArgb(new EphemeralChromaDynamicColors().primaryContainerLow());
+  }
+
+  public int getPrimaryContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().primaryContainer());
+  }
+
+  public int getPrimaryContainerHigh() {
+    return getArgb(new EphemeralChromaDynamicColors().primaryContainerHigh());
+  }
+
+  public int getPrimaryContainerHighest() {
+    return getArgb(new EphemeralChromaDynamicColors().primaryContainerHighest());
+  }
+
+  public int getOnPrimaryContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onPrimaryContainer());
+  }
+
+  public int getOnPrimaryContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onPrimaryContainerVariant());
+  }
+
+  public int getPrimaryContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().primaryContainerOutline());
+  }
+
+  public int getPrimaryContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().primaryContainerOutlineVariant());
+  }
+
   public int getSystemInfoContainerLowest() {
     return getArgb(new EphemeralChromaDynamicColors().systemInfoContainerLowest());
   }
