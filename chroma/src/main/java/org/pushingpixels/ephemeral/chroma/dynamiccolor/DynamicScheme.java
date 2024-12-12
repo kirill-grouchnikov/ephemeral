@@ -29,14 +29,17 @@ import org.pushingpixels.ephemeral.chroma.utils.MathUtils;
  * 3. Contrast level. (-1 to 1, currently contrast ratio 3.0 and 7.0)
  */
 public class DynamicScheme {
-  public final int sourceColorArgb;
-  public final Hct sourceColorHct;
+  public final int primarySourceColorArgb;
+  public final Hct primarySourceColorHct;
+  public final Hct mutedSourceColorHct;
+  public final Hct neutralSourceColorHct;
+  public final boolean isFidelity;
   public final boolean isDark;
   public final double contrastLevel;
 
   public final TonalPalette primaryPalette;
+  public final TonalPalette mutedPalette;
   public final TonalPalette neutralPalette;
-  public final TonalPalette neutralVariantPalette;
   public final TonalPalette systemInfoPalette;
   public final TonalPalette systemWarningPalette;
   public final TonalPalette systemErrorPalette;
@@ -44,25 +47,33 @@ public class DynamicScheme {
   public final TonalPalette systemEmergencyPalette;
 
   public DynamicScheme(
-      Hct sourceColorHct,
+      Hct primarySourceColorHct,
+      Hct mutedSourceColorHct,
+      Hct neutralSourceColorHct,
+      boolean isFidelity,
       boolean isDark,
       double contrastLevel,
       TonalPalette primaryPalette,
+      TonalPalette mutedPalette,
       TonalPalette neutralPalette,
-      TonalPalette neutralVariantPalette,
       TonalPalette systemInfoPalette,
       TonalPalette systemWarningPalette,
       TonalPalette systemErrorPalette,
       TonalPalette systemSuccessPalette,
       TonalPalette systemEmergencyPalette) {
-    this.sourceColorArgb = sourceColorHct.toInt();
-    this.sourceColorHct = sourceColorHct;
+
+    this.primarySourceColorArgb = primarySourceColorHct.toInt();
+    this.primarySourceColorHct = primarySourceColorHct;
+    this.mutedSourceColorHct = mutedSourceColorHct;
+    this.neutralSourceColorHct = neutralSourceColorHct;
+
+    this.isFidelity = isFidelity;
     this.isDark = isDark;
     this.contrastLevel = contrastLevel;
 
     this.primaryPalette = primaryPalette;
+    this.mutedPalette = mutedPalette;
     this.neutralPalette = neutralPalette;
-    this.neutralVariantPalette = neutralVariantPalette;
     this.systemInfoPalette = systemInfoPalette;
     this.systemWarningPalette = systemWarningPalette;
     this.systemErrorPalette = systemErrorPalette;
@@ -118,40 +129,40 @@ public class DynamicScheme {
     return getArgb(new EphemeralChromaDynamicColors().surfaceBright());
   }
 
-  public int getSurfaceContainerLowest() {
-    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerLowest());
+  public int getNeutralContainerLowest() {
+    return getArgb(new EphemeralChromaDynamicColors().neutralContainerLowest());
   }
 
-  public int getSurfaceContainerLow() {
-    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerLow());
+  public int getNeutralContainerLow() {
+    return getArgb(new EphemeralChromaDynamicColors().neutralContainerLow());
   }
 
-  public int getSurfaceContainer() {
-    return getArgb(new EphemeralChromaDynamicColors().surfaceContainer());
+  public int getNeutralContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().neutralContainer());
   }
 
-  public int getSurfaceContainerHigh() {
-    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerHigh());
+  public int getNeutralContainerHigh() {
+    return getArgb(new EphemeralChromaDynamicColors().neutralContainerHigh());
   }
 
-  public int getSurfaceContainerHighest() {
-    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerHighest());
+  public int getNeutralContainerHighest() {
+    return getArgb(new EphemeralChromaDynamicColors().neutralContainerHighest());
   }
 
-  public int getOnSurfaceContainer() {
-    return getArgb(new EphemeralChromaDynamicColors().onSurfaceContainer());
+  public int getOnNeutralContainer() {
+    return getArgb(new EphemeralChromaDynamicColors().onNeutralContainer());
   }
 
-  public int getOnSurfaceContainerVariant() {
-    return getArgb(new EphemeralChromaDynamicColors().onSurfaceContainerVariant());
+  public int getOnNeutralContainerVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().onNeutralContainerVariant());
   }
 
-  public int getSurfaceContainerOutline() {
-    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerOutline());
+  public int getNeutralContainerOutline() {
+    return getArgb(new EphemeralChromaDynamicColors().neutralContainerOutline());
   }
 
-  public int getSurfaceContainerOutlineVariant() {
-    return getArgb(new EphemeralChromaDynamicColors().surfaceContainerOutlineVariant());
+  public int getNeutralContainerOutlineVariant() {
+    return getArgb(new EphemeralChromaDynamicColors().neutralContainerOutlineVariant());
   }
 
   public int getMutedContainerLowest() {

@@ -22,18 +22,7 @@ import org.pushingpixels.ephemeral.chroma.hct.Hct;
 
 /** Named colors, otherwise known as tokens, or roles, in the Ephemeral Design system. */
 public final class EphemeralChromaDynamicColors {
-  /** Optionally use fidelity on most color schemes. */
-  private final boolean isExtendedFidelity;
-
   public EphemeralChromaDynamicColors() {
-    this.isExtendedFidelity = true;
-  }
-
-  // Temporary constructor to support extended fidelity experiment.
-  // TODO(b/291720794): Once schemes that will permanently use fidelity are identified,
-  // remove this and default to the decided behavior.
-  public EphemeralChromaDynamicColors(boolean isExtendedFidelity) {
-    this.isExtendedFidelity = isExtendedFidelity;
   }
 
   public DynamicColor highestSurface(DynamicScheme s) {
@@ -44,7 +33,12 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "surface",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) -> s.isDark ? 6.0 : 98.0,
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.neutralSourceColorHct.getTone();
+          }
+          return s.isDark ? 6.0 : 98.0;
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -56,8 +50,13 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "surface_dim",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) ->
-            s.isDark ? 6.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(s.contrastLevel),
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark ? s.neutralSourceColorHct.getTone()
+                : s.neutralSourceColorHct.getTone() - 10.0;
+          }
+          return s.isDark ? 6.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -69,8 +68,13 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "surface_bright",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) ->
-            s.isDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(s.contrastLevel) : 98.0,
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark ? s.neutralSourceColorHct.getTone() + 18.0
+                : s.neutralSourceColorHct.getTone();
+          }
+          return s.isDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(s.contrastLevel) : 98.0;
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -78,12 +82,18 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor surfaceContainerLowest() {
+  public DynamicColor neutralContainerLowest() {
     return new DynamicColor(
-        /* name= */ "surface_container_lowest",
+        /* name= */ "neutral_container_lowest",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) ->
-            s.isDark ? new ContrastCurve(4.0, 4.0, 2.0, 0.0).get(s.contrastLevel) : 100.0,
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.neutralSourceColorHct.getTone() - 2.0
+                : s.neutralSourceColorHct.getTone() + 2.0;
+          }
+          return s.isDark ? new ContrastCurve(4.0, 4.0, 2.0, 0.0).get(s.contrastLevel) : 100.0;
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -91,14 +101,20 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor surfaceContainerLow() {
+  public DynamicColor neutralContainerLow() {
     return new DynamicColor(
-        /* name= */ "surface_container_low",
+        /* name= */ "neutral_container_low",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) ->
-            s.isDark
-                ? new ContrastCurve(10.0, 10.0, 11.0, 12.0).get(s.contrastLevel)
-                : new ContrastCurve(96.0, 96.0, 96.0, 95.0).get(s.contrastLevel),
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.neutralSourceColorHct.getTone() + 4.0
+                : s.neutralSourceColorHct.getTone() - 2.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(10.0, 10.0, 11.0, 12.0).get(s.contrastLevel)
+              : new ContrastCurve(96.0, 96.0, 96.0, 95.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -106,14 +122,20 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor surfaceContainer() {
+  public DynamicColor neutralContainer() {
     return new DynamicColor(
-        /* name= */ "surface_container",
+        /* name= */ "neutral_container",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) ->
-            s.isDark
-                ? new ContrastCurve(12.0, 12.0, 16.0, 20.0).get(s.contrastLevel)
-                : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel),
+        /* tone= */ (s) -> {
+           if (isFidelity(s)) {
+             return s.isDark
+                 ? s.neutralSourceColorHct.getTone() + 6.0
+                 : s.neutralSourceColorHct.getTone() - 4.0;
+           }
+           return s.isDark
+               ? new ContrastCurve(12.0, 12.0, 16.0, 20.0).get(s.contrastLevel)
+               : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -121,14 +143,20 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor surfaceContainerHigh() {
+  public DynamicColor neutralContainerHigh() {
     return new DynamicColor(
-        /* name= */ "surface_container_high",
+        /* name= */ "neutral_container_high",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) ->
-            s.isDark
-                ? new ContrastCurve(17.0, 17.0, 21.0, 25.0).get(s.contrastLevel)
-                : new ContrastCurve(92.0, 92.0, 88.0, 85.0).get(s.contrastLevel),
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.neutralSourceColorHct.getTone() + 11.0
+                : s.neutralSourceColorHct.getTone() - 6.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(17.0, 17.0, 21.0, 25.0).get(s.contrastLevel)
+              : new ContrastCurve(92.0, 92.0, 88.0, 85.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -136,14 +164,20 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor surfaceContainerHighest() {
+  public DynamicColor neutralContainerHighest() {
     return new DynamicColor(
-        /* name= */ "surface_container_highest",
+        /* name= */ "neutral_container_highest",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) ->
-            s.isDark
-                ? new ContrastCurve(22.0, 22.0, 26.0, 30.0).get(s.contrastLevel)
-                : new ContrastCurve(90.0, 90.0, 84.0, 80.0).get(s.contrastLevel),
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.neutralSourceColorHct.getTone() + 16.0
+                : s.neutralSourceColorHct.getTone() - 8.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(22.0, 22.0, 26.0, 30.0).get(s.contrastLevel)
+              : new ContrastCurve(90.0, 90.0, 84.0, 80.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -151,9 +185,9 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSurfaceContainer() {
+  public DynamicColor onNeutralContainer() {
     return new DynamicColor(
-        /* name= */ "on_surface_container",
+        /* name= */ "on_neutral_container",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isDark ? 90.0 : 10.0,
         /* isBackground= */ false,
@@ -163,10 +197,10 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSurfaceContainerVariant() {
+  public DynamicColor onNeutralContainerVariant() {
     return new DynamicColor(
-        /* name= */ "on_surface_container_variant",
-        /* palette= */ (s) -> s.neutralVariantPalette,
+        /* name= */ "on_neutral_container_variant",
+        /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 30.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
@@ -175,10 +209,10 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor surfaceContainerOutline() {
+  public DynamicColor neutralContainerOutline() {
     return new DynamicColor(
-        /* name= */ "surface_container_outline",
-        /* palette= */ (s) -> s.neutralVariantPalette,
+        /* name= */ "neutral_container_outline",
+        /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isDark ? 60.0 : 50.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
@@ -187,10 +221,10 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor surfaceContainerOutlineVariant() {
+  public DynamicColor neutralContainerOutlineVariant() {
     return new DynamicColor(
-        /* name= */ "surface_container_outline_variant",
-        /* palette= */ (s) -> s.neutralVariantPalette,
+        /* name= */ "neutral_container_outline_variant",
+        /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isDark ? 30.0 : 80.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
@@ -320,11 +354,17 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor mutedContainerLowest() {
     return new DynamicColor(
         /* name= */ "muted_container_lowest",
-        /* palette= */ (s) -> s.neutralVariantPalette,
-        /* tone= */ (s) ->
-        s.isDark
-            ? new ContrastCurve(12.0, 12.0, 16.0, 18.0).get(s.contrastLevel)
-            : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel),
+        /* palette= */ (s) -> s.mutedPalette,
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.mutedSourceColorHct.getTone() - 8.0
+                : s.mutedSourceColorHct.getTone() + 8.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.contrastLevel)
+              : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -335,11 +375,17 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor mutedContainerLow() {
     return new DynamicColor(
         /* name= */ "muted_container_low",
-        /* palette= */ (s) -> s.neutralVariantPalette,
-        /* tone= */ (s) ->
-        s.isDark
-            ? new ContrastCurve(16.0, 16.0, 20.0, 22.0).get(s.contrastLevel)
-            : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel),
+        /* palette= */ (s) -> s.mutedPalette,
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.mutedSourceColorHct.getTone() - 2.0
+                : s.mutedSourceColorHct.getTone() + 4.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.contrastLevel)
+              : new ContrastCurve(92.0, 92.0, 90.0, 88.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -350,11 +396,15 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor mutedContainer() {
     return new DynamicColor(
         /* name= */ "muted_container",
-        /* palette= */ (s) -> s.neutralVariantPalette,
-        /* tone= */ (s) ->
-         s.isDark
-            ? new ContrastCurve(18.0, 18.0, 22.0, 24.0).get(s.contrastLevel)
-            : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.contrastLevel),
+        /* palette= */ (s) -> s.mutedPalette,
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.mutedSourceColorHct.getTone();
+          }
+          return s.isDark
+              ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel)
+              : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -365,11 +415,17 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor mutedContainerHigh() {
     return new DynamicColor(
         /* name= */ "muted_container_high",
-        /* palette= */ (s) -> s.neutralVariantPalette,
-        /* tone= */ (s) ->
-        s.isDark
-            ? new ContrastCurve(23.0, 23.0, 27.0, 29.0).get(s.contrastLevel)
-            : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.contrastLevel),
+        /* palette= */ (s) -> s.mutedPalette,
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.mutedSourceColorHct.getTone() + 5.0
+                : s.mutedSourceColorHct.getTone() - 2.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.contrastLevel)
+              : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -380,11 +436,17 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor mutedContainerHighest() {
     return new DynamicColor(
         /* name= */ "muted_container_highest",
-        /* palette= */ (s) -> s.neutralVariantPalette,
-        /* tone= */ (s) ->
-        s.isDark
-            ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.contrastLevel)
-            : new ContrastCurve(84.0, 84.0, 82.0, 80.0).get(s.contrastLevel),
+        /* palette= */ (s) -> s.mutedPalette,
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return s.isDark
+                ? s.mutedSourceColorHct.getTone() + 10.0
+                : s.mutedSourceColorHct.getTone() - 4.0;
+          }
+          return s.isDark
+              ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.contrastLevel)
+              : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -395,8 +457,13 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor onMutedContainer() {
     return new DynamicColor(
         /* name= */ "on_muted_container",
-        /* palette= */ (s) -> s.neutralVariantPalette,
-        /* tone= */ (s) -> s.isDark ? 90.0 : 10.0,
+        /* palette= */ (s) -> s.mutedPalette,
+        /* tone= */ (s) -> {
+          if (isFidelity(s)) {
+            return DynamicColor.foregroundTone(tonalContainer().tone.apply(s), 4.5);
+          }
+          return s.isDark ? 90.0 : 30.0;
+        },
         /* isBackground= */ false,
         /* background= */ (s) -> mutedContainer(),
         /* secondBackground= */ null,
@@ -407,7 +474,7 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor onMutedContainerVariant() {
     return new DynamicColor(
         /* name= */ "on_muted_container_variant",
-        /* palette= */ (s) -> s.neutralVariantPalette,
+        /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 30.0,
         /* isBackground= */ false,
         /* background= */ (s) -> mutedContainer(),
@@ -419,7 +486,7 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor mutedContainerOutline() {
     return new DynamicColor(
         /* name= */ "muted_container_outline",
-        /* palette= */ (s) -> s.neutralVariantPalette,
+        /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isDark ? 60.0 : 50.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
@@ -431,7 +498,7 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor mutedContainerOutlineVariant() {
     return new DynamicColor(
         /* name= */ "muted_container_outline_variant",
-        /* palette= */ (s) -> s.neutralVariantPalette,
+        /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 70.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
@@ -447,8 +514,8 @@ public final class EphemeralChromaDynamicColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isDark
-                ? s.sourceColorHct.getTone() - 8.0
-                : s.sourceColorHct.getTone() + 10.0;
+                ? s.primarySourceColorHct.getTone() - 8.0
+                : s.primarySourceColorHct.getTone() + 8.0;
           }
           return s.isDark
               ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.contrastLevel)
@@ -468,8 +535,8 @@ public final class EphemeralChromaDynamicColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isDark
-                ? s.sourceColorHct.getTone() - 2.0
-                : s.sourceColorHct.getTone() + 4.0;
+                ? s.primarySourceColorHct.getTone() - 2.0
+                : s.primarySourceColorHct.getTone() + 4.0;
           }
           return s.isDark
               ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.contrastLevel)
@@ -487,13 +554,13 @@ public final class EphemeralChromaDynamicColors {
         /* name= */ "tonal_container",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
-      if (isFidelity(s)) {
-        return s.sourceColorHct.getTone();
-      }
-      return s.isDark
-          ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel)
-          : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel);
-    },
+          if (isFidelity(s)) {
+            return s.primarySourceColorHct.getTone();
+          }
+          return s.isDark
+              ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel)
+              : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel);
+        },
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -508,8 +575,8 @@ public final class EphemeralChromaDynamicColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isDark
-                ? s.sourceColorHct.getTone() + 5.0
-                : s.sourceColorHct.getTone() - 2.0;
+                ? s.primarySourceColorHct.getTone() + 5.0
+                : s.primarySourceColorHct.getTone() - 2.0;
           }
           return s.isDark
               ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.contrastLevel)
@@ -529,8 +596,8 @@ public final class EphemeralChromaDynamicColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isDark
-                ? s.sourceColorHct.getTone() + 10.0
-                : s.sourceColorHct.getTone() - 4.0;
+                ? s.primarySourceColorHct.getTone() + 10.0
+                : s.primarySourceColorHct.getTone() - 4.0;
           }
           return s.isDark
               ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.contrastLevel)
@@ -548,11 +615,11 @@ public final class EphemeralChromaDynamicColors {
         /* name= */ "on_tonal_container",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
-      if (isFidelity(s)) {
-        return DynamicColor.foregroundTone(tonalContainer().tone.apply(s), 4.5);
-      }
-      return s.isDark ? 90.0 : 30.0;
-    },
+          if (isFidelity(s)) {
+            return DynamicColor.foregroundTone(tonalContainer().tone.apply(s), 4.5);
+          }
+          return s.isDark ? 90.0 : 30.0;
+        },
         /* isBackground= */ false,
         /* background= */ (s) -> tonalContainer(),
         /* secondBackground= */ null,
@@ -1213,7 +1280,7 @@ public final class EphemeralChromaDynamicColors {
 
   
   private boolean isFidelity(DynamicScheme scheme) {
-    return this.isExtendedFidelity;
+    return scheme.isFidelity;
   }
 
   static double findDesiredChromaByTone(
