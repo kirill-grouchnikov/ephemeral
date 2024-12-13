@@ -218,7 +218,7 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "neutral_container_outline",
         /* palette= */ (s) -> s.mutedPalette,
-        /* tone= */ (s) -> s.isDark ? 10.0 : 50.0,
+        /* tone= */ (s) -> s.isDark ? 20.0 : 50.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
         /* secondBackground= */ null,
@@ -230,7 +230,7 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "neutral_container_outline_variant",
         /* palette= */ (s) -> s.mutedPalette,
-        /* tone= */ (s) -> s.isDark ? 20.0 : 80.0,
+        /* tone= */ (s) -> s.isDark ? 40.0 : 80.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
         /* secondBackground= */ null,
@@ -492,7 +492,7 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "muted_container_outline",
         /* palette= */ (s) -> s.mutedPalette,
-        /* tone= */ (s) -> s.isDark ? 10.0 : 50.0,
+        /* tone= */ (s) -> s.isDark ? 20.0 : 50.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
         /* secondBackground= */ null,
@@ -504,7 +504,7 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "muted_container_outline_variant",
         /* palette= */ (s) -> s.mutedPalette,
-        /* tone= */ (s) -> s.isDark ? 20.0 : 70.0,
+        /* tone= */ (s) -> s.isDark ? 40.0 : 80.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
         /* secondBackground= */ null,
@@ -648,7 +648,7 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "tonal_container_outline",
         /* palette= */ (s) -> s.primaryPalette,
-        /* tone= */ (s) -> s.isDark ? 10.0 : 45.0,
+        /* tone= */ (s) -> s.isDark ? 20.0 : 50.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
         /* secondBackground= */ null,
@@ -660,7 +660,7 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "tonal_container_outline_variant",
         /* palette= */ (s) -> s.primaryPalette,
-        /* tone= */ (s) -> s.isDark ? 20.0 : 65.0,
+        /* tone= */ (s) -> s.isDark ? 40.0 : 80.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
         /* secondBackground= */ null,
