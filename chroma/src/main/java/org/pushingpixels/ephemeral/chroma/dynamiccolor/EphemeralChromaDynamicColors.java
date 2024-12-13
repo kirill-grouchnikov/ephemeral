@@ -189,7 +189,12 @@ public final class EphemeralChromaDynamicColors {
     return new DynamicColor(
         /* name= */ "on_neutral_container",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) -> s.isDark ? 90.0 : 10.0,
+        /* tone= */ (s) -> {
+            if (isFidelity(s)) {
+                return DynamicColor.foregroundTone(neutralContainer().tone.apply(s), 6.0);
+            }
+            return s.isDark ? 90.0 : 10.0;
+        },
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
         /* secondBackground= */ null,
@@ -460,7 +465,7 @@ public final class EphemeralChromaDynamicColors {
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return DynamicColor.foregroundTone(tonalContainer().tone.apply(s), 4.5);
+            return DynamicColor.foregroundTone(mutedContainer().tone.apply(s), 4.5);
           }
           return s.isDark ? 90.0 : 30.0;
         },
