@@ -205,7 +205,7 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor onNeutralContainerVariant() {
     return new DynamicColor(
         /* name= */ "on_neutral_container_variant",
-        /* palette= */ (s) -> s.mutedPalette,
+        /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 30.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
@@ -217,7 +217,7 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor neutralContainerOutline() {
     return new DynamicColor(
         /* name= */ "neutral_container_outline",
-        /* palette= */ (s) -> s.mutedPalette,
+        /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isDark ? 20.0 : 50.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
@@ -229,7 +229,7 @@ public final class EphemeralChromaDynamicColors {
   public DynamicColor neutralContainerOutlineVariant() {
     return new DynamicColor(
         /* name= */ "neutral_container_outline_variant",
-        /* palette= */ (s) -> s.mutedPalette,
+        /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 80.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
