@@ -60,39 +60,75 @@ public class DynamicPalette {
     return dynamicPaletteColor.getArgb(this);
   }
 
-  public int getContainerSurfaceLowest() {
-    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceLowest());
+  public int getTonalContainerSurfaceLowest() {
+    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceLowest());
   }
 
-  public int getContainerSurfaceLow() {
-    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceLow());
+  public int getTonalContainerSurfaceLow() {
+    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceLow());
   }
 
-  public int getContainerSurface() {
-    return getArgb(new ChromaDynamicPaletteColors().containerSurface());
+  public int getTonalContainerSurface() {
+    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurface());
   }
 
-  public int getContainerSurfaceHigh() {
-    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceHigh());
+  public int getTonalContainerSurfaceHigh() {
+    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceHigh());
   }
 
-  public int getContainerSurfaceHighest() {
-    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceHighest());
+  public int getTonalContainerSurfaceHighest() {
+    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceHighest());
   }
 
-  public int getOnContainer() {
-    return getArgb(new ChromaDynamicPaletteColors().onContainer());
+  public int getOnTonalContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().onTonalContainer());
   }
 
-  public int getOnContainerVariant() {
-    return getArgb(new ChromaDynamicPaletteColors().onContainerVariant());
+  public int getOnTonalContainerVariant() {
+    return getArgb(new ChromaDynamicPaletteColors().onTonalContainerVariant());
   }
 
-  public int getContainerOutline() {
-    return getArgb(new ChromaDynamicPaletteColors().containerOutline());
+  public int getTonalContainerOutline() {
+    return getArgb(new ChromaDynamicPaletteColors().tonalContainerOutline());
   }
 
-  public int getContainerOutlineVariant() {
-    return getArgb(new ChromaDynamicPaletteColors().containerOutlineVariant());
+  public int getTonalContainerOutlineVariant() {
+    return getArgb(new ChromaDynamicPaletteColors().tonalContainerOutlineVariant());
+  }
+
+  public int getPrimaryContainerSurfaceLowest() {
+    return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurfaceLowest());
+  }
+
+  public int getPrimaryContainerSurfaceLow() {
+    return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurfaceLow());
+  }
+
+  public int getPrimaryContainerSurface() {
+    return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurface());
+  }
+
+  public int getPrimaryContainerSurfaceHigh() {
+    return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurfaceHigh());
+  }
+
+  public int getPrimaryContainerSurfaceHighest() {
+    return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurfaceHighest());
+  }
+
+  public int getOnPrimaryContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().onPrimaryContainer());
+  }
+
+  public int getOnPrimaryContainerVariant() {
+    return getArgb(new ChromaDynamicPaletteColors().onPrimaryContainerVariant());
+  }
+
+  public int getPrimaryContainerOutline() {
+    return getArgb(new ChromaDynamicPaletteColors().primaryContainerOutline());
+  }
+
+  public int getPrimaryContainerOutlineVariant() {
+    return getArgb(new ChromaDynamicPaletteColors().primaryContainerOutlineVariant());
   }
 }
