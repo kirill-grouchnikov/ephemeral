@@ -26,10 +26,10 @@ package org.pushingpixels.ephemeral.chroma.dynamiccolor;
  */
 public final class ToneDeltaPair {
   /** The first role in a pair. */
-  private final DynamicColor roleA;
+  private final DynamicSchemeColor roleA;
 
   /** The second role in a pair. */
-  private final DynamicColor roleB;
+  private final DynamicSchemeColor roleB;
 
   /** Required difference between tones. Absolute value, negative values have undefined behavior. */
   private final double delta;
@@ -64,8 +64,8 @@ public final class ToneDeltaPair {
    *     (T50-59). This is necessary for certain cases where one role has two backgrounds.
    */
   public ToneDeltaPair(
-      DynamicColor roleA,
-      DynamicColor roleB,
+      DynamicSchemeColor roleA,
+      DynamicSchemeColor roleB,
       double delta,
       TonePolarity polarity,
       boolean stayTogether) {
@@ -76,11 +76,11 @@ public final class ToneDeltaPair {
     this.stayTogether = stayTogether;
   }
 
-  public DynamicColor getRoleA() {
+  public DynamicSchemeColor getRoleA() {
     return roleA;
   }
 
-  public DynamicColor getRoleB() {
+  public DynamicSchemeColor getRoleB() {
     return roleB;
   }
 

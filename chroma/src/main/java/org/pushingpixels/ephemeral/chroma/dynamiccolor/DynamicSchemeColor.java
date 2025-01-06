@@ -28,6 +28,8 @@ import java.util.function.Function;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
+// This is a modified version of the original source code, changed to fit the Chroma needs
+
 /**
  * A color that adjusts itself based on UI state, represented by DynamicScheme.
  *
@@ -53,13 +55,13 @@ import static java.lang.Math.min;
 // annotation; another solution would be to create an android_library rule and supply
 // AndroidManifest with an SDK set higher than 14.
 @SuppressWarnings({"AndroidJdkLibsChecker", "NewApi"})
-public final class DynamicColor {
+public final class DynamicSchemeColor {
   public final String name;
   public final Function<DynamicScheme, TonalPalette> palette;
   public final Function<DynamicScheme, Double> tone;
   public final boolean isBackground;
-  public final Function<DynamicScheme, DynamicColor> background;
-  public final Function<DynamicScheme, DynamicColor> secondBackground;
+  public final Function<DynamicScheme, DynamicSchemeColor> background;
+  public final Function<DynamicScheme, DynamicSchemeColor> secondBackground;
   public final ContrastCurve contrastCurve;
   public final Function<DynamicScheme, ToneDeltaPair> toneDeltaPair;
 
@@ -96,13 +98,13 @@ public final class DynamicColor {
    * @param toneDeltaPair A `ToneDeltaPair` object specifying a tone delta constraint between two
    *     colors. One of them must be the color being constructed.
    */
-  public DynamicColor(
+  public DynamicSchemeColor(
       String name,
       Function<DynamicScheme, TonalPalette> palette,
       Function<DynamicScheme, Double> tone,
       boolean isBackground,
-      Function<DynamicScheme, DynamicColor> background,
-      Function<DynamicScheme, DynamicColor> secondBackground,
+      Function<DynamicScheme, DynamicSchemeColor> background,
+      Function<DynamicScheme, DynamicSchemeColor> secondBackground,
       ContrastCurve contrastCurve,
       Function<DynamicScheme, ToneDeltaPair> toneDeltaPair) {
 
@@ -147,13 +149,13 @@ public final class DynamicColor {
    *     colors. One of them must be the color being constructed.
    * @param opacity A function returning the opacity of a color, as a number between 0 and 1.
    */
-  public DynamicColor(
+  public DynamicSchemeColor(
       String name,
       Function<DynamicScheme, TonalPalette> palette,
       Function<DynamicScheme, Double> tone,
       boolean isBackground,
-      Function<DynamicScheme, DynamicColor> background,
-      Function<DynamicScheme, DynamicColor> secondBackground,
+      Function<DynamicScheme, DynamicSchemeColor> background,
+      Function<DynamicScheme, DynamicSchemeColor> secondBackground,
       ContrastCurve contrastCurve,
       Function<DynamicScheme, ToneDeltaPair> toneDeltaPair,
       Function<DynamicScheme, Double> opacity) {
@@ -189,11 +191,11 @@ public final class DynamicColor {
    *     a tonal palette, when contrast adjustments are made, intended chroma can be preserved.
    * @param tone Function that provides a tone, given a DynamicScheme.
    */
-  public static DynamicColor fromPalette(
+  public static DynamicSchemeColor fromPalette(
       String name,
       Function<DynamicScheme, TonalPalette> palette,
       Function<DynamicScheme, Double> tone) {
-    return new DynamicColor(
+    return new DynamicSchemeColor(
         name,
         palette,
         tone,
@@ -227,12 +229,12 @@ public final class DynamicColor {
    * @param isBackground Whether this dynamic color is a background, with some other color as the
    *     foreground.
    */
-  public static DynamicColor fromPalette(
+  public static DynamicSchemeColor fromPalette(
       String name,
       Function<DynamicScheme, TonalPalette> palette,
       Function<DynamicScheme, Double> tone,
       boolean isBackground) {
-    return new DynamicColor(
+    return new DynamicSchemeColor(
         name,
         palette,
         tone,
@@ -251,10 +253,10 @@ public final class DynamicColor {
    * @param name The name of the dynamic color.
    * @param argb The source color from which to extract the hue and chroma.
    */
-  public static DynamicColor fromArgb(String name, int argb) {
+  public static DynamicSchemeColor fromArgb(String name, int argb) {
     Hct hct = Hct.fromInt(argb);
     TonalPalette palette = TonalPalette.fromInt(argb);
-    return DynamicColor.fromPalette(name, (s) -> palette, (s) -> hct.getTone());
+    return DynamicSchemeColor.fromPalette(name, (s) -> palette, (s) -> hct.getTone());
   }
 
   /**
@@ -308,21 +310,21 @@ public final class DynamicColor {
     // Case 1: dual foreground, pair of colors with delta constraint.
     if (toneDeltaPair != null) {
       ToneDeltaPair toneDeltaPair = this.toneDeltaPair.apply(scheme);
-      DynamicColor roleA = toneDeltaPair.getRoleA();
-      DynamicColor roleB = toneDeltaPair.getRoleB();
+      DynamicSchemeColor roleA = toneDeltaPair.getRoleA();
+      DynamicSchemeColor roleB = toneDeltaPair.getRoleB();
       double delta = toneDeltaPair.getDelta();
       TonePolarity polarity = toneDeltaPair.getPolarity();
       boolean stayTogether = toneDeltaPair.getStayTogether();
 
-      DynamicColor bg = background.apply(scheme);
+      DynamicSchemeColor bg = background.apply(scheme);
       double bgTone = bg.getTone(scheme);
 
       boolean aIsNearer =
           (polarity == TonePolarity.NEARER
               || (polarity == TonePolarity.LIGHTER && !scheme.isDark)
               || (polarity == TonePolarity.DARKER && scheme.isDark));
-      DynamicColor nearer = aIsNearer ? roleA : roleB;
-      DynamicColor farther = aIsNearer ? roleB : roleA;
+      DynamicSchemeColor nearer = aIsNearer ? roleA : roleB;
+      DynamicSchemeColor farther = aIsNearer ? roleB : roleA;
       boolean amNearer = name.equals(nearer.name);
       double expansionDir = scheme.isDark ? 1 : -1;
 
@@ -336,19 +338,19 @@ public final class DynamicColor {
       double nTone =
           Contrast.ratioOfTones(bgTone, nInitialTone) >= nContrast
               ? nInitialTone
-              : DynamicColor.foregroundTone(bgTone, nContrast);
+              : DynamicSchemeColor.foregroundTone(bgTone, nContrast);
       // Initial and adjusted tones for `farther`
       double fInitialTone = farther.tone.apply(scheme);
       double fTone =
           Contrast.ratioOfTones(bgTone, fInitialTone) >= fContrast
               ? fInitialTone
-              : DynamicColor.foregroundTone(bgTone, fContrast);
+              : DynamicSchemeColor.foregroundTone(bgTone, fContrast);
 
       if (decreasingContrast) {
         // If decreasing contrast, adjust color to the "bare minimum"
         // that satisfies contrast.
-        nTone = DynamicColor.foregroundTone(bgTone, nContrast);
-        fTone = DynamicColor.foregroundTone(bgTone, fContrast);
+        nTone = DynamicSchemeColor.foregroundTone(bgTone, nContrast);
+        fTone = DynamicSchemeColor.foregroundTone(bgTone, fContrast);
       }
 
       // If constraint is not satisfied, try another round.
@@ -412,11 +414,11 @@ public final class DynamicColor {
         // Don't "improve" what's good enough.
       } else {
         // Rough improvement.
-        answer = DynamicColor.foregroundTone(bgTone, desiredRatio);
+        answer = DynamicSchemeColor.foregroundTone(bgTone, desiredRatio);
       }
 
       if (decreasingContrast) {
-        answer = DynamicColor.foregroundTone(bgTone, desiredRatio);
+        answer = DynamicSchemeColor.foregroundTone(bgTone, desiredRatio);
       }
 
       if (isBackground && 50 <= answer && answer < 60) {
@@ -460,8 +462,8 @@ public final class DynamicColor {
         }
 
         boolean prefersLight =
-            DynamicColor.tonePrefersLightForeground(bgTone1)
-                || DynamicColor.tonePrefersLightForeground(bgTone2);
+            DynamicSchemeColor.tonePrefersLightForeground(bgTone1)
+                || DynamicSchemeColor.tonePrefersLightForeground(bgTone2);
         if (prefersLight) {
           return (lightOption == -1) ? 100 : lightOption;
         }

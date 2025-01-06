@@ -21,16 +21,16 @@ import org.pushingpixels.ephemeral.chroma.hct.Hct;
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
 /** Named colors, otherwise known as tokens, or roles, in the Ephemeral Design system. */
-public final class EphemeralChromaDynamicColors {
-  public EphemeralChromaDynamicColors() {
+public final class ChromaDynamicSchemeColors {
+  public ChromaDynamicSchemeColors() {
   }
 
-  public DynamicColor highestSurface(DynamicScheme s) {
+  public DynamicSchemeColor highestSurface(DynamicScheme s) {
     return s.isDark ? surfaceBright() : surfaceDim();
   }
 
-  public DynamicColor surface() {
-    return new DynamicColor(
+  public DynamicSchemeColor surface() {
+    return new DynamicSchemeColor(
         /* name= */ "surface",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
@@ -46,8 +46,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor surfaceDim() {
-    return new DynamicColor(
+  public DynamicSchemeColor surfaceDim() {
+    return new DynamicSchemeColor(
         /* name= */ "surface_dim",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
@@ -64,8 +64,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor surfaceBright() {
-    return new DynamicColor(
+  public DynamicSchemeColor surfaceBright() {
+    return new DynamicSchemeColor(
         /* name= */ "surface_bright",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
@@ -82,8 +82,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor neutralContainerSurfaceLowest() {
-    return new DynamicColor(
+  public DynamicSchemeColor neutralContainerSurfaceLowest() {
+    return new DynamicSchemeColor(
         /* name= */ "neutral_container_surface_lowest",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
@@ -101,8 +101,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor neutralContainerSurfaceLow() {
-    return new DynamicColor(
+  public DynamicSchemeColor neutralContainerSurfaceLow() {
+    return new DynamicSchemeColor(
         /* name= */ "neutral_container_surface_low",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
@@ -122,8 +122,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor neutralContainerSurface() {
-    return new DynamicColor(
+  public DynamicSchemeColor neutralContainerSurface() {
+    return new DynamicSchemeColor(
         /* name= */ "neutral_container_surface",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
@@ -143,8 +143,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor neutralContainerSurfaceHigh() {
-    return new DynamicColor(
+  public DynamicSchemeColor neutralContainerSurfaceHigh() {
+    return new DynamicSchemeColor(
         /* name= */ "neutral_container_surface_high",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
@@ -164,8 +164,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor neutralContainerSurfaceHighest() {
-    return new DynamicColor(
+  public DynamicSchemeColor neutralContainerSurfaceHighest() {
+    return new DynamicSchemeColor(
         /* name= */ "neutral_container_surface_highest",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
@@ -185,13 +185,13 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onNeutralContainer() {
-    return new DynamicColor(
+  public DynamicSchemeColor onNeutralContainer() {
+    return new DynamicSchemeColor(
         /* name= */ "on_neutral_container",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
             if (isFidelity(s)) {
-                return DynamicColor.foregroundTone(neutralContainerSurface().tone.apply(s), 6.0);
+                return DynamicSchemeColor.foregroundTone(neutralContainerSurface().tone.apply(s), 6.0);
             }
             return s.isDark ? 90.0 : 10.0;
         },
@@ -202,8 +202,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onNeutralContainerVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor onNeutralContainerVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "on_neutral_container_variant",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 30.0,
@@ -214,8 +214,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor neutralContainerOutline() {
-    return new DynamicColor(
+  public DynamicSchemeColor neutralContainerOutline() {
+    return new DynamicSchemeColor(
         /* name= */ "neutral_container_outline",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isDark ? 20.0 : 50.0,
@@ -226,8 +226,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor neutralContainerOutlineVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor neutralContainerOutlineVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "neutral_container_outline_variant",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 80.0,
@@ -238,8 +238,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor primaryContainerSurfaceLowest() {
-    return new DynamicColor(
+  public DynamicSchemeColor primaryContainerSurfaceLowest() {
+    return new DynamicSchemeColor(
         /* name= */ "primary_container_surface_lowest",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark
@@ -252,8 +252,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor primaryContainerSurfaceLow() {
-    return new DynamicColor(
+  public DynamicSchemeColor primaryContainerSurfaceLow() {
+    return new DynamicSchemeColor(
         /* name= */ "primary_container_surface_low",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark
@@ -266,8 +266,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor primaryContainerSurface() {
-    return new DynamicColor(
+  public DynamicSchemeColor primaryContainerSurface() {
+    return new DynamicSchemeColor(
         /* name= */ "primary_container_surface",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark
@@ -280,8 +280,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor primaryContainerSurfaceHigh() {
-    return new DynamicColor(
+  public DynamicSchemeColor primaryContainerSurfaceHigh() {
+    return new DynamicSchemeColor(
         /* name= */ "primary_container_surface_high",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark
@@ -294,8 +294,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor primaryContainerSurfaceHighest() {
-    return new DynamicColor(
+  public DynamicSchemeColor primaryContainerSurfaceHighest() {
+    return new DynamicSchemeColor(
         /* name= */ "primary_container_surface_highest",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark
@@ -308,8 +308,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onPrimaryContainer() {
-    return new DynamicColor(
+  public DynamicSchemeColor onPrimaryContainer() {
+    return new DynamicSchemeColor(
         /* name= */ "on_primary_container",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark ? 20.0 : 100.0,
@@ -320,8 +320,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onPrimaryContainerVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor onPrimaryContainerVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "on_primary_container_variant",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark ? 30.0 : 95.0,
@@ -332,8 +332,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor primaryContainerOutline() {
-    return new DynamicColor(
+  public DynamicSchemeColor primaryContainerOutline() {
+    return new DynamicSchemeColor(
         /* name= */ "primary_container_outline",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark ? 30.0 : 100.0,
@@ -344,8 +344,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor primaryContainerOutlineVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor primaryContainerOutlineVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "primary_container_outline_variant",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark ? 50.0 : 95.0,
@@ -356,8 +356,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor mutedContainerSurfaceLowest() {
-    return new DynamicColor(
+  public DynamicSchemeColor mutedContainerSurfaceLowest() {
+    return new DynamicSchemeColor(
         /* name= */ "muted_container_surface_lowest",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> {
@@ -377,8 +377,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor mutedContainerSurfaceLow() {
-    return new DynamicColor(
+  public DynamicSchemeColor mutedContainerSurfaceLow() {
+    return new DynamicSchemeColor(
         /* name= */ "muted_container_surface_low",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> {
@@ -398,8 +398,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor mutedContainerSurface() {
-    return new DynamicColor(
+  public DynamicSchemeColor mutedContainerSurface() {
+    return new DynamicSchemeColor(
         /* name= */ "muted_container_surface",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> {
@@ -417,8 +417,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor mutedContainerSurfaceHigh() {
-    return new DynamicColor(
+  public DynamicSchemeColor mutedContainerSurfaceHigh() {
+    return new DynamicSchemeColor(
         /* name= */ "muted_container_surface_high",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> {
@@ -438,8 +438,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor mutedContainerSurfaceHighest() {
-    return new DynamicColor(
+  public DynamicSchemeColor mutedContainerSurfaceHighest() {
+    return new DynamicSchemeColor(
         /* name= */ "muted_container_surface_highest",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> {
@@ -459,13 +459,13 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onMutedContainer() {
-    return new DynamicColor(
+  public DynamicSchemeColor onMutedContainer() {
+    return new DynamicSchemeColor(
         /* name= */ "on_muted_container",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return DynamicColor.foregroundTone(mutedContainerSurface().tone.apply(s), 6.0);
+            return DynamicSchemeColor.foregroundTone(mutedContainerSurface().tone.apply(s), 6.0);
           }
           return s.isDark ? 90.0 : 30.0;
         },
@@ -476,8 +476,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onMutedContainerVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor onMutedContainerVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "on_muted_container_variant",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 30.0,
@@ -488,8 +488,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor mutedContainerOutline() {
-    return new DynamicColor(
+  public DynamicSchemeColor mutedContainerOutline() {
+    return new DynamicSchemeColor(
         /* name= */ "muted_container_outline",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isDark ? 20.0 : 50.0,
@@ -500,8 +500,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor mutedContainerOutlineVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor mutedContainerOutlineVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "muted_container_outline_variant",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 80.0,
@@ -512,8 +512,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor tonalContainerSurfaceLowest() {
-    return new DynamicColor(
+  public DynamicSchemeColor tonalContainerSurfaceLowest() {
+    return new DynamicSchemeColor(
         /* name= */ "tonal_container_surface_lowest",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
@@ -533,8 +533,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor tonalContainerSurfaceLow() {
-    return new DynamicColor(
+  public DynamicSchemeColor tonalContainerSurfaceLow() {
+    return new DynamicSchemeColor(
         /* name= */ "tonal_container_surface_low",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
@@ -554,8 +554,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor tonalContainerSurface() {
-    return new DynamicColor(
+  public DynamicSchemeColor tonalContainerSurface() {
+    return new DynamicSchemeColor(
         /* name= */ "tonal_container_surface",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
@@ -573,8 +573,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor tonalContainerSurfaceHigh() {
-    return new DynamicColor(
+  public DynamicSchemeColor tonalContainerSurfaceHigh() {
+    return new DynamicSchemeColor(
         /* name= */ "tonal_container_surface_high",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
@@ -594,8 +594,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor tonalContainerSurfaceHighest() {
-    return new DynamicColor(
+  public DynamicSchemeColor tonalContainerSurfaceHighest() {
+    return new DynamicSchemeColor(
         /* name= */ "tonal_container_surface_highest",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
@@ -615,13 +615,13 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onTonalContainer() {
-    return new DynamicColor(
+  public DynamicSchemeColor onTonalContainer() {
+    return new DynamicSchemeColor(
         /* name= */ "on_tonal_container",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return DynamicColor.foregroundTone(tonalContainerSurface().tone.apply(s), 6.0);
+            return DynamicSchemeColor.foregroundTone(tonalContainerSurface().tone.apply(s), 6.0);
           }
           return s.isDark ? 90.0 : 30.0;
         },
@@ -632,8 +632,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onTonalContainerVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor onTonalContainerVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "on_tonal_container_variant",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 40.0,
@@ -644,8 +644,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor tonalContainerOutline() {
-    return new DynamicColor(
+  public DynamicSchemeColor tonalContainerOutline() {
+    return new DynamicSchemeColor(
         /* name= */ "tonal_container_outline",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark ? 20.0 : 50.0,
@@ -656,8 +656,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor tonalContainerOutlineVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor tonalContainerOutlineVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "tonal_container_outline_variant",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 80.0,
@@ -668,8 +668,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemErrorContainerSurfaceLowest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemErrorContainerSurfaceLowest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_error_container_surface_lowest",
         /* palette= */ (s) -> s.systemErrorPalette,
         /* tone= */ (s) ->
@@ -683,8 +683,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemErrorContainerSurfaceLow() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemErrorContainerSurfaceLow() {
+    return new DynamicSchemeColor(
         /* name= */ "system_error_container_surface_low",
         /* palette= */ (s) -> s.systemErrorPalette,
         /* tone= */ (s) ->
@@ -698,8 +698,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemErrorContainerSurface() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemErrorContainerSurface() {
+    return new DynamicSchemeColor(
         /* name= */ "system_error_container_surface",
         /* palette= */ (s) -> s.systemErrorPalette,
         /* tone= */ (s) ->
@@ -713,8 +713,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemErrorContainerSurfaceHigh() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemErrorContainerSurfaceHigh() {
+    return new DynamicSchemeColor(
         /* name= */ "system_error_container_surface_high",
         /* palette= */ (s) -> s.systemErrorPalette,
         /* tone= */ (s) ->
@@ -728,8 +728,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemErrorContainerSurfaceHighest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemErrorContainerSurfaceHighest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_error_container_surface_highest",
         /* palette= */ (s) -> s.systemErrorPalette,
         /* tone= */ (s) ->
@@ -743,8 +743,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemErrorContainer() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemErrorContainer() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_error_container",
         /* palette= */ (s) -> s.systemErrorPalette,
         /* tone= */ (s) -> s.isDark ? 90.0 : 30.0,
@@ -755,8 +755,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemErrorContainerVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemErrorContainerVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_error_container_variant",
         /* palette= */ (s) -> s.systemErrorPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 40.0,
@@ -767,8 +767,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemErrorContainerOutline() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemErrorContainerOutline() {
+    return new DynamicSchemeColor(
         /* name= */ "system_error_container_outline",
         /* palette= */ (s) -> s.systemErrorPalette,
         /* tone= */ (s) -> s.isDark ? 60.0 : 45.0,
@@ -779,8 +779,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemErrorContainerOutlineVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemErrorContainerOutlineVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "system_error_container_outline_variant",
         /* palette= */ (s) -> s.systemErrorPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 65.0,
@@ -791,8 +791,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemWarningContainerSurfaceLowest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemWarningContainerSurfaceLowest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_warning_container_surface_lowest",
         /* palette= */ (s) -> s.systemWarningPalette,
         /* tone= */ (s) ->
@@ -806,8 +806,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemWarningContainerSurfaceLow() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemWarningContainerSurfaceLow() {
+    return new DynamicSchemeColor(
         /* name= */ "system_warning_container_surface_low",
         /* palette= */ (s) -> s.systemWarningPalette,
         /* tone= */ (s) ->
@@ -821,8 +821,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemWarningContainerSurface() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemWarningContainerSurface() {
+    return new DynamicSchemeColor(
         /* name= */ "system_warning_container_surface",
         /* palette= */ (s) -> s.systemWarningPalette,
         /* tone= */ (s) ->
@@ -836,8 +836,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemWarningContainerSurfaceHigh() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemWarningContainerSurfaceHigh() {
+    return new DynamicSchemeColor(
         /* name= */ "system_warning_container_surface_high",
         /* palette= */ (s) -> s.systemWarningPalette,
         /* tone= */ (s) ->
@@ -851,8 +851,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemWarningContainerSurfaceHighest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemWarningContainerSurfaceHighest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_warning_container_surface_highest",
         /* palette= */ (s) -> s.systemWarningPalette,
         /* tone= */ (s) ->
@@ -866,8 +866,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemWarningContainer() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemWarningContainer() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_warning_container",
         /* palette= */ (s) -> s.systemWarningPalette,
         /* tone= */ (s) -> s.isDark ? 90.0 : 30.0,
@@ -878,8 +878,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemWarningContainerVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemWarningContainerVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_warning_container_variant",
         /* palette= */ (s) -> s.systemWarningPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 40.0,
@@ -890,8 +890,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemWarningContainerOutline() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemWarningContainerOutline() {
+    return new DynamicSchemeColor(
         /* name= */ "system_warning_container_outline",
         /* palette= */ (s) -> s.systemWarningPalette,
         /* tone= */ (s) -> s.isDark ? 60.0 : 45.0,
@@ -902,8 +902,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemWarningContainerOutlineVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemWarningContainerOutlineVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "system_warning_container_outline_variant",
         /* palette= */ (s) -> s.systemWarningPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 65.0,
@@ -914,8 +914,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemInfoContainerSurfaceLowest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemInfoContainerSurfaceLowest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_info_container_surface_lowest",
         /* palette= */ (s) -> s.systemInfoPalette,
         /* tone= */ (s) ->
@@ -929,8 +929,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemInfoContainerSurfaceLow() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemInfoContainerSurfaceLow() {
+    return new DynamicSchemeColor(
         /* name= */ "system_info_container_surface_low",
         /* palette= */ (s) -> s.systemInfoPalette,
         /* tone= */ (s) ->
@@ -944,8 +944,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemInfoContainerSurface() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemInfoContainerSurface() {
+    return new DynamicSchemeColor(
         /* name= */ "system_info_container_surface",
         /* palette= */ (s) -> s.systemInfoPalette,
         /* tone= */ (s) ->
@@ -959,8 +959,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemInfoContainerSurfaceHigh() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemInfoContainerSurfaceHigh() {
+    return new DynamicSchemeColor(
         /* name= */ "system_info_container_surface_high",
         /* palette= */ (s) -> s.systemInfoPalette,
         /* tone= */ (s) ->
@@ -974,8 +974,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemInfoContainerSurfaceHighest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemInfoContainerSurfaceHighest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_info_container_surface_highest",
         /* palette= */ (s) -> s.systemInfoPalette,
         /* tone= */ (s) ->
@@ -989,8 +989,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemInfoContainer() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemInfoContainer() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_info_container",
         /* palette= */ (s) -> s.systemInfoPalette,
         /* tone= */ (s) -> s.isDark ? 90.0 : 30.0,
@@ -1001,8 +1001,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemInfoContainerVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemInfoContainerVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_info_container_variant",
         /* palette= */ (s) -> s.systemInfoPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 40.0,
@@ -1013,8 +1013,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemInfoContainerOutline() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemInfoContainerOutline() {
+    return new DynamicSchemeColor(
         /* name= */ "system_info_container_outline",
         /* palette= */ (s) -> s.systemInfoPalette,
         /* tone= */ (s) -> s.isDark ? 60.0 : 45.0,
@@ -1025,8 +1025,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemInfoContainerOutlineVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemInfoContainerOutlineVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "system_info_container_outline_variant",
         /* palette= */ (s) -> s.systemInfoPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 65.0,
@@ -1037,8 +1037,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemSuccessContainerSurfaceLowest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemSuccessContainerSurfaceLowest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_success_container_surface_lowest",
         /* palette= */ (s) -> s.systemSuccessPalette,
         /* tone= */ (s) ->
@@ -1052,8 +1052,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemSuccessContainerSurfaceLow() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemSuccessContainerSurfaceLow() {
+    return new DynamicSchemeColor(
         /* name= */ "system_success_container_surface_low",
         /* palette= */ (s) -> s.systemSuccessPalette,
         /* tone= */ (s) ->
@@ -1067,8 +1067,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemSuccessContainerSurface() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemSuccessContainerSurface() {
+    return new DynamicSchemeColor(
         /* name= */ "system_success_container_surface",
         /* palette= */ (s) -> s.systemSuccessPalette,
         /* tone= */ (s) ->
@@ -1082,8 +1082,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemSuccessContainerSurfaceHigh() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemSuccessContainerSurfaceHigh() {
+    return new DynamicSchemeColor(
         /* name= */ "system_success_container_surface_high",
         /* palette= */ (s) -> s.systemSuccessPalette,
         /* tone= */ (s) ->
@@ -1097,8 +1097,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemSuccessContainerSurfaceHighest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemSuccessContainerSurfaceHighest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_success_container_surface_highest",
         /* palette= */ (s) -> s.systemSuccessPalette,
         /* tone= */ (s) ->
@@ -1112,8 +1112,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemSuccessContainer() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemSuccessContainer() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_success_container_surface",
         /* palette= */ (s) -> s.systemSuccessPalette,
         /* tone= */ (s) -> s.isDark ? 90.0 : 30.0,
@@ -1124,8 +1124,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemSuccessContainerVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemSuccessContainerVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_success_container_variant",
         /* palette= */ (s) -> s.systemSuccessPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 40.0,
@@ -1136,8 +1136,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemSuccessContainerOutline() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemSuccessContainerOutline() {
+    return new DynamicSchemeColor(
         /* name= */ "system_success_container_outline",
         /* palette= */ (s) -> s.systemSuccessPalette,
         /* tone= */ (s) -> s.isDark ? 60.0 : 45.0,
@@ -1148,8 +1148,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemSuccessContainerOutlineVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemSuccessContainerOutlineVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "system_success_container_outline_variant",
         /* palette= */ (s) -> s.systemSuccessPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 65.0,
@@ -1160,8 +1160,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemEmergencyContainerSurfaceLowest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemEmergencyContainerSurfaceLowest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_emergency_container_surface_lowest",
         /* palette= */ (s) -> s.systemEmergencyPalette,
         /* tone= */ (s) ->
@@ -1175,8 +1175,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemEmergencyContainerSurfaceLow() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemEmergencyContainerSurfaceLow() {
+    return new DynamicSchemeColor(
         /* name= */ "system_emergency_container_surface_low",
         /* palette= */ (s) -> s.systemEmergencyPalette,
         /* tone= */ (s) ->
@@ -1190,8 +1190,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemEmergencyContainerSurface() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemEmergencyContainerSurface() {
+    return new DynamicSchemeColor(
         /* name= */ "system_emergency_container_surface",
         /* palette= */ (s) -> s.systemEmergencyPalette,
         /* tone= */ (s) ->
@@ -1205,8 +1205,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemEmergencyContainerSurfaceHigh() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemEmergencyContainerSurfaceHigh() {
+    return new DynamicSchemeColor(
         /* name= */ "system_emergency_container_surface_high",
         /* palette= */ (s) -> s.systemEmergencyPalette,
         /* tone= */ (s) ->
@@ -1220,8 +1220,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemEmergencyContainerSurfaceHighest() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemEmergencyContainerSurfaceHighest() {
+    return new DynamicSchemeColor(
         /* name= */ "system_emergency_container_surface_highest",
         /* palette= */ (s) -> s.systemEmergencyPalette,
         /* tone= */ (s) ->
@@ -1235,8 +1235,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemEmergencyContainer() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemEmergencyContainer() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_emergency_container",
         /* palette= */ (s) -> s.systemEmergencyPalette,
         /* tone= */ (s) -> s.isDark ? 90.0 : 30.0,
@@ -1247,8 +1247,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor onSystemEmergencyContainerVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor onSystemEmergencyContainerVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "on_system_emergency_container_variant",
         /* palette= */ (s) -> s.systemEmergencyPalette,
         /* tone= */ (s) -> s.isDark ? 80.0 : 40.0,
@@ -1259,8 +1259,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemEmergencyContainerOutline() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemEmergencyContainerOutline() {
+    return new DynamicSchemeColor(
         /* name= */ "system_emergency_container_outline",
         /* palette= */ (s) -> s.systemEmergencyPalette,
         /* tone= */ (s) -> s.isDark ? 60.0 : 45.0,
@@ -1271,8 +1271,8 @@ public final class EphemeralChromaDynamicColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicColor systemEmergencyContainerOutlineVariant() {
-    return new DynamicColor(
+  public DynamicSchemeColor systemEmergencyContainerOutlineVariant() {
+    return new DynamicSchemeColor(
         /* name= */ "system_emergency_container_outline_variant",
         /* palette= */ (s) -> s.systemEmergencyPalette,
         /* tone= */ (s) -> s.isDark ? 40.0 : 65.0,
