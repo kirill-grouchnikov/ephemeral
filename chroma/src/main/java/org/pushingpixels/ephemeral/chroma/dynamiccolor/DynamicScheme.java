@@ -23,7 +23,7 @@ import org.pushingpixels.ephemeral.chroma.utils.MathUtils;
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
 /**
- * Provides important settings for creating colors dynamically, and 8 color palettes. Requires:
+ * Provides important settings for creating colors dynamically, and 8 tonal palettes. Requires:
  * 1. A color. (source color)
  * 2. Whether or not its dark mode.
  * 3. Contrast level. (-1 to 1, currently contrast ratio 3.0 and 7.0)
