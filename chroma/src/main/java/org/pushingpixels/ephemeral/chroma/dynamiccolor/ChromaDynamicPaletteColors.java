@@ -208,11 +208,13 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor tonalContainerOutlineVariant() {
         return new DynamicPaletteColor(
             /* name= */ "tonal_container_outline_variant",
-            /* tone= */ (p) -> p.isDark ? 40.0 : 80.0,
+            /* tone= */ (p) -> p.isDark
+                ? new ContrastCurve(25.0, 40.0, 50.0, 60.0).get(p.contrastLevel)
+                : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.contrastLevel),
             /* isBackground= */ false,
-            /* background= */ (p) -> tonalContainerSurface(),
+            /* background= */ null,
             /* secondBackground= */ null,
-            /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5));
+            /* contrastCurve= */ null);
     }
 
     public DynamicPaletteColor primaryContainerSurfaceLowest() {
