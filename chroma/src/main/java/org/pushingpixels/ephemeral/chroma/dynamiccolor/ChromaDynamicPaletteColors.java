@@ -174,7 +174,8 @@ public final class ChromaDynamicPaletteColors {
             /* name= */ "on_tonal_container",
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
-                return DynamicPaletteColor.foregroundTone(tonalContainerSurface().tone.apply(p), 6.0);
+                return DynamicPaletteColor.foregroundTone(tonalContainerSurface().tone.apply(p),
+                    new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.contrastLevel));
             }
             return p.isDark ? 90.0 : 30.0;
         },

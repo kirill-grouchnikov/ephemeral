@@ -191,7 +191,8 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
             if (isFidelity(s)) {
-                return DynamicSchemeColor.foregroundTone(neutralContainerSurface().tone.apply(s), 6.0);
+                return DynamicPaletteColor.foregroundTone(neutralContainerSurface().tone.apply(s),
+                    new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.contrastLevel));
             }
             return s.isDark ? 90.0 : 10.0;
         },
@@ -465,7 +466,8 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return DynamicSchemeColor.foregroundTone(mutedContainerSurface().tone.apply(s), 6.0);
+              return DynamicPaletteColor.foregroundTone(mutedContainerSurface().tone.apply(s),
+                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.contrastLevel));
           }
           return s.isDark ? 90.0 : 30.0;
         },
@@ -621,7 +623,8 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return DynamicSchemeColor.foregroundTone(tonalContainerSurface().tone.apply(s), 6.0);
+              return DynamicPaletteColor.foregroundTone(tonalContainerSurface().tone.apply(s),
+                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.contrastLevel));
           }
           return s.isDark ? 90.0 : 30.0;
         },
