@@ -76,6 +76,16 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+    public DynamicPaletteColor inverseSurface() {
+        return new DynamicPaletteColor(
+            /* name= */ "inverse_surface",
+            /* tone= */ (p) -> p.isDark ? 90.0 : 20.0,
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null);
+    }
+
     public DynamicPaletteColor tonalContainerSurfaceLowest() {
         return new DynamicPaletteColor(
             /* name= */ "tonal_container_surface_lowest",
@@ -217,6 +227,38 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+    public DynamicPaletteColor inverseTonalContainerSurface() {
+        return new DynamicPaletteColor(
+            /* name= */ "inverse_tonal_container_surface",
+            /* tone= */ (p) -> p.isDark
+            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(p.contrastLevel)
+            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(p.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null);
+    }
+
+    public DynamicPaletteColor inverseOnTonalContainer() {
+        return new DynamicPaletteColor(
+            /* name= */ "inverse_on_tonal_container",
+            /* tone= */ (p) -> p.isDark ? 30.0 : 90.0,
+            /* isBackground= */ false,
+            /* background= */ (p) -> inverseTonalContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+    }
+
+    public DynamicPaletteColor inverseTonalContainerOutline() {
+        return new DynamicPaletteColor(
+            /* name= */ "inverse_tonal_container_outline",
+            /* tone= */ (p) -> p.isDark ? 50.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (p) -> inverseTonalContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0));
+    }
+
     public DynamicPaletteColor primaryContainerSurfaceLowest() {
         return new DynamicPaletteColor(
             /* name= */ "primary_container_surface_lowest",
@@ -314,6 +356,38 @@ public final class ChromaDynamicPaletteColors {
             /* tone= */ (p) -> p.isDark ? 50.0 : 95.0,
             /* isBackground= */ false,
             /* background= */ (p) -> primaryContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5));
+    }
+
+    public DynamicPaletteColor inversePrimaryContainerSurface() {
+        return new DynamicPaletteColor(
+            /* name= */ "inverse_primary_container_surface",
+            /* tone= */ (p) -> p.isDark
+            ? new ContrastCurve(40.0, 40.0, 38.0, 36.0).get(p.contrastLevel)
+            : new ContrastCurve(80.0, 80.0, 84.0, 86.0).get(p.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null);
+    }
+
+    public DynamicPaletteColor inverseOnPrimaryContainer() {
+        return new DynamicPaletteColor(
+            /* name= */ "inverse_on_primary_container",
+            /* tone= */ (p) -> p.isDark ? 100.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (p) -> inversePrimaryContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(4.5, 7.0, 11.0, 21.0));
+    }
+
+    public DynamicPaletteColor inversePrimaryContainerOutline() {
+        return new DynamicPaletteColor(
+            /* name= */ "inverse_primary_container_outline",
+            /* tone= */ (p) -> p.isDark ? 100.0 : 30.0,
+            /* isBackground= */ false,
+            /* background= */ (p) -> inversePrimaryContainerSurface(),
             /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5));
     }

@@ -82,6 +82,18 @@ public final class ChromaDynamicSchemeColors {
         /* toneDeltaPair= */ null);
   }
 
+    public DynamicSchemeColor inverseSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_surface",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> s.isDark ? 90.0 : 20.0,
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
   public DynamicSchemeColor neutralContainerSurfaceLowest() {
     return new DynamicSchemeColor(
         /* name= */ "neutral_container_surface_lowest",
@@ -239,6 +251,44 @@ public final class ChromaDynamicSchemeColors {
         /* toneDeltaPair= */ null);
   }
 
+    public DynamicSchemeColor inverseNeutralContainerSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_neutral_container_surface",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel)
+            : new ContrastCurve(12.0, 12.0, 16.0, 20.0).get(s.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseOnNeutralContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_on_neutral_container",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> s.isDark ? 10.0 : 90.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseNeutralContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(4.5, 7.0, 11.0, 21.0),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseNeutralContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_neutral_container_outline",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> s.isDark ? 50.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseNeutralContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0),
+            /* toneDeltaPair= */ null);
+    }
+
   public DynamicSchemeColor primaryContainerSurfaceLowest() {
     return new DynamicSchemeColor(
         /* name= */ "primary_container_surface_lowest",
@@ -356,6 +406,44 @@ public final class ChromaDynamicSchemeColors {
         /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5),
         /* toneDeltaPair= */ null);
   }
+
+    public DynamicSchemeColor inversePrimaryContainerSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_primary_container_surface",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(40.0, 40.0, 38.0, 36.0).get(s.contrastLevel)
+            : new ContrastCurve(80.0, 80.0, 84.0, 86.0).get(s.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseOnPrimaryContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_on_primary_container",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isDark ? 100.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inversePrimaryContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(4.5, 7.0, 11.0, 21.0),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inversePrimaryContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_primary_container_outline",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isDark ? 100.0 : 30.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inversePrimaryContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5),
+            /* toneDeltaPair= */ null);
+    }
 
   public DynamicSchemeColor mutedContainerSurfaceLowest() {
     return new DynamicSchemeColor(
@@ -506,15 +594,53 @@ public final class ChromaDynamicSchemeColors {
     return new DynamicSchemeColor(
         /* name= */ "muted_container_outline_variant",
         /* palette= */ (s) -> s.mutedPalette,
-        /* tone= */ (p) -> p.isDark
-            ? new ContrastCurve(25.0, 40.0, 50.0, 60.0).get(p.contrastLevel)
-            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.contrastLevel),
+        /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(25.0, 40.0, 50.0, 60.0).get(s.contrastLevel)
+            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(s.contrastLevel),
         /* isBackground= */ false,
         /* background= */ null,
         /* secondBackground= */ null,
         /* contrastCurve= */ null,
         /* toneDeltaPair= */ null);
   }
+
+    public DynamicSchemeColor inverseMutedContainerSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_muted_container_surface",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> s.isDark
+                ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel)
+                : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseOnMutedContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_on_muted_container",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> s.isDark ? 30.0 : 90.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseMutedContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseMutedContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_muted_container_outline",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> s.isDark ? 50.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseMutedContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0),
+            /* toneDeltaPair= */ null);
+    }
 
   public DynamicSchemeColor tonalContainerSurfaceLowest() {
     return new DynamicSchemeColor(
@@ -665,15 +791,53 @@ public final class ChromaDynamicSchemeColors {
     return new DynamicSchemeColor(
         /* name= */ "tonal_container_outline_variant",
         /* palette= */ (s) -> s.primaryPalette,
-        /* tone= */ (p) -> p.isDark
-            ? new ContrastCurve(25.0, 40.0, 50.0, 60.0).get(p.contrastLevel)
-            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.contrastLevel),
+        /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(25.0, 40.0, 50.0, 60.0).get(s.contrastLevel)
+            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(s.contrastLevel),
         /* isBackground= */ false,
         /* background= */ null,
         /* secondBackground= */ null,
         /* contrastCurve= */ null,
         /* toneDeltaPair= */ null);
   }
+
+    public DynamicSchemeColor inverseTonalContainerSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_tonal_container_surface",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel)
+            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseOnTonalContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_on_tonal_container",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isDark ? 30.0 : 90.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseTonalContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseTonalContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_tonal_container_outline",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isDark ? 50.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseTonalContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0),
+            /* toneDeltaPair= */ null);
+    }
 
   public DynamicSchemeColor systemErrorContainerSurfaceLowest() {
     return new DynamicSchemeColor(
@@ -798,6 +962,44 @@ public final class ChromaDynamicSchemeColors {
         /* toneDeltaPair= */ null);
   }
 
+    public DynamicSchemeColor inverseSystemErrorContainerSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_error_container_surface",
+            /* palette= */ (s) -> s.systemErrorPalette,
+            /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel)
+            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseOnSystemErrorContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_on_system_error_container",
+            /* palette= */ (s) -> s.systemErrorPalette,
+            /* tone= */ (s) -> s.isDark ? 30.0 : 90.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemErrorContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseSystemErrorContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_error_container_outline",
+            /* palette= */ (s) -> s.systemErrorPalette,
+            /* tone= */ (s) -> s.isDark ? 50.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemErrorContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0),
+            /* toneDeltaPair= */ null);
+    }
+
   public DynamicSchemeColor systemWarningContainerSurfaceLowest() {
     return new DynamicSchemeColor(
         /* name= */ "system_warning_container_surface_lowest",
@@ -920,6 +1122,44 @@ public final class ChromaDynamicSchemeColors {
         /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5),
         /* toneDeltaPair= */ null);
   }
+
+    public DynamicSchemeColor inverseSystemWarningContainerSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_warning_container_surface",
+            /* palette= */ (s) -> s.systemWarningPalette,
+            /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel)
+            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseOnSystemWarningContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_on_system_warning_container",
+            /* palette= */ (s) -> s.systemWarningPalette,
+            /* tone= */ (s) -> s.isDark ? 30.0 : 90.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemWarningContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseSystemWarningContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_warning_container_outline",
+            /* palette= */ (s) -> s.systemWarningPalette,
+            /* tone= */ (s) -> s.isDark ? 50.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemWarningContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0),
+            /* toneDeltaPair= */ null);
+    }
 
   public DynamicSchemeColor systemInfoContainerSurfaceLowest() {
     return new DynamicSchemeColor(
@@ -1044,6 +1284,44 @@ public final class ChromaDynamicSchemeColors {
         /* toneDeltaPair= */ null);
   }
 
+    public DynamicSchemeColor inverseSystemInfoContainerSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_info_container_surface",
+            /* palette= */ (s) -> s.systemInfoPalette,
+            /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel)
+            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseOnSystemInfoContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_on_system_info_container",
+            /* palette= */ (s) -> s.systemInfoPalette,
+            /* tone= */ (s) -> s.isDark ? 30.0 : 90.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemInfoContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseSystemInfoContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_info_container_outline",
+            /* palette= */ (s) -> s.systemInfoPalette,
+            /* tone= */ (s) -> s.isDark ? 50.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemInfoContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0),
+            /* toneDeltaPair= */ null);
+    }
+
   public DynamicSchemeColor systemSuccessContainerSurfaceLowest() {
     return new DynamicSchemeColor(
         /* name= */ "system_success_container_surface_lowest",
@@ -1166,6 +1444,44 @@ public final class ChromaDynamicSchemeColors {
         /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5),
         /* toneDeltaPair= */ null);
   }
+
+    public DynamicSchemeColor inverseSystemSuccessContainerSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_success_container_surface",
+            /* palette= */ (s) -> s.systemSuccessPalette,
+            /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel)
+            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseOnSystemSuccessContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_on_system_success_container",
+            /* palette= */ (s) -> s.systemSuccessPalette,
+            /* tone= */ (s) -> s.isDark ? 30.0 : 90.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemSuccessContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseSystemSuccessContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_success_container_outline",
+            /* palette= */ (s) -> s.systemSuccessPalette,
+            /* tone= */ (s) -> s.isDark ? 50.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemSuccessContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0),
+            /* toneDeltaPair= */ null);
+    }
 
   public DynamicSchemeColor systemEmergencyContainerSurfaceLowest() {
     return new DynamicSchemeColor(
@@ -1290,6 +1606,43 @@ public final class ChromaDynamicSchemeColors {
         /* toneDeltaPair= */ null);
   }
 
+    public DynamicSchemeColor inverseSystemEmergencyContainerSurface() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_emergency_container_surface",
+            /* palette= */ (s) -> s.systemEmergencyPalette,
+            /* tone= */ (s) -> s.isDark
+            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel)
+            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseOnSystemEmergencyContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_on_system_emergency_container",
+            /* palette= */ (s) -> s.systemEmergencyPalette,
+            /* tone= */ (s) -> s.isDark ? 30.0 : 90.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemEmergencyContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor inverseSystemEmergencyContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "inverse_system_emergency_container_outline",
+            /* palette= */ (s) -> s.systemEmergencyPalette,
+            /* tone= */ (s) -> s.isDark ? 50.0 : 20.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseSystemEmergencyContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0),
+            /* toneDeltaPair= */ null);
+    }
   
   private boolean isFidelity(DynamicScheme scheme) {
     return scheme.isFidelity;

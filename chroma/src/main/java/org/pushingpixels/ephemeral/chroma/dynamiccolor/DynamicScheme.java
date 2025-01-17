@@ -126,6 +126,10 @@ public class DynamicScheme {
   public int getSurfaceBright() {
     return getArgb(new ChromaDynamicSchemeColors().surfaceBright());
   }
+  
+  public int getInverseSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSurface());
+  }
 
   public int getNeutralContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceLowest());
@@ -161,6 +165,18 @@ public class DynamicScheme {
 
   public int getNeutralContainerOutlineVariant() {
     return getArgb(new ChromaDynamicSchemeColors().neutralContainerOutlineVariant());
+  }
+
+  public int getInverseNeutralContainerSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseNeutralContainerSurface());
+  }
+
+  public int getInverseOnNeutralContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnNeutralContainer());
+  }
+
+  public int getInverseNeutralContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseNeutralContainerOutline());
   }
 
   public int getMutedContainerSurfaceLowest() {
@@ -199,6 +215,18 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().mutedContainerOutlineVariant());
   }
 
+  public int getInverseMutedContainerSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseMutedContainerSurface());
+  }
+
+  public int getInverseOnMutedContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnMutedContainer());
+  }
+
+  public int getInverseMutedContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseMutedContainerOutline());
+  }
+
   public int getTonalContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceLowest());
   }
@@ -233,6 +261,18 @@ public class DynamicScheme {
 
   public int getTonalContainerOutlineVariant() {
     return getArgb(new ChromaDynamicSchemeColors().tonalContainerOutlineVariant());
+  }
+  
+  public int getInverseTonalContainerSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseTonalContainerSurface());
+  }
+
+  public int getInverseOnTonalContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnTonalContainer());
+  }
+
+  public int getInverseTonalContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseTonalContainerOutline());
   }
 
   public int getPrimaryContainerSurfaceLowest() {
@@ -271,6 +311,18 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().primaryContainerOutlineVariant());
   }
 
+  public int getInversePrimaryContainerSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inversePrimaryContainerSurface());
+  }
+
+  public int getInverseOnPrimaryContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnPrimaryContainer());
+  }
+
+  public int getInversePrimaryContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().inversePrimaryContainerOutline());
+  }
+
   public int getSystemInfoContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicSchemeColors().systemInfoContainerSurfaceLowest());
   }
@@ -305,6 +357,18 @@ public class DynamicScheme {
 
   public int getSystemInfoContainerOutlineVariant() {
     return getArgb(new ChromaDynamicSchemeColors().systemInfoContainerOutlineVariant());
+  }
+
+  public int getInverseSystemInfoContainerSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemInfoContainerSurface());
+  }
+
+  public int getInverseOnSystemInfoContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnSystemInfoContainer());
+  }
+
+  public int getInverseSystemInfoContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemInfoContainerOutline());
   }
 
   public int getSystemWarningContainerSurfaceLowest() {
@@ -343,6 +407,18 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().systemWarningContainerOutlineVariant());
   }
 
+  public int getInverseSystemWarningContainerSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemWarningContainerSurface());
+  }
+
+  public int getInverseOnSystemWarningContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnSystemWarningContainer());
+  }
+
+  public int getInverseSystemWarningContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemWarningContainerOutline());
+  }
+
   public int getSystemErrorContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicSchemeColors().systemErrorContainerSurfaceLowest());
   }
@@ -377,6 +453,18 @@ public class DynamicScheme {
 
   public int getSystemErrorContainerOutlineVariant() {
     return getArgb(new ChromaDynamicSchemeColors().systemErrorContainerOutlineVariant());
+  }
+
+  public int getInverseSystemErrorContainerSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemErrorContainerSurface());
+  }
+
+  public int getInverseOnSystemErrorContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnSystemErrorContainer());
+  }
+
+  public int getInverseSystemErrorContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemErrorContainerOutline());
   }
 
   public int getSystemSuccessContainerSurfaceLowest() {
@@ -415,6 +503,18 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().systemSuccessContainerOutlineVariant());
   }
 
+  public int getInverseSystemSuccessContainerSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemSuccessContainerSurface());
+  }
+
+  public int getInverseOnSystemSuccessContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnSystemSuccessContainer());
+  }
+
+  public int getInverseSystemSuccessContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemSuccessContainerOutline());
+  }
+
   public int getSystemEmergencyContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicSchemeColors().systemEmergencyContainerSurfaceLowest());
   }
@@ -449,6 +549,18 @@ public class DynamicScheme {
 
   public int getSystemEmergencyContainerOutlineVariant() {
     return getArgb(new ChromaDynamicSchemeColors().systemEmergencyContainerOutlineVariant());
+  }
+
+  public int getInverseSystemEmergencyContainerSurface() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemEmergencyContainerSurface());
+  }
+
+  public int getInverseOnSystemEmergencyContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnSystemEmergencyContainer());
+  }
+
+  public int getInverseSystemEmergencyContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().inverseSystemEmergencyContainerOutline());
   }
 
 }

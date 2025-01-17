@@ -72,6 +72,10 @@ public class DynamicPalette {
     return getArgb(new ChromaDynamicPaletteColors().surfaceBright());
   }
 
+  public int getInverseSurface() {
+    return getArgb(new ChromaDynamicPaletteColors().inverseSurface());
+  }
+
   public int getTonalContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceLowest());
   }
@@ -108,6 +112,18 @@ public class DynamicPalette {
     return getArgb(new ChromaDynamicPaletteColors().tonalContainerOutlineVariant());
   }
 
+  public int getInverseTonalContainerSurface() {
+    return getArgb(new ChromaDynamicPaletteColors().inverseTonalContainerSurface());
+  }
+
+  public int getInverseOnTonalContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().inverseOnTonalContainer());
+  }
+
+  public int getInverseTonalContainerOutline() {
+    return getArgb(new ChromaDynamicPaletteColors().inverseTonalContainerOutline());
+  }
+
   public int getPrimaryContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurfaceLowest());
   }
@@ -142,5 +158,17 @@ public class DynamicPalette {
 
   public int getPrimaryContainerOutlineVariant() {
     return getArgb(new ChromaDynamicPaletteColors().primaryContainerOutlineVariant());
+  }
+
+  public int getInversePrimaryContainerSurface() {
+    return getArgb(new ChromaDynamicPaletteColors().inversePrimaryContainerSurface());
+  }
+
+  public int getInverseOnPrimaryContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().inverseOnPrimaryContainer());
+  }
+
+  public int getInversePrimaryContainerOutline() {
+    return getArgb(new ChromaDynamicPaletteColors().inversePrimaryContainerOutline());
   }
 }
