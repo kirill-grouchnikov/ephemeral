@@ -52,10 +52,10 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return s.isDark ? s.neutralSourceColorHct.getTone()
+            return s.isDark ? s.neutralSourceColorHct.getTone() - 3.0
                 : s.neutralSourceColorHct.getTone() - 10.0;
           }
-          return s.isDark ? 6.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(s.contrastLevel);
+          return s.isDark ? 3.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(s.contrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -71,9 +71,9 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isDark ? s.neutralSourceColorHct.getTone() + 18.0
-                : s.neutralSourceColorHct.getTone();
+                : s.neutralSourceColorHct.getTone() + 1.0;
           }
-          return s.isDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(s.contrastLevel) : 98.0;
+          return s.isDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(s.contrastLevel) : 99.0;
         },
         /* isBackground= */ true,
         /* background= */ null,

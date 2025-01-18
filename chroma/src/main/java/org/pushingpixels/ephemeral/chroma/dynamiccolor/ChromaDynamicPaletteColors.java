@@ -49,10 +49,10 @@ public final class ChromaDynamicPaletteColors {
             /* name= */ "surface_dim",
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
-                return p.isDark ? p.sourceColorHct.getTone()
+                return p.isDark ? p.sourceColorHct.getTone() - 3.0
                     : p.sourceColorHct.getTone() - 10.0;
             }
-            return p.isDark ? 6.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(p.contrastLevel);
+            return p.isDark ? 3.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(p.contrastLevel);
         },
             /* isBackground= */ true,
             /* background= */ null,
@@ -66,9 +66,9 @@ public final class ChromaDynamicPaletteColors {
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
                 return p.isDark ? p.sourceColorHct.getTone() + 18.0
-                    : p.sourceColorHct.getTone();
+                    : p.sourceColorHct.getTone() + 1.0;
             }
-            return p.isDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(p.contrastLevel) : 98.0;
+            return p.isDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(p.contrastLevel) : 99.0;
         },
             /* isBackground= */ true,
             /* background= */ null,
