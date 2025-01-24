@@ -208,18 +208,20 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor tonalContainerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "tonal_container_outline",
-            /* tone= */ (p) -> p.isDark ? 20.0 : 50.0,
+            /* tone= */ (p) -> p.isDark
+                ? new ContrastCurve(20.0, 15.0, 10.0, 5.0).get(p.contrastLevel)
+                : new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(p.contrastLevel),
             /* isBackground= */ false,
-            /* background= */ (p) -> tonalContainerSurface(),
+            /* background= */ null,
             /* secondBackground= */ null,
-            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0));
+            /* contrastCurve= */ null);
     }
 
     public DynamicPaletteColor tonalContainerOutlineVariant() {
         return new DynamicPaletteColor(
             /* name= */ "tonal_container_outline_variant",
             /* tone= */ (p) -> p.isDark
-                ? new ContrastCurve(25.0, 40.0, 50.0, 60.0).get(p.contrastLevel)
+                ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel)
                 : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.contrastLevel),
             /* isBackground= */ false,
             /* background= */ null,
@@ -252,11 +254,13 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor inverseTonalContainerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "inverse_tonal_container_outline",
-            /* tone= */ (p) -> p.isDark ? 50.0 : 20.0,
+            /* tone= */ (p) -> p.isDark
+                ? new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(p.contrastLevel)
+                : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel),
             /* isBackground= */ false,
-            /* background= */ (p) -> inverseTonalContainerSurface(),
+            /* background= */ null,
             /* secondBackground= */ null,
-            /* contrastCurve= */ new ContrastCurve(1.5, 3.0, 4.5, 7.0));
+            /* contrastCurve= */ null);
     }
 
     public DynamicPaletteColor primaryContainerSurfaceLowest() {
