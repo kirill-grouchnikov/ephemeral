@@ -1,5 +1,5 @@
 [versions]
-versionchecker = "0.51.0"
+versionchecker = "0.52.0"
 mavenpublish = "0.30.0"
 
 [libraries]
