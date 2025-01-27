@@ -265,8 +265,9 @@ public final class DynamicSchemeColor {
    * @param scheme Defines the conditions of the user interface, for example, whether or not it is
    *     dark mode or light mode, and what the desired contrast level is.
    */
-  public int getArgb(DynamicScheme scheme, Function<DynamicScheme, Boolean> isDark) {
-    int argb = getHct(scheme, isDark).toInt();
+  public int getArgb(DynamicScheme scheme, Function<DynamicScheme, Boolean> isDark,
+      Function<DynamicScheme, Double> contrastLevel) {
+    int argb = getHct(scheme, isDark, contrastLevel).toInt();
     if (opacity == null) {
       return argb;
     }
@@ -281,7 +282,8 @@ public final class DynamicSchemeColor {
    * @param scheme Defines the conditions of the user interface, for example, whether or not it is
    *     dark mode or light mode, and what the desired contrast level is.
    */
-  public Hct getHct(DynamicScheme scheme, Function<DynamicScheme, Boolean> isDark) {
+  public Hct getHct(DynamicScheme scheme, Function<DynamicScheme, Boolean> isDark,
+      Function<DynamicScheme, Double> contrastLevel) {
     Hct cachedAnswer = hctCache.get(scheme);
     if (cachedAnswer != null) {
       return cachedAnswer;
@@ -292,7 +294,7 @@ public final class DynamicSchemeColor {
     //
     // For example, this enables colors with standard tone of T90, which has limited chroma, to
     // "recover" intended chroma as contrast increases.
-    double tone = getTone(scheme, isDark);
+    double tone = getTone(scheme, isDark, contrastLevel);
     Hct answer = palette.apply(scheme).getHct(tone);
     // NOMUTANTS--trivial test with onerous dependency injection requirement.
     if (hctCache.size() > 4) {
@@ -304,8 +306,9 @@ public final class DynamicSchemeColor {
   }
 
   /** Returns the tone in HCT, ranging from 0 to 100, of the resolved color given scheme. */
-  public double getTone(DynamicScheme scheme, Function<DynamicScheme, Boolean> isDark) {
-    boolean decreasingContrast = scheme.contrastLevel < 0;
+  public double getTone(DynamicScheme scheme, Function<DynamicScheme, Boolean> isDark,
+      Function<DynamicScheme, Double> contrastLevel) {
+    boolean decreasingContrast = contrastLevel.apply(scheme) < 0;
 
     // Case 1: dual foreground, pair of colors with delta constraint.
     if (toneDeltaPair != null) {
@@ -317,7 +320,7 @@ public final class DynamicSchemeColor {
       boolean stayTogether = toneDeltaPair.getStayTogether();
 
       DynamicSchemeColor bg = background.apply(scheme);
-      double bgTone = bg.getTone(scheme, isDark);
+      double bgTone = bg.getTone(scheme, isDark, contrastLevel);
 
       boolean aIsNearer =
           (polarity == TonePolarity.NEARER
@@ -329,8 +332,8 @@ public final class DynamicSchemeColor {
       double expansionDir = isDark.apply(scheme) ? 1 : -1;
 
       // 1st round: solve to min, each
-      double nContrast = nearer.contrastCurve.get(scheme.contrastLevel);
-      double fContrast = farther.contrastCurve.get(scheme.contrastLevel);
+      double nContrast = nearer.contrastCurve.get(contrastLevel.apply(scheme));
+      double fContrast = farther.contrastCurve.get(contrastLevel.apply(scheme));
 
       // If a color is good enough, it is not adjusted.
       // Initial and adjusted tones for `nearer`
@@ -406,9 +409,9 @@ public final class DynamicSchemeColor {
         return answer; // No adjustment for colors with no background.
       }
 
-      double bgTone = background.apply(scheme).getTone(scheme, isDark);
+      double bgTone = background.apply(scheme).getTone(scheme, isDark, contrastLevel);
 
-      double desiredRatio = contrastCurve.get(scheme.contrastLevel);
+      double desiredRatio = contrastCurve.get(contrastLevel.apply(scheme));
 
       if (Contrast.ratioOfTones(bgTone, answer) >= desiredRatio) {
         // Don't "improve" what's good enough.
@@ -433,8 +436,8 @@ public final class DynamicSchemeColor {
       if (secondBackground != null) {
         // Case 3: Adjust for dual backgrounds.
 
-        double bgTone1 = background.apply(scheme).getTone(scheme, isDark);
-        double bgTone2 = secondBackground.apply(scheme).getTone(scheme, isDark);
+        double bgTone1 = background.apply(scheme).getTone(scheme, isDark, contrastLevel);
+        double bgTone2 = secondBackground.apply(scheme).getTone(scheme, isDark, contrastLevel);
 
         double upper = max(bgTone1, bgTone2);
         double lower = min(bgTone1, bgTone2);

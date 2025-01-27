@@ -55,7 +55,7 @@ public final class ChromaDynamicSchemeColors {
             return s.isNeutralDark ? s.neutralSourceColorHct.getTone() - 3.0
                 : s.neutralSourceColorHct.getTone() - 10.0;
           }
-          return s.isNeutralDark ? 3.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(s.contrastLevel);
+          return s.isNeutralDark ? 3.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -73,7 +73,7 @@ public final class ChromaDynamicSchemeColors {
             return s.isNeutralDark ? s.neutralSourceColorHct.getTone() + 18.0
                 : s.neutralSourceColorHct.getTone() + 1.0;
           }
-          return s.isNeutralDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(s.contrastLevel) : 99.0;
+          return s.isNeutralDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(s.neutralContrastLevel) : 99.0;
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -104,7 +104,7 @@ public final class ChromaDynamicSchemeColors {
                 ? s.neutralSourceColorHct.getTone() - 2.0
                 : s.neutralSourceColorHct.getTone() + 2.0;
           }
-          return s.isNeutralDark ? new ContrastCurve(4.0, 4.0, 2.0, 0.0).get(s.contrastLevel) : 100.0;
+          return s.isNeutralDark ? new ContrastCurve(4.0, 4.0, 2.0, 0.0).get(s.neutralContrastLevel) : 100.0;
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -124,8 +124,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.neutralSourceColorHct.getTone() - 2.0;
           }
           return s.isNeutralDark
-              ? new ContrastCurve(10.0, 10.0, 11.0, 12.0).get(s.contrastLevel)
-              : new ContrastCurve(96.0, 96.0, 96.0, 95.0).get(s.contrastLevel);
+              ? new ContrastCurve(10.0, 10.0, 11.0, 12.0).get(s.neutralContrastLevel)
+              : new ContrastCurve(96.0, 96.0, 96.0, 95.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -145,8 +145,8 @@ public final class ChromaDynamicSchemeColors {
                  : s.neutralSourceColorHct.getTone() - 4.0;
            }
            return s.isNeutralDark
-               ? new ContrastCurve(12.0, 12.0, 16.0, 20.0).get(s.contrastLevel)
-               : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel);
+               ? new ContrastCurve(12.0, 12.0, 16.0, 20.0).get(s.neutralContrastLevel)
+               : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -166,8 +166,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.neutralSourceColorHct.getTone() - 6.0;
           }
           return s.isNeutralDark
-              ? new ContrastCurve(17.0, 17.0, 21.0, 25.0).get(s.contrastLevel)
-              : new ContrastCurve(92.0, 92.0, 88.0, 85.0).get(s.contrastLevel);
+              ? new ContrastCurve(17.0, 17.0, 21.0, 25.0).get(s.neutralContrastLevel)
+              : new ContrastCurve(92.0, 92.0, 88.0, 85.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -187,8 +187,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.neutralSourceColorHct.getTone() - 8.0;
           }
           return s.isNeutralDark
-              ? new ContrastCurve(22.0, 22.0, 26.0, 30.0).get(s.contrastLevel)
-              : new ContrastCurve(90.0, 90.0, 84.0, 80.0).get(s.contrastLevel);
+              ? new ContrastCurve(22.0, 22.0, 26.0, 30.0).get(s.neutralContrastLevel)
+              : new ContrastCurve(90.0, 90.0, 84.0, 80.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -204,7 +204,7 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
             if (isFidelity(s)) {
                 return DynamicPaletteColor.foregroundTone(neutralContainerSurface().tone.apply(s),
-                    new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.contrastLevel));
+                    new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.neutralContrastLevel));
             }
             return s.isNeutralDark ? 90.0 : 10.0;
         },
@@ -232,8 +232,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "neutral_container_outline",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isNeutralDark
-            ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.contrastLevel)
-            : new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.contrastLevel),
+            ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.neutralContrastLevel)
+            : new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.neutralContrastLevel),
         /* isBackground= */ false,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -246,8 +246,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "neutral_container_outline_variant",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isNeutralDark
-            ? new ContrastCurve(25.0, 20.0, 15.0, 10.0).get(s.contrastLevel)
-            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(s.contrastLevel),
+            ? new ContrastCurve(25.0, 20.0, 15.0, 10.0).get(s.neutralContrastLevel)
+            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(s.neutralContrastLevel),
         /* isBackground= */ false,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -260,8 +260,8 @@ public final class ChromaDynamicSchemeColors {
             /* name= */ "inverse_neutral_container_surface",
             /* palette= */ (s) -> s.neutralPalette,
             /* tone= */ (s) -> s.isNeutralDark
-            ? new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel)
-            : new ContrastCurve(12.0, 12.0, 16.0, 20.0).get(s.contrastLevel),
+            ? new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.neutralContrastLevel)
+            : new ContrastCurve(12.0, 12.0, 16.0, 20.0).get(s.neutralContrastLevel),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -286,8 +286,8 @@ public final class ChromaDynamicSchemeColors {
             /* name= */ "inverse_neutral_container_outline",
             /* palette= */ (s) -> s.neutralPalette,
             /* tone= */ (s) -> s.isNeutralDark
-                ? new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.contrastLevel)
-                : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.contrastLevel),
+                ? new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.neutralContrastLevel)
+                : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.neutralContrastLevel),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -300,8 +300,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "primary_container_surface_lowest",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isPrimaryDark
-        ? new ContrastCurve(88.0, 88.0, 92.0, 94.0).get(s.contrastLevel)
-        : new ContrastCurve(34.0, 34.0, 32.0, 30.0).get(s.contrastLevel),
+        ? new ContrastCurve(88.0, 88.0, 92.0, 94.0).get(s.primaryContrastLevel)
+        : new ContrastCurve(34.0, 34.0, 32.0, 30.0).get(s.primaryContrastLevel),
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -314,8 +314,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "primary_container_surface_low",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isPrimaryDark
-        ? new ContrastCurve(82.0, 82.0, 86.0, 88.0).get(s.contrastLevel)
-        : new ContrastCurve(38.0, 38.0, 36.0, 34.0).get(s.contrastLevel),
+        ? new ContrastCurve(82.0, 82.0, 86.0, 88.0).get(s.primaryContrastLevel)
+        : new ContrastCurve(38.0, 38.0, 36.0, 34.0).get(s.primaryContrastLevel),
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -328,8 +328,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "primary_container_surface",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isPrimaryDark
-        ? new ContrastCurve(80.0, 80.0, 84.0, 86.0).get(s.contrastLevel)
-        : new ContrastCurve(40.0, 40.0, 38.0, 36.0).get(s.contrastLevel),
+        ? new ContrastCurve(80.0, 80.0, 84.0, 86.0).get(s.primaryContrastLevel)
+        : new ContrastCurve(40.0, 40.0, 38.0, 36.0).get(s.primaryContrastLevel),
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -342,8 +342,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "primary_container_surface_high",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isPrimaryDark
-        ? new ContrastCurve(76.0, 76.0, 80.0, 82.0).get(s.contrastLevel)
-        : new ContrastCurve(45.0, 45.0, 43.0, 41.0).get(s.contrastLevel),
+        ? new ContrastCurve(76.0, 76.0, 80.0, 82.0).get(s.primaryContrastLevel)
+        : new ContrastCurve(45.0, 45.0, 43.0, 41.0).get(s.primaryContrastLevel),
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -356,8 +356,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "primary_container_surface_highest",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isPrimaryDark
-        ? new ContrastCurve(74.0, 74.0, 78.0, 80.0).get(s.contrastLevel)
-        : new ContrastCurve(50.0, 50.0, 48.0, 46.0).get(s.contrastLevel),
+        ? new ContrastCurve(74.0, 74.0, 78.0, 80.0).get(s.primaryContrastLevel)
+        : new ContrastCurve(50.0, 50.0, 48.0, 46.0).get(s.primaryContrastLevel),
         /* isBackground= */ true,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -418,8 +418,8 @@ public final class ChromaDynamicSchemeColors {
             /* name= */ "inverse_primary_container_surface",
             /* palette= */ (s) -> s.primaryPalette,
             /* tone= */ (s) -> s.isPrimaryDark
-            ? new ContrastCurve(40.0, 40.0, 38.0, 36.0).get(s.contrastLevel)
-            : new ContrastCurve(80.0, 80.0, 84.0, 86.0).get(s.contrastLevel),
+            ? new ContrastCurve(40.0, 40.0, 38.0, 36.0).get(s.primaryContrastLevel)
+            : new ContrastCurve(80.0, 80.0, 84.0, 86.0).get(s.primaryContrastLevel),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -462,8 +462,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.mutedSourceColorHct.getTone() + 8.0;
           }
           return s.isMutedDark
-              ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.contrastLevel)
-              : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel);
+              ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.mutedContrastLevel)
+              : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.mutedContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -483,8 +483,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.mutedSourceColorHct.getTone() + 4.0;
           }
           return s.isMutedDark
-              ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.contrastLevel)
-              : new ContrastCurve(92.0, 92.0, 90.0, 88.0).get(s.contrastLevel);
+              ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.mutedContrastLevel)
+              : new ContrastCurve(92.0, 92.0, 90.0, 88.0).get(s.mutedContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -502,8 +502,8 @@ public final class ChromaDynamicSchemeColors {
             return s.mutedSourceColorHct.getTone();
           }
           return s.isMutedDark
-              ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel)
-              : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel);
+              ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.mutedContrastLevel)
+              : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.mutedContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -523,8 +523,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.mutedSourceColorHct.getTone() - 2.0;
           }
           return s.isMutedDark
-              ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.contrastLevel)
-              : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.contrastLevel);
+              ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.mutedContrastLevel)
+              : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.mutedContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -544,8 +544,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.mutedSourceColorHct.getTone() - 4.0;
           }
           return s.isMutedDark
-              ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.contrastLevel)
-              : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.contrastLevel);
+              ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.mutedContrastLevel)
+              : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.mutedContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -561,7 +561,7 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
               return DynamicPaletteColor.foregroundTone(mutedContainerSurface().tone.apply(s),
-                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.contrastLevel));
+                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.mutedContrastLevel));
           }
           return s.isMutedDark ? 90.0 : 30.0;
         },
@@ -589,8 +589,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "muted_container_outline",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isMutedDark
-            ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.contrastLevel)
-            : new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.contrastLevel),
+            ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.mutedContrastLevel)
+            : new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.mutedContrastLevel),
         /* isBackground= */ false,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -603,8 +603,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "muted_container_outline_variant",
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> s.isMutedDark
-            ? new ContrastCurve(25.0, 20.0, 15.0, 10.0).get(s.contrastLevel)
-            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(s.contrastLevel),
+            ? new ContrastCurve(25.0, 20.0, 15.0, 10.0).get(s.mutedContrastLevel)
+            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(s.mutedContrastLevel),
         /* isBackground= */ false,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -617,8 +617,8 @@ public final class ChromaDynamicSchemeColors {
             /* name= */ "inverse_muted_container_surface",
             /* palette= */ (s) -> s.neutralPalette,
             /* tone= */ (s) -> s.isMutedDark
-                ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel)
-                : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel),
+                ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.mutedContrastLevel)
+                : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.mutedContrastLevel),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -643,8 +643,8 @@ public final class ChromaDynamicSchemeColors {
             /* name= */ "inverse_muted_container_outline",
             /* palette= */ (s) -> s.neutralPalette,
             /* tone= */ (s) -> s.isMutedDark
-                ? new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.contrastLevel)
-                : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.contrastLevel),
+                ? new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.mutedContrastLevel)
+                : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.mutedContrastLevel),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -663,8 +663,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.primarySourceColorHct.getTone() + 8.0;
           }
           return s.isTonalDark
-              ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.contrastLevel)
-              : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.contrastLevel);
+              ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.tonalContrastLevel)
+              : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.tonalContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -684,8 +684,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.primarySourceColorHct.getTone() + 4.0;
           }
           return s.isTonalDark
-              ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.contrastLevel)
-              : new ContrastCurve(92.0, 92.0, 90.0, 88.0).get(s.contrastLevel);
+              ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.tonalContrastLevel)
+              : new ContrastCurve(92.0, 92.0, 90.0, 88.0).get(s.tonalContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -703,8 +703,8 @@ public final class ChromaDynamicSchemeColors {
             return s.primarySourceColorHct.getTone();
           }
           return s.isTonalDark
-              ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel)
-              : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel);
+              ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.tonalContrastLevel)
+              : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.tonalContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -724,8 +724,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.primarySourceColorHct.getTone() - 2.0;
           }
           return s.isTonalDark
-              ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.contrastLevel)
-              : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.contrastLevel);
+              ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.tonalContrastLevel)
+              : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.tonalContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -745,8 +745,8 @@ public final class ChromaDynamicSchemeColors {
                 : s.primarySourceColorHct.getTone() - 4.0;
           }
           return s.isTonalDark
-              ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.contrastLevel)
-              : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.contrastLevel);
+              ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.tonalContrastLevel)
+              : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.tonalContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -762,7 +762,7 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
               return DynamicPaletteColor.foregroundTone(tonalContainerSurface().tone.apply(s),
-                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.contrastLevel));
+                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.tonalContrastLevel));
           }
           return s.isTonalDark ? 90.0 : 30.0;
         },
@@ -790,8 +790,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "tonal_container_outline",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isTonalDark
-          ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.contrastLevel)
-          : new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.contrastLevel),
+          ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.tonalContrastLevel)
+          : new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.tonalContrastLevel),
         /* isBackground= */ false,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -804,8 +804,8 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "tonal_container_outline_variant",
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> s.isTonalDark
-            ? new ContrastCurve(25.0, 20.0, 15.0, 10.0).get(s.contrastLevel)
-            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(s.contrastLevel),
+            ? new ContrastCurve(25.0, 20.0, 15.0, 10.0).get(s.tonalContrastLevel)
+            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(s.tonalContrastLevel),
         /* isBackground= */ false,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -818,8 +818,8 @@ public final class ChromaDynamicSchemeColors {
             /* name= */ "inverse_tonal_container_surface",
             /* palette= */ (s) -> s.primaryPalette,
             /* tone= */ (s) -> s.isTonalDark
-            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.contrastLevel)
-            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.contrastLevel),
+            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.tonalContrastLevel)
+            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.tonalContrastLevel),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -844,8 +844,8 @@ public final class ChromaDynamicSchemeColors {
             /* name= */ "inverse_tonal_container_outline",
             /* palette= */ (s) -> s.primaryPalette,
             /* tone= */ (s) -> s.isTonalDark
-                ? new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.contrastLevel)
-                : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.contrastLevel),
+                ? new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(s.tonalContrastLevel)
+                : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.tonalContrastLevel),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,

@@ -39,7 +39,10 @@ public class DynamicScheme {
   public final boolean isTonalDark;
   public final boolean isMutedDark;
   public final boolean isNeutralDark;
-  public final double contrastLevel;
+  public final double primaryContrastLevel;
+  public final double tonalContrastLevel;
+  public final double mutedContrastLevel;
+  public final double neutralContrastLevel;
 
   public final TonalPalette primaryPalette;
   public final TonalPalette mutedPalette;
@@ -54,7 +57,10 @@ public class DynamicScheme {
       boolean isTonalDark,
       boolean isMutedDark,
       boolean isNeutralDark,
-      double contrastLevel,
+      double primaryContrastLevel,
+      double tonalContrastLevel,
+      double mutedContrastLevel,
+      double neutralContrastLevel,
       TonalPalette primaryPalette,
       TonalPalette mutedPalette,
       TonalPalette neutralPalette) {
@@ -68,7 +74,11 @@ public class DynamicScheme {
     this.isTonalDark = isTonalDark;
     this.isMutedDark = isMutedDark;
     this.isNeutralDark = isNeutralDark;
-    this.contrastLevel = contrastLevel;
+
+    this.primaryContrastLevel = primaryContrastLevel;
+    this.tonalContrastLevel = tonalContrastLevel;
+    this.mutedContrastLevel = mutedContrastLevel;
+    this.neutralContrastLevel = neutralContrastLevel;
 
     this.primaryPalette = primaryPalette;
     this.mutedPalette = mutedPalette;
@@ -103,219 +113,221 @@ public class DynamicScheme {
     return sourceHue;
   }
 
-  public Hct getHct(DynamicSchemeColor dynamicSchemeColor, Function<DynamicScheme, Boolean> isDark) {
-    return dynamicSchemeColor.getHct(this, isDark);
+  public Hct getHct(DynamicSchemeColor dynamicSchemeColor, Function<DynamicScheme, Boolean> isDark,
+      Function<DynamicScheme, Double> contrastLevel) {
+    return dynamicSchemeColor.getHct(this, isDark, contrastLevel);
   }
 
-  public int getArgb(DynamicSchemeColor dynamicSchemeColor, Function<DynamicScheme, Boolean> isDark) {
-    return dynamicSchemeColor.getArgb(this, isDark);
+  public int getArgb(DynamicSchemeColor dynamicSchemeColor, Function<DynamicScheme, Boolean> isDark,
+      Function<DynamicScheme, Double> contrastLevel) {
+    return dynamicSchemeColor.getArgb(this, isDark, contrastLevel);
   }
 
   public int getSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().surface(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().surface(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getSurfaceDim() {
-    return getArgb(new ChromaDynamicSchemeColors().surfaceDim(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().surfaceDim(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getSurfaceBright() {
-    return getArgb(new ChromaDynamicSchemeColors().surfaceBright(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().surfaceBright(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
   
   public int getInverseSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseSurface(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseSurface(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getNeutralContainerSurfaceLowest() {
-    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceLowest(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceLowest(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getNeutralContainerSurfaceLow() {
-    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceLow(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceLow(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getNeutralContainerSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurface(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurface(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getNeutralContainerSurfaceHigh() {
-    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceHigh(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceHigh(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getNeutralContainerSurfaceHighest() {
-    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceHighest(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceHighest(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getOnNeutralContainer() {
-    return getArgb(new ChromaDynamicSchemeColors().onNeutralContainer(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().onNeutralContainer(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getOnNeutralContainerVariant() {
-    return getArgb(new ChromaDynamicSchemeColors().onNeutralContainerVariant(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().onNeutralContainerVariant(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getNeutralContainerOutline() {
-    return getArgb(new ChromaDynamicSchemeColors().neutralContainerOutline(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().neutralContainerOutline(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getNeutralContainerOutlineVariant() {
-    return getArgb(new ChromaDynamicSchemeColors().neutralContainerOutlineVariant(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().neutralContainerOutlineVariant(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getInverseNeutralContainerSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseNeutralContainerSurface(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseNeutralContainerSurface(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getInverseOnNeutralContainer() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseOnNeutralContainer(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnNeutralContainer(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getInverseNeutralContainerOutline() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseNeutralContainerOutline(), (s) -> isNeutralDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseNeutralContainerOutline(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
   public int getMutedContainerSurfaceLowest() {
-    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceLowest(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceLowest(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getMutedContainerSurfaceLow() {
-    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceLow(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceLow(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getMutedContainerSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurface(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurface(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getMutedContainerSurfaceHigh() {
-    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceHigh(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceHigh(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getMutedContainerSurfaceHighest() {
-    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceHighest(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceHighest(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getOnMutedContainer() {
-    return getArgb(new ChromaDynamicSchemeColors().onMutedContainer(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().onMutedContainer(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getOnMutedContainerVariant() {
-    return getArgb(new ChromaDynamicSchemeColors().onMutedContainerVariant(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().onMutedContainerVariant(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getMutedContainerOutline() {
-    return getArgb(new ChromaDynamicSchemeColors().mutedContainerOutline(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().mutedContainerOutline(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getMutedContainerOutlineVariant() {
-    return getArgb(new ChromaDynamicSchemeColors().mutedContainerOutlineVariant(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().mutedContainerOutlineVariant(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getInverseMutedContainerSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseMutedContainerSurface(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseMutedContainerSurface(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getInverseOnMutedContainer() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseOnMutedContainer(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnMutedContainer(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getInverseMutedContainerOutline() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseMutedContainerOutline(), (s) -> isMutedDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseMutedContainerOutline(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getTonalContainerSurfaceLowest() {
-    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceLowest(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceLowest(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getTonalContainerSurfaceLow() {
-    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceLow(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceLow(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getTonalContainerSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurface(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurface(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getTonalContainerSurfaceHigh() {
-    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceHigh(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceHigh(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getTonalContainerSurfaceHighest() {
-    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceHighest(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceHighest(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getOnTonalContainer() {
-    return getArgb(new ChromaDynamicSchemeColors().onTonalContainer(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().onTonalContainer(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getOnTonalContainerVariant() {
-    return getArgb(new ChromaDynamicSchemeColors().onTonalContainerVariant(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().onTonalContainerVariant(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getTonalContainerOutline() {
-    return getArgb(new ChromaDynamicSchemeColors().tonalContainerOutline(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().tonalContainerOutline(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getTonalContainerOutlineVariant() {
-    return getArgb(new ChromaDynamicSchemeColors().tonalContainerOutlineVariant(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().tonalContainerOutlineVariant(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
   
   public int getInverseTonalContainerSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseTonalContainerSurface(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseTonalContainerSurface(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getInverseOnTonalContainer() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseOnTonalContainer(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnTonalContainer(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getInverseTonalContainerOutline() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseTonalContainerOutline(), (s) -> isTonalDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseTonalContainerOutline(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
   public int getPrimaryContainerSurfaceLowest() {
-    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceLowest(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceLowest(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getPrimaryContainerSurfaceLow() {
-    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceLow(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceLow(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getPrimaryContainerSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurface(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurface(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getPrimaryContainerSurfaceHigh() {
-    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceHigh(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceHigh(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getPrimaryContainerSurfaceHighest() {
-    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceHighest(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceHighest(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getOnPrimaryContainer() {
-    return getArgb(new ChromaDynamicSchemeColors().onPrimaryContainer(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().onPrimaryContainer(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getOnPrimaryContainerVariant() {
-    return getArgb(new ChromaDynamicSchemeColors().onPrimaryContainerVariant(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().onPrimaryContainerVariant(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getPrimaryContainerOutline() {
-    return getArgb(new ChromaDynamicSchemeColors().primaryContainerOutline(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().primaryContainerOutline(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getPrimaryContainerOutlineVariant() {
-    return getArgb(new ChromaDynamicSchemeColors().primaryContainerOutlineVariant(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().primaryContainerOutlineVariant(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getInversePrimaryContainerSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().inversePrimaryContainerSurface(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().inversePrimaryContainerSurface(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getInverseOnPrimaryContainer() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseOnPrimaryContainer(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().inverseOnPrimaryContainer(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getInversePrimaryContainerOutline() {
-    return getArgb(new ChromaDynamicSchemeColors().inversePrimaryContainerOutline(), (s) -> isPrimaryDark);
+    return getArgb(new ChromaDynamicSchemeColors().inversePrimaryContainerOutline(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 }
