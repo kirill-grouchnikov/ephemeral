@@ -228,15 +228,15 @@ public final class DynamicPaletteColor {
   /**
    * Returns an ARGB integer (i.e. a hex code).
    *
-   * @param scheme Defines the conditions of the user interface, for example, whether or not it is
+   * @param palette Defines the conditions of the user interface, for example, whether or not it is
    *     dark mode or light mode, and what the desired contrast level is.
    */
-  public int getArgb(DynamicPalette scheme) {
-    int argb = getHct(scheme).toInt();
+  public int getArgb(DynamicPalette palette) {
+    int argb = getHct(palette).toInt();
     if (opacity == null) {
       return argb;
     }
-    double percentage = opacity.apply(scheme);
+    double percentage = opacity.apply(palette);
     int alpha = MathUtils.clampInt(0, 255, (int) Math.round(percentage * 255));
     return (argb & 0x00ffffff) | (alpha << 24);
   }
@@ -244,11 +244,11 @@ public final class DynamicPaletteColor {
   /**
    * Returns an HCT object.
    *
-   * @param scheme Defines the conditions of the user interface, for example, whether or not it is
+   * @param palette Defines the conditions of the user interface, for example, whether or not it is
    *     dark mode or light mode, and what the desired contrast level is.
    */
-  public Hct getHct(DynamicPalette scheme) {
-    Hct cachedAnswer = hctCache.get(scheme);
+  public Hct getHct(DynamicPalette palette) {
+    Hct cachedAnswer = hctCache.get(palette);
     if (cachedAnswer != null) {
       return cachedAnswer;
     }
@@ -258,40 +258,47 @@ public final class DynamicPaletteColor {
     //
     // For example, this enables colors with standard tone of T90, which has limited chroma, to
     // "recover" intended chroma as contrast increases.
-    double tone = getTone(scheme);
-    Hct answer = scheme.palette.getHct(tone);
+    double tone = getTone(palette);
+    Hct answer = palette.palette.getHct(tone);
     // NOMUTANTS--trivial test with onerous dependency injection requirement.
     if (hctCache.size() > 4) {
       hctCache.clear();
     }
     // NOMUTANTS--trivial test with onerous dependency injection requirement.
-    hctCache.put(scheme, answer);
+    hctCache.put(palette, answer);
     return answer;
   }
 
-  /** Returns the tone in HCT, ranging from 0 to 100, of the resolved color given scheme. */
-  public double getTone(DynamicPalette scheme) {
-    boolean decreasingContrast = scheme.contrastLevel < 0;
+  /** Returns the tone in HCT, ranging from 0 to 100, of the resolved color given palette. */
+  public double getTone(DynamicPalette palette) {
+    boolean decreasingContrast = palette.contrastLevel < 0;
 
-      double answer = tone.apply(scheme);
+      double answer = tone.apply(palette);
 
       if (background == null) {
         return answer; // No adjustment for colors with no background.
       }
 
-      double bgTone = background.apply(scheme).getTone(scheme);
+      DynamicPaletteColor backgroundPaletteColor = background.apply(palette);
+      if (backgroundPaletteColor == null) {
+        return answer; // No adjustment for colors with no background.
+      }
 
-      double desiredRatio = contrastCurve.get(scheme.contrastLevel);
+      double bgTone = backgroundPaletteColor.getTone(palette);
+
+      double desiredRatio = contrastCurve.get(palette.contrastLevel);
 
       if (Contrast.ratioOfTones(bgTone, answer) >= desiredRatio) {
         // Don't "improve" what's good enough.
       } else {
         // Rough improvement.
-        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio);
+        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio, !palette.isFidelity,
+            palette.isDark);
       }
 
       if (decreasingContrast) {
-        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio);
+        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio, !palette.isFidelity,
+            palette.isDark);
       }
 
       if (isBackground && 50 <= answer && answer < 60) {
@@ -306,8 +313,8 @@ public final class DynamicPaletteColor {
       if (secondBackground != null) {
         // Case 3: Adjust for dual backgrounds.
 
-        double bgTone1 = background.apply(scheme).getTone(scheme);
-        double bgTone2 = secondBackground.apply(scheme).getTone(scheme);
+        double bgTone1 = background.apply(palette).getTone(palette);
+        double bgTone2 = secondBackground.apply(palette).getTone(palette);
 
         double upper = max(bgTone1, bgTone2);
         double lower = min(bgTone1, bgTone2);
@@ -353,9 +360,15 @@ public final class DynamicPaletteColor {
    * Given a background tone, find a foreground tone, while ensuring they reach a contrast ratio
    * that is as close to ratio as possible.
    */
-  public static double foregroundTone(double bgTone, double ratio) {
+  public static double foregroundTone(double bgTone, double ratio,
+      boolean allowDynamicPreference, boolean isDark ) {
     double lighterTone = Contrast.lighterUnsafe(bgTone, ratio);
     double darkerTone = Contrast.darkerUnsafe(bgTone, ratio);
+
+    if (!allowDynamicPreference) {
+      return isDark ? lighterTone : darkerTone;
+    }
+
     double lighterRatio = Contrast.ratioOfTones(lighterTone, bgTone);
     double darkerRatio = Contrast.ratioOfTones(darkerTone, bgTone);
     boolean preferLighter = tonePrefersLightForeground(bgTone);

@@ -185,14 +185,15 @@ public final class ChromaDynamicPaletteColors {
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
                 return DynamicPaletteColor.foregroundTone(tonalContainerSurface().tone.apply(p),
-                    new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.contrastLevel));
+                    new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.contrastLevel),
+                    false, p.isDark);
             }
             return p.isDark ? 90.0 : 30.0;
         },
-            /* isBackground= */ false,
-            /* background= */ (p) -> tonalContainerSurface(),
-            /* secondBackground= */ null,
-            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+        /* isBackground= */ false,
+        /* background= */ (p) -> (isFidelity(p)) ? null : tonalContainerSurface(),
+        /* secondBackground= */ null,
+        /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
     public DynamicPaletteColor onTonalContainerVariant() {

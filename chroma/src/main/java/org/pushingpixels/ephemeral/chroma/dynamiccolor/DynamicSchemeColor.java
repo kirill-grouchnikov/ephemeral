@@ -409,7 +409,12 @@ public final class DynamicSchemeColor {
         return answer; // No adjustment for colors with no background.
       }
 
-      double bgTone = background.apply(scheme).getTone(scheme, isDark, contrastLevel);
+      DynamicSchemeColor backgroundSchemeColor = background.apply(scheme);
+      if (backgroundSchemeColor == null) {
+        return answer; // No adjustment for colors with no background.
+      }
+
+      double bgTone = backgroundSchemeColor.getTone(scheme, isDark, contrastLevel);
 
       double desiredRatio = contrastCurve.get(contrastLevel.apply(scheme));
 

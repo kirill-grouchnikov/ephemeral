@@ -204,12 +204,13 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
             if (isFidelity(s)) {
                 return DynamicPaletteColor.foregroundTone(neutralContainerSurface().tone.apply(s),
-                    new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.neutralContrastLevel));
+                    new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.neutralContrastLevel),
+                    false, s.isNeutralDark);
             }
             return s.isNeutralDark ? 90.0 : 10.0;
         },
         /* isBackground= */ false,
-        /* background= */ this::highestSurface,
+        /* background= */ (s) -> (isFidelity(s)) ? null : highestSurface(s),
         /* secondBackground= */ null,
         /* contrastCurve= */ new ContrastCurve(4.5, 7.0, 11.0, 21.0),
         /* toneDeltaPair= */ null);
@@ -561,12 +562,13 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
               return DynamicPaletteColor.foregroundTone(mutedContainerSurface().tone.apply(s),
-                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.mutedContrastLevel));
+                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.mutedContrastLevel),
+                  false, s.isMutedDark);
           }
           return s.isMutedDark ? 90.0 : 30.0;
         },
         /* isBackground= */ false,
-        /* background= */ (s) -> mutedContainerSurface(),
+        /* background= */ (s) -> (isFidelity(s)) ? null : mutedContainerSurface(),
         /* secondBackground= */ null,
         /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
         /* toneDeltaPair= */ null);
@@ -762,12 +764,13 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
               return DynamicPaletteColor.foregroundTone(tonalContainerSurface().tone.apply(s),
-                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.tonalContrastLevel));
+                  new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(s.tonalContrastLevel),
+                  false, s.isTonalDark);
           }
           return s.isTonalDark ? 90.0 : 30.0;
         },
         /* isBackground= */ false,
-        /* background= */ (s) -> tonalContainerSurface(),
+        /* background= */ (s) -> (isFidelity(s)) ? null : tonalContainerSurface(),
         /* secondBackground= */ null,
         /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
         /* toneDeltaPair= */ null);
