@@ -210,8 +210,8 @@ public final class ChromaDynamicPaletteColors {
         return new DynamicPaletteColor(
             /* name= */ "tonal_container_outline",
             /* tone= */ (p) -> p.isDark
-                ? new ContrastCurve(20.0, 15.0, 10.0, 5.0).get(p.contrastLevel)
-                : new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(p.contrastLevel),
+                ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel)
+                : new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.contrastLevel),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -256,7 +256,7 @@ public final class ChromaDynamicPaletteColors {
         return new DynamicPaletteColor(
             /* name= */ "inverse_tonal_container_outline",
             /* tone= */ (p) -> p.isDark
-                ? new ContrastCurve(50.0, 50.0, 40.0, 30.0).get(p.contrastLevel)
+                ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.contrastLevel)
                 : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel),
             /* isBackground= */ false,
             /* background= */ null,
