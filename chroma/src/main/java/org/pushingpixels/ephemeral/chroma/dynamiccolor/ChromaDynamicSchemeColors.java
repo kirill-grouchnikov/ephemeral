@@ -296,6 +296,20 @@ public final class ChromaDynamicSchemeColors {
             /* toneDeltaPair= */ null);
     }
 
+    public DynamicSchemeColor complementaryNeutralContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "complementary_neutral_container_outline",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> s.isNeutralDark
+            ? new ContrastCurve(85.0, 90.0, 95.0, 100.0).get(s.neutralContrastLevel)
+            : new ContrastCurve(90.0, 95.0, 98.0, 100.0).get(s.neutralContrastLevel),
+            /* isBackground= */ false,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
   public DynamicSchemeColor primaryContainerSurfaceLowest() {
     return new DynamicSchemeColor(
         /* name= */ "primary_container_surface_lowest",
@@ -445,6 +459,18 @@ public final class ChromaDynamicSchemeColors {
             /* name= */ "inverse_primary_container_outline",
             /* palette= */ (s) -> s.primaryPalette,
             /* tone= */ (s) -> s.isPrimaryDark ? 100.0 : 30.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inversePrimaryContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor complementaryPrimaryContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "complementary_primary_container_outline",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isPrimaryDark ? 70.0 : 0.0,
             /* isBackground= */ false,
             /* background= */ (s) -> inversePrimaryContainerSurface(),
             /* secondBackground= */ null,
@@ -617,7 +643,7 @@ public final class ChromaDynamicSchemeColors {
     public DynamicSchemeColor inverseMutedContainerSurface() {
         return new DynamicSchemeColor(
             /* name= */ "inverse_muted_container_surface",
-            /* palette= */ (s) -> s.neutralPalette,
+            /* palette= */ (s) -> s.mutedPalette,
             /* tone= */ (s) -> s.isMutedDark
                 ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.mutedContrastLevel)
                 : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.mutedContrastLevel),
@@ -631,7 +657,7 @@ public final class ChromaDynamicSchemeColors {
     public DynamicSchemeColor inverseOnMutedContainer() {
         return new DynamicSchemeColor(
             /* name= */ "inverse_on_muted_container",
-            /* palette= */ (s) -> s.neutralPalette,
+            /* palette= */ (s) -> s.mutedPalette,
             /* tone= */ (s) -> s.isMutedDark ? 30.0 : 90.0,
             /* isBackground= */ false,
             /* background= */ (s) -> inverseMutedContainerSurface(),
@@ -643,10 +669,24 @@ public final class ChromaDynamicSchemeColors {
     public DynamicSchemeColor inverseMutedContainerOutline() {
         return new DynamicSchemeColor(
             /* name= */ "inverse_muted_container_outline",
-            /* palette= */ (s) -> s.neutralPalette,
+            /* palette= */ (s) -> s.mutedPalette,
             /* tone= */ (s) -> s.isMutedDark
-                ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(s.mutedContrastLevel)
-                : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.mutedContrastLevel),
+            ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(s.mutedContrastLevel)
+            : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.mutedContrastLevel),
+            /* isBackground= */ false,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor complementaryMutedContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "complementary_muted_container_outline",
+            /* palette= */ (s) -> s.mutedPalette,
+            /* tone= */ (s) -> s.isMutedDark
+            ? new ContrastCurve(85.0, 90.0, 95.0, 100.0).get(s.mutedContrastLevel)
+            : new ContrastCurve(90.0, 95.0, 98.0, 100.0).get(s.mutedContrastLevel),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -849,6 +889,20 @@ public final class ChromaDynamicSchemeColors {
             /* tone= */ (s) -> s.isTonalDark
                 ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(s.tonalContrastLevel)
                 : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(s.tonalContrastLevel),
+            /* isBackground= */ false,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor complementaryTonalContainerOutline() {
+        return new DynamicSchemeColor(
+            /* name= */ "complementary_tonal_container_outline",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isTonalDark
+            ? new ContrastCurve(85.0, 90.0, 95.0, 100.0).get(s.tonalContrastLevel)
+            : new ContrastCurve(90.0, 95.0, 98.0, 100.0).get(s.tonalContrastLevel),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,

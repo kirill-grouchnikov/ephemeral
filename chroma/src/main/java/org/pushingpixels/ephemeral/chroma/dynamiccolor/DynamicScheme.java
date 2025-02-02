@@ -187,6 +187,10 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().inverseNeutralContainerOutline(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
+  public int getComplementaryNeutralContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().complementaryNeutralContainerOutline(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
+  }
+
   public int getMutedContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceLowest(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
@@ -233,6 +237,10 @@ public class DynamicScheme {
 
   public int getInverseMutedContainerOutline() {
     return getArgb(new ChromaDynamicSchemeColors().inverseMutedContainerOutline(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
+  }
+
+  public int getComplementaryMutedContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().complementaryMutedContainerOutline(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getTonalContainerSurfaceLowest() {
@@ -283,6 +291,10 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().inverseTonalContainerOutline(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
+  public int getComplementaryTonalContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().complementaryTonalContainerOutline(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
+  }
+
   public int getPrimaryContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceLowest(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
@@ -329,5 +341,9 @@ public class DynamicScheme {
 
   public int getInversePrimaryContainerOutline() {
     return getArgb(new ChromaDynamicSchemeColors().inversePrimaryContainerOutline(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
+  }
+
+  public int getComplementaryPrimaryContainerOutline() {
+    return getArgb(new ChromaDynamicSchemeColors().complementaryPrimaryContainerOutline(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 }

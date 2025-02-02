@@ -256,8 +256,20 @@ public final class ChromaDynamicPaletteColors {
         return new DynamicPaletteColor(
             /* name= */ "inverse_tonal_container_outline",
             /* tone= */ (p) -> p.isDark
-                ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.contrastLevel)
-                : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel),
+            ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.contrastLevel)
+            : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel),
+            /* isBackground= */ false,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null);
+    }
+
+    public DynamicPaletteColor complementaryTonalContainerOutline() {
+        return new DynamicPaletteColor(
+            /* name= */ "complementary_tonal_container_outline",
+            /* tone= */ (p) -> p.isDark
+            ? new ContrastCurve(85.0, 90.0, 95.0, 100.0).get(p.contrastLevel)
+            : new ContrastCurve(90.0, 95.0, 98.0, 100.0).get(p.contrastLevel),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -391,6 +403,16 @@ public final class ChromaDynamicPaletteColors {
         return new DynamicPaletteColor(
             /* name= */ "inverse_primary_container_outline",
             /* tone= */ (p) -> p.isDark ? 100.0 : 30.0,
+            /* isBackground= */ false,
+            /* background= */ (p) -> inversePrimaryContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5));
+    }
+
+    public DynamicPaletteColor complementaryPrimaryContainerOutline() {
+        return new DynamicPaletteColor(
+            /* name= */ "complementary_primary_container_outline",
+            /* tone= */ (p) -> p.isDark ? 70.0 : 0.0,
             /* isBackground= */ false,
             /* background= */ (p) -> inversePrimaryContainerSurface(),
             /* secondBackground= */ null,
