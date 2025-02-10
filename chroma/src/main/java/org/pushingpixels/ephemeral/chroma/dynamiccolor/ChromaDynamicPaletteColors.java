@@ -363,8 +363,7 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* background= */ (p) -> primaryContainerSurface(),
             /* secondBackground= */ null,
-            /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5),
-            /* toneDeltaPair= */ null);
+            /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5));
     }
 
     public DynamicPaletteColor primaryContainerOutlineVariant() {
