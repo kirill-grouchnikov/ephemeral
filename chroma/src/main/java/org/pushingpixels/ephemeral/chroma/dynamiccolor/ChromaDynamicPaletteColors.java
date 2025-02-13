@@ -34,7 +34,7 @@ public final class ChromaDynamicPaletteColors {
             /* name= */ "surface",
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
-                return p.sourceColorHct.getTone();
+                return p.sourceColorTone;
             }
             return p.isDark ? 6.0 : 98.0;
         },
@@ -49,8 +49,8 @@ public final class ChromaDynamicPaletteColors {
             /* name= */ "surface_dim",
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
-                return p.isDark ? p.sourceColorHct.getTone() -10.0
-                    : p.sourceColorHct.getTone() - 6.0;
+                return p.isDark ? p.sourceColorTone -10.0
+                    : p.sourceColorTone - 6.0;
             }
             return p.isDark ? 3.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(p.contrastLevel);
         },
@@ -65,8 +65,8 @@ public final class ChromaDynamicPaletteColors {
             /* name= */ "surface_bright",
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
-                return p.isDark ? p.sourceColorHct.getTone() + 12.0
-                    : p.sourceColorHct.getTone() + 10.0;
+                return p.isDark ? p.sourceColorTone + 12.0
+                    : p.sourceColorTone + 10.0;
             }
             return p.isDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(p.contrastLevel) : 99.0;
         },
@@ -92,8 +92,8 @@ public final class ChromaDynamicPaletteColors {
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
                 return p.isDark
-                    ? p.sourceColorHct.getTone() - 8.0
-                    : p.sourceColorHct.getTone() + 8.0;
+                    ? p.sourceColorTone - 8.0
+                    : p.sourceColorTone + 8.0;
             }
             return p.isDark
                 ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(p.contrastLevel)
@@ -111,8 +111,8 @@ public final class ChromaDynamicPaletteColors {
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
                 return p.isDark
-                    ? p.sourceColorHct.getTone() - 2.0
-                    : p.sourceColorHct.getTone() + 4.0;
+                    ? p.sourceColorTone - 2.0
+                    : p.sourceColorTone + 4.0;
             }
             return p.isDark
                 ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(p.contrastLevel)
@@ -129,7 +129,7 @@ public final class ChromaDynamicPaletteColors {
             /* name= */ "tonal_container_surface",
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
-                return p.sourceColorHct.getTone();
+                return p.sourceColorTone;
             }
             return p.isDark
                 ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(p.contrastLevel)
@@ -147,8 +147,8 @@ public final class ChromaDynamicPaletteColors {
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
                 return p.isDark
-                    ? p.sourceColorHct.getTone() + 5.0
-                    : p.sourceColorHct.getTone() - 2.0;
+                    ? p.sourceColorTone + 5.0
+                    : p.sourceColorTone - 2.0;
             }
             return p.isDark
                 ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(p.contrastLevel)
@@ -166,8 +166,8 @@ public final class ChromaDynamicPaletteColors {
             /* tone= */ (p) -> {
             if (isFidelity(p)) {
                 return p.isDark
-                    ? p.sourceColorHct.getTone() + 10.0
-                    : p.sourceColorHct.getTone() - 4.0;
+                    ? p.sourceColorTone + 10.0
+                    : p.sourceColorTone - 4.0;
             }
             return p.isDark
                 ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(p.contrastLevel)
