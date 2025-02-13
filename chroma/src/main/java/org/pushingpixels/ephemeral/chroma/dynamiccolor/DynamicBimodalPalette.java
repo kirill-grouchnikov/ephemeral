@@ -36,9 +36,8 @@ public class DynamicBimodalPalette {
   public final double fidelityTone;
 
   private DynamicBimodalPalette(
-      double seedOneHue,
-      double seedTwoHue,
-      double chroma,
+      Hct seedOne,
+      Hct seedTwo,
       boolean isFidelity,
       double fidelityTone,
       boolean isDark,
@@ -48,37 +47,33 @@ public class DynamicBimodalPalette {
     this.isDark = isDark;
     this.contrastLevel = contrastLevel;
 
-    this.paletteOne = TonalPalette.fromHueAndChroma(seedOneHue, chroma);
-    this.paletteTwo = TonalPalette.fromHueAndChroma(seedTwoHue, chroma);
+    this.paletteOne = TonalPalette.fromHct(seedOne);
+    this.paletteTwo = TonalPalette.fromHct(seedTwo);
   }
 
   public static DynamicBimodalPalette fidelity(
-      double seedOneHue,
-      double seedTwoHue,
-      double chroma,
-      double tone,
+      Hct seedOne,
+      Hct seedTwo,
       boolean isDark,
+      double fidelityTone,
       double isContrastLevel) {
     return new DynamicBimodalPalette(
-        seedOneHue,
-        seedTwoHue,
-        chroma,
+        seedOne,
+        seedTwo,
         true,
-        tone,
+        fidelityTone,
         isDark,
         isContrastLevel);
   }
 
   public static DynamicBimodalPalette balanced(
-      double seedOneHue,
-      double seedTwoHue,
-      double chroma,
+      Hct seedOne,
+      Hct seedTwo,
       boolean isDark,
       double isContrastLevel) {
     return new DynamicBimodalPalette(
-        seedOneHue,
-        seedTwoHue,
-        chroma,
+        seedOne,
+        seedTwo,
         false,
         -1,
         isDark,

@@ -144,7 +144,11 @@ public final class DynamicBimodalPaletteColor {
     Hct fromSeedOne = palette.paletteOne.getHct(tone);
     Hct fromSeedTwo = palette.paletteTwo.getHct(tone);
     // Interpolate
-    Hct answer = fromSeedOne;
+    double interpolatedHue =
+        (fromSeedOne.getHue() * tone + fromSeedTwo.getHue() * (100.0 - tone)) / 100.0;
+    double interpolatedChroma =
+        (fromSeedOne.getChroma() * tone + fromSeedTwo.getChroma() * (100.0 - tone)) / 100.0;
+    Hct answer = Hct.from(interpolatedHue, interpolatedChroma, tone);
     // NOMUTANTS--trivial test with onerous dependency injection requirement.
     if (hctCache.size() > 4) {
       hctCache.clear();
