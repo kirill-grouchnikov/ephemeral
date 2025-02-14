@@ -64,7 +64,7 @@ public class DynamicBimodalPalette {
       TransitionRange transitionRange,
       boolean isDark,
       double fidelityTone,
-      double isContrastLevel) {
+      double contrastLevel) {
     return new DynamicBimodalPalette(
         seedOne,
         seedTwo,
@@ -72,7 +72,7 @@ public class DynamicBimodalPalette {
         true,
         fidelityTone,
         isDark,
-        isContrastLevel);
+        contrastLevel);
   }
 
   public static DynamicBimodalPalette balanced(
@@ -80,7 +80,7 @@ public class DynamicBimodalPalette {
       Hct seedTwo,
       TransitionRange transitionRange,
       boolean isDark,
-      double isContrastLevel) {
+      double contrastLevel) {
     return new DynamicBimodalPalette(
         seedOne,
         seedTwo,
@@ -88,7 +88,7 @@ public class DynamicBimodalPalette {
         false,
         -1,
         isDark,
-        isContrastLevel);
+        contrastLevel);
   }
 
   public int getArgb(DynamicBimodalPaletteColor dynamicPaletteColor) {
