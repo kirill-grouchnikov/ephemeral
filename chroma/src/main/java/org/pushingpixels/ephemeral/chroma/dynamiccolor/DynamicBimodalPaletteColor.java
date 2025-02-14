@@ -143,12 +143,38 @@ public final class DynamicBimodalPaletteColor {
     double tone = getTone(palette);
     Hct fromSeedOne = palette.paletteOne.getHct(tone);
     Hct fromSeedTwo = palette.paletteTwo.getHct(tone);
-    // Interpolate
-    double interpolatedHue =
-        (fromSeedOne.getHue() * tone + fromSeedTwo.getHue() * (100.0 - tone)) / 100.0;
-    double interpolatedChroma =
-        (fromSeedOne.getChroma() * tone + fromSeedTwo.getChroma() * (100.0 - tone)) / 100.0;
-    Hct answer = Hct.from(interpolatedHue, interpolatedChroma, tone);
+
+    Hct answer;
+    // Do we need to interpolate?
+    double transitionToneStart;
+    double transitionToneEnd;
+    if (palette.transitionRange == DynamicBimodalPalette.TransitionRange.FULL_SPAN) {
+      transitionToneStart = 0.0;
+      transitionToneEnd = 100.0;
+    } else {
+      if (palette.isFidelity) {
+        transitionToneStart = palette.isDark ? palette.fidelityTone - 8.0 :
+            palette.fidelityTone - 4.0;
+        transitionToneEnd = palette.isDark ? palette.fidelityTone + 10.0 :
+            palette.fidelityTone + 8.0;
+      } else {
+        transitionToneStart = palette.isDark ? 22.0 : 82.0;
+        transitionToneEnd = palette.isDark ? 46.0 : 94.0;
+      }
+    }
+    if (tone <= transitionToneStart) {
+      answer = fromSeedOne;
+    } else if (tone >= transitionToneEnd) {
+      answer = fromSeedTwo;
+    } else {
+      double fraction = (tone - transitionToneStart) / (transitionToneEnd - transitionToneStart);
+      // Interpolate hue and chroma, but leave the tone
+      double interpolatedHue =
+          fromSeedOne.getHue() * (1.0 - fraction) + fromSeedTwo.getHue() * fraction;
+      double interpolatedChroma =
+          fromSeedOne.getChroma() * (1.0 - fraction) + fromSeedTwo.getChroma() * fraction;
+      answer = Hct.from(interpolatedHue, interpolatedChroma, tone);
+    }
     // NOMUTANTS--trivial test with onerous dependency injection requirement.
     if (hctCache.size() > 4) {
       hctCache.clear();

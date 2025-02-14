@@ -28,20 +28,27 @@ import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
  * 3. Contrast level. (-1 to 1, currently contrast ratio 3.0 and 7.0)
  */
 public class DynamicBimodalPalette {
+  public enum TransitionRange {
+    FULL_SPAN, TONAL_CONTAINER_SURFACES
+  }
+
   public final boolean isFidelity;
   public final boolean isDark;
   public final double contrastLevel;
   public final TonalPalette paletteOne;
   public final TonalPalette paletteTwo;
   public final double fidelityTone;
+  public final TransitionRange transitionRange;
 
   private DynamicBimodalPalette(
       Hct seedOne,
       Hct seedTwo,
+      TransitionRange transitionRange,
       boolean isFidelity,
       double fidelityTone,
       boolean isDark,
       double contrastLevel) {
+    this.transitionRange = transitionRange;
     this.isFidelity = isFidelity;
     this.fidelityTone = fidelityTone;
     this.isDark = isDark;
@@ -54,12 +61,14 @@ public class DynamicBimodalPalette {
   public static DynamicBimodalPalette fidelity(
       Hct seedOne,
       Hct seedTwo,
+      TransitionRange transitionRange,
       boolean isDark,
       double fidelityTone,
       double isContrastLevel) {
     return new DynamicBimodalPalette(
         seedOne,
         seedTwo,
+        transitionRange,
         true,
         fidelityTone,
         isDark,
@@ -69,11 +78,13 @@ public class DynamicBimodalPalette {
   public static DynamicBimodalPalette balanced(
       Hct seedOne,
       Hct seedTwo,
+      TransitionRange transitionRange,
       boolean isDark,
       double isContrastLevel) {
     return new DynamicBimodalPalette(
         seedOne,
         seedTwo,
+        transitionRange,
         false,
         -1,
         isDark,
