@@ -35,7 +35,7 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return s.neutralSourceColorHct.getTone();
+            return s.neutralSourceColorTone;
           }
           return s.isNeutralDark ? 6.0 : 98.0;
         },
@@ -52,8 +52,8 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return s.isNeutralDark ? s.neutralSourceColorHct.getTone() - 10.0
-                : s.neutralSourceColorHct.getTone() - 6.0;
+            return s.isNeutralDark ? s.neutralSourceColorTone - 10.0
+                : s.neutralSourceColorTone - 6.0;
           }
           return s.isNeutralDark ? 3.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(s.neutralContrastLevel);
         },
@@ -70,8 +70,8 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return s.isNeutralDark ? s.neutralSourceColorHct.getTone() + 12.0
-                : s.neutralSourceColorHct.getTone() + 10.0;
+            return s.isNeutralDark ? s.neutralSourceColorTone + 12.0
+                : s.neutralSourceColorTone + 10.0;
           }
           return s.isNeutralDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(s.neutralContrastLevel) : 99.0;
         },
@@ -101,8 +101,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isNeutralDark
-                ? s.neutralSourceColorHct.getTone() - 2.0
-                : s.neutralSourceColorHct.getTone() + 2.0;
+                ? s.neutralSourceColorTone - 2.0
+                : s.neutralSourceColorTone + 2.0;
           }
           return s.isNeutralDark ? new ContrastCurve(4.0, 4.0, 2.0, 0.0).get(s.neutralContrastLevel) : 100.0;
         },
@@ -120,8 +120,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isNeutralDark
-                ? s.neutralSourceColorHct.getTone() + 4.0
-                : s.neutralSourceColorHct.getTone() - 2.0;
+                ? s.neutralSourceColorTone + 4.0
+                : s.neutralSourceColorTone - 2.0;
           }
           return s.isNeutralDark
               ? new ContrastCurve(10.0, 10.0, 11.0, 12.0).get(s.neutralContrastLevel)
@@ -141,8 +141,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
            if (isFidelity(s)) {
              return s.isNeutralDark
-                 ? s.neutralSourceColorHct.getTone() + 6.0
-                 : s.neutralSourceColorHct.getTone() - 4.0;
+                 ? s.neutralSourceColorTone + 6.0
+                 : s.neutralSourceColorTone - 4.0;
            }
            return s.isNeutralDark
                ? new ContrastCurve(12.0, 12.0, 16.0, 20.0).get(s.neutralContrastLevel)
@@ -162,8 +162,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isNeutralDark
-                ? s.neutralSourceColorHct.getTone() + 11.0
-                : s.neutralSourceColorHct.getTone() - 6.0;
+                ? s.neutralSourceColorTone + 11.0
+                : s.neutralSourceColorTone - 6.0;
           }
           return s.isNeutralDark
               ? new ContrastCurve(17.0, 17.0, 21.0, 25.0).get(s.neutralContrastLevel)
@@ -183,8 +183,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isNeutralDark
-                ? s.neutralSourceColorHct.getTone() + 16.0
-                : s.neutralSourceColorHct.getTone() - 8.0;
+                ? s.neutralSourceColorTone + 16.0
+                : s.neutralSourceColorTone - 8.0;
           }
           return s.isNeutralDark
               ? new ContrastCurve(22.0, 22.0, 26.0, 30.0).get(s.neutralContrastLevel)
@@ -485,8 +485,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isMutedDark
-                ? s.mutedSourceColorHct.getTone() - 8.0
-                : s.mutedSourceColorHct.getTone() + 8.0;
+                ? s.mutedSourceColorTone - 8.0
+                : s.mutedSourceColorTone + 8.0;
           }
           return s.isMutedDark
               ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.mutedContrastLevel)
@@ -506,8 +506,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isMutedDark
-                ? s.mutedSourceColorHct.getTone() - 2.0
-                : s.mutedSourceColorHct.getTone() + 4.0;
+                ? s.mutedSourceColorTone - 2.0
+                : s.mutedSourceColorTone + 4.0;
           }
           return s.isMutedDark
               ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.mutedContrastLevel)
@@ -526,7 +526,7 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.mutedPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return s.mutedSourceColorHct.getTone();
+            return s.mutedSourceColorTone;
           }
           return s.isMutedDark
               ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.mutedContrastLevel)
@@ -546,8 +546,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isMutedDark
-                ? s.mutedSourceColorHct.getTone() + 5.0
-                : s.mutedSourceColorHct.getTone() - 2.0;
+                ? s.mutedSourceColorTone + 5.0
+                : s.mutedSourceColorTone - 2.0;
           }
           return s.isMutedDark
               ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.mutedContrastLevel)
@@ -567,8 +567,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isMutedDark
-                ? s.mutedSourceColorHct.getTone() + 10.0
-                : s.mutedSourceColorHct.getTone() - 4.0;
+                ? s.mutedSourceColorTone + 10.0
+                : s.mutedSourceColorTone - 4.0;
           }
           return s.isMutedDark
               ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.mutedContrastLevel)
@@ -701,8 +701,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isTonalDark
-                ? s.primarySourceColorHct.getTone() - 8.0
-                : s.primarySourceColorHct.getTone() + 8.0;
+                ? s.primarySourceColorTone - 8.0
+                : s.primarySourceColorTone + 8.0;
           }
           return s.isTonalDark
               ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.tonalContrastLevel)
@@ -722,8 +722,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isTonalDark
-                ? s.primarySourceColorHct.getTone() - 2.0
-                : s.primarySourceColorHct.getTone() + 4.0;
+                ? s.primarySourceColorTone - 2.0
+                : s.primarySourceColorTone + 4.0;
           }
           return s.isTonalDark
               ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.tonalContrastLevel)
@@ -742,7 +742,7 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.primaryPalette,
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
-            return s.primarySourceColorHct.getTone();
+            return s.primarySourceColorTone;
           }
           return s.isTonalDark
               ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.tonalContrastLevel)
@@ -762,8 +762,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isTonalDark
-                ? s.primarySourceColorHct.getTone() + 5.0
-                : s.primarySourceColorHct.getTone() - 2.0;
+                ? s.primarySourceColorTone + 5.0
+                : s.primarySourceColorTone - 2.0;
           }
           return s.isTonalDark
               ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.tonalContrastLevel)
@@ -783,8 +783,8 @@ public final class ChromaDynamicSchemeColors {
         /* tone= */ (s) -> {
           if (isFidelity(s)) {
             return s.isTonalDark
-                ? s.primarySourceColorHct.getTone() + 10.0
-                : s.primarySourceColorHct.getTone() - 4.0;
+                ? s.primarySourceColorTone + 10.0
+                : s.primarySourceColorTone - 4.0;
           }
           return s.isTonalDark
               ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.tonalContrastLevel)

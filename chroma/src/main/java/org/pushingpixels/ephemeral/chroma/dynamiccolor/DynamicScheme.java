@@ -31,9 +31,9 @@ import java.util.function.Function;
  * 3. Contrast level. (-1 to 1, currently contrast ratio 3.0 and 7.0)
  */
 public class DynamicScheme {
-  public final Hct primarySourceColorHct;
-  public final Hct mutedSourceColorHct;
-  public final Hct neutralSourceColorHct;
+  public final double primarySourceColorTone;
+  public final double mutedSourceColorTone;
+  public final double neutralSourceColorTone;
   public final boolean isFidelity;
   public final boolean isPrimaryDark;
   public final boolean isTonalDark;
@@ -49,9 +49,12 @@ public class DynamicScheme {
   public final TonalPalette neutralPalette;
 
   public DynamicScheme(
-      Hct primarySourceColorHct,
-      Hct mutedSourceColorHct,
-      Hct neutralSourceColorHct,
+      TonalPalette primaryPalette,
+      TonalPalette mutedPalette,
+      TonalPalette neutralPalette,
+      double primarySourceColorTone,
+      double mutedSourceColorTone,
+      double neutralSourceColorTone,
       boolean isFidelity,
       boolean isPrimaryDark,
       boolean isTonalDark,
@@ -60,16 +63,18 @@ public class DynamicScheme {
       double primaryContrastLevel,
       double tonalContrastLevel,
       double mutedContrastLevel,
-      double neutralContrastLevel,
-      TonalPalette primaryPalette,
-      TonalPalette mutedPalette,
-      TonalPalette neutralPalette) {
+      double neutralContrastLevel) {
 
-    this.primarySourceColorHct = primarySourceColorHct;
-    this.mutedSourceColorHct = mutedSourceColorHct;
-    this.neutralSourceColorHct = neutralSourceColorHct;
+    this.primaryPalette = primaryPalette;
+    this.mutedPalette = mutedPalette;
+    this.neutralPalette = neutralPalette;
+
+    this.primarySourceColorTone = primarySourceColorTone;
+    this.mutedSourceColorTone = mutedSourceColorTone;
+    this.neutralSourceColorTone = neutralSourceColorTone;
 
     this.isFidelity = isFidelity;
+
     this.isPrimaryDark = isPrimaryDark;
     this.isTonalDark = isTonalDark;
     this.isMutedDark = isMutedDark;
@@ -79,10 +84,6 @@ public class DynamicScheme {
     this.tonalContrastLevel = tonalContrastLevel;
     this.mutedContrastLevel = mutedContrastLevel;
     this.neutralContrastLevel = neutralContrastLevel;
-
-    this.primaryPalette = primaryPalette;
-    this.mutedPalette = mutedPalette;
-    this.neutralPalette = neutralPalette;
   }
 
   /**
