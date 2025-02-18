@@ -48,6 +48,32 @@ public class Blend {
     return Hct.from(outputHue, fromHct.getChroma(), fromHct.getTone()).toInt();
   }
 
+  public static int harmonize(int designColor, int sourceColor, double amount) {
+    Hct fromHct = Hct.fromInt(designColor);
+    Hct toHct = Hct.fromInt(sourceColor);
+    double differenceDegrees = MathUtils.differenceDegrees(fromHct.getHue(), toHct.getHue());
+    double rotationDegrees = differenceDegrees * amount;
+    double outputHue =
+        MathUtils.sanitizeDegreesDouble(
+            fromHct.getHue()
+                + rotationDegrees * MathUtils.rotationDirection(fromHct.getHue(), toHct.getHue()));
+    return Hct.from(outputHue, fromHct.getChroma(), fromHct.getTone()).toInt();
+  }
+
+  public static int harmonizeAll(int designColor, int sourceColor, double amount) {
+    Hct fromHct = Hct.fromInt(designColor);
+    Hct toHct = Hct.fromInt(sourceColor);
+    double differenceDegrees = MathUtils.differenceDegrees(fromHct.getHue(), toHct.getHue());
+    double rotationDegrees = differenceDegrees * amount;
+    double outputHue =
+        MathUtils.sanitizeDegreesDouble(
+            fromHct.getHue()
+                + rotationDegrees * MathUtils.rotationDirection(fromHct.getHue(), toHct.getHue()));
+    double outputChroma = fromHct.getChroma() * (1.0 - amount) + toHct.getChroma() * amount;
+    double outputTone = fromHct.getTone() * (1.0 - amount) + toHct.getTone() * amount;
+    return Hct.from(outputHue, outputChroma, outputTone).toInt();
+  }
+
   /**
    * Blends hue from one color into another. The chroma and tone of the original color are
    * maintained.
