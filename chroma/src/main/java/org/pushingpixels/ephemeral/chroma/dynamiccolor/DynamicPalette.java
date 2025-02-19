@@ -124,6 +124,10 @@ public class DynamicPalette {
     return getArgb(new ChromaDynamicPaletteColors().complementaryTonalContainerOutline());
   }
 
+  public int getComplementaryOnTonalContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().complementaryOnTonalContainer());
+  }
+
   public int getPrimaryContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurfaceLowest());
   }
@@ -170,6 +174,10 @@ public class DynamicPalette {
 
   public int getInversePrimaryContainerOutline() {
     return getArgb(new ChromaDynamicPaletteColors().inversePrimaryContainerOutline());
+  }
+
+  public int getComplementaryOnPrimaryContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().complementaryOnPrimaryContainer());
   }
 
   public int getComplementaryPrimaryContainerOutline() {

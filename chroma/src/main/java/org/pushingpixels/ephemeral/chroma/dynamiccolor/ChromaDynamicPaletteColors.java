@@ -264,6 +264,16 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+    public DynamicPaletteColor complementaryOnTonalContainer() {
+        return new DynamicPaletteColor(
+            /* name= */ "complementary_on_tonal_container",
+            /* tone= */ (p) -> p.isDark ? 10.0 : 80.0,
+            /* isBackground= */ false,
+            /* background= */ (p) -> inverseTonalContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+    }
+
     public DynamicPaletteColor complementaryTonalContainerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "complementary_tonal_container_outline",
@@ -408,6 +418,16 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5));
     }
 
+    public DynamicPaletteColor complementaryOnPrimaryContainer() {
+        return new DynamicPaletteColor(
+            /* name= */ "complementary_on_primary_container",
+            /* tone= */ (p) -> p.isDark ? 80.0 : 0.0,
+            /* isBackground= */ false,
+            /* background= */ (p) -> inversePrimaryContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(4.5, 7.0, 11.0, 21.0));
+    }
+
     public DynamicPaletteColor complementaryPrimaryContainerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "complementary_primary_container_outline",
@@ -420,34 +440,5 @@ public final class ChromaDynamicPaletteColors {
 
     private boolean isFidelity(DynamicPalette palette) {
     return palette.isFidelity;
-  }
-
-  static double findDesiredChromaByTone(
-      double hue, double chroma, double tone, boolean byDecreasingTone) {
-    double answer = tone;
-
-    Hct closestToChroma = Hct.from(hue, chroma, tone);
-    if (closestToChroma.getChroma() < chroma) {
-      double chromaPeak = closestToChroma.getChroma();
-      while (closestToChroma.getChroma() < chroma) {
-        answer += byDecreasingTone ? -1.0 : 1.0;
-        Hct potentialSolution = Hct.from(hue, chroma, answer);
-        if (chromaPeak > potentialSolution.getChroma()) {
-          break;
-        }
-        if (Math.abs(potentialSolution.getChroma() - chroma) < 0.4) {
-          break;
-        }
-
-        double potentialDelta = Math.abs(potentialSolution.getChroma() - chroma);
-        double currentDelta = Math.abs(closestToChroma.getChroma() - chroma);
-        if (potentialDelta < currentDelta) {
-          closestToChroma = potentialSolution;
-        }
-        chromaPeak = Math.max(chromaPeak, potentialSolution.getChroma());
-      }
-    }
-
-    return answer;
   }
 }

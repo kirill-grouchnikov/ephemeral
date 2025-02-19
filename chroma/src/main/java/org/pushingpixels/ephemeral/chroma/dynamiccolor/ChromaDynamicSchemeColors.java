@@ -296,6 +296,18 @@ public final class ChromaDynamicSchemeColors {
             /* toneDeltaPair= */ null);
     }
 
+    public DynamicSchemeColor complementaryOnNeutralContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "complementary_on_neutral_container",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> s.isNeutralDark ? 10.0 : 80.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseNeutralContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
+            /* toneDeltaPair= */ null);
+    }
+
     public DynamicSchemeColor complementaryNeutralContainerOutline() {
         return new DynamicSchemeColor(
             /* name= */ "complementary_neutral_container_outline",
@@ -463,6 +475,18 @@ public final class ChromaDynamicSchemeColors {
             /* background= */ (s) -> inversePrimaryContainerSurface(),
             /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5),
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor complementaryOnPrimaryContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "complementary_on_primary_container",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isPrimaryDark ? 10.0 : 80.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseTonalContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
             /* toneDeltaPair= */ null);
     }
 
@@ -680,6 +704,18 @@ public final class ChromaDynamicSchemeColors {
             /* toneDeltaPair= */ null);
     }
 
+    public DynamicSchemeColor complementaryOnMutedContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "complementary_on_muted_container",
+            /* palette= */ (s) -> s.mutedPalette,
+            /* tone= */ (s) -> s.isMutedDark ? 10.0 : 80.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseMutedContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
+            /* toneDeltaPair= */ null);
+    }
+
     public DynamicSchemeColor complementaryMutedContainerOutline() {
         return new DynamicSchemeColor(
             /* name= */ "complementary_muted_container_outline",
@@ -893,6 +929,18 @@ public final class ChromaDynamicSchemeColors {
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor complementaryOnTonalContainer() {
+        return new DynamicSchemeColor(
+            /* name= */ "complementary_on_tonal_container",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isPrimaryDark ? 10.0 : 80.0,
+            /* isBackground= */ false,
+            /* background= */ (s) -> inverseTonalContainerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
             /* toneDeltaPair= */ null);
     }
 

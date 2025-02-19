@@ -188,6 +188,10 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().inverseNeutralContainerOutline(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
+  public int getComplementaryOnNeutralContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().complementaryOnNeutralContainer(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
+  }
+
   public int getComplementaryNeutralContainerOutline() {
     return getArgb(new ChromaDynamicSchemeColors().complementaryNeutralContainerOutline(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
@@ -238,6 +242,10 @@ public class DynamicScheme {
 
   public int getInverseMutedContainerOutline() {
     return getArgb(new ChromaDynamicSchemeColors().inverseMutedContainerOutline(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
+  }
+
+  public int getComplementaryOnMutedContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().complementaryOnMutedContainer(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getComplementaryMutedContainerOutline() {
@@ -292,6 +300,10 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().inverseTonalContainerOutline(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
+  public int getComplementaryOnTonalContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().complementaryOnTonalContainer(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
+  }
+
   public int getComplementaryTonalContainerOutline() {
     return getArgb(new ChromaDynamicSchemeColors().complementaryTonalContainerOutline(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
@@ -342,6 +354,10 @@ public class DynamicScheme {
 
   public int getInversePrimaryContainerOutline() {
     return getArgb(new ChromaDynamicSchemeColors().inversePrimaryContainerOutline(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
+  }
+
+  public int getComplementaryOnPrimaryContainer() {
+    return getArgb(new ChromaDynamicSchemeColors().complementaryOnPrimaryContainer(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getComplementaryPrimaryContainerOutline() {

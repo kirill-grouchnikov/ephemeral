@@ -159,6 +159,10 @@ public class DynamicBimodalPalette {
     return getArgb(new ChromaDynamicBimodalPaletteColors().inverseTonalContainerOutline());
   }
 
+  public int getComplementaryOnTonalContainer() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().complementaryOnTonalContainer());
+  }
+
   public int getComplementaryTonalContainerOutline() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().complementaryTonalContainerOutline());
   }
@@ -209,6 +213,10 @@ public class DynamicBimodalPalette {
 
   public int getInversePrimaryContainerOutline() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().inversePrimaryContainerOutline());
+  }
+
+  public int getComplementaryOnPrimaryContainer() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().complementaryOnPrimaryContainer());
   }
 
   public int getComplementaryPrimaryContainerOutline() {
