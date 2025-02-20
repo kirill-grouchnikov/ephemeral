@@ -220,7 +220,7 @@ public final class ChromaDynamicSchemeColors {
     return new DynamicSchemeColor(
         /* name= */ "on_neutral_container_variant",
         /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) -> s.isNeutralDark ? 80.0 : 30.0,
+        /* tone= */ (s) -> s.isNeutralDark ? 80.0 : 40.0,
         /* isBackground= */ false,
         /* background= */ this::highestSurface,
         /* secondBackground= */ null,
@@ -628,7 +628,7 @@ public final class ChromaDynamicSchemeColors {
     return new DynamicSchemeColor(
         /* name= */ "on_muted_container_variant",
         /* palette= */ (s) -> s.mutedPalette,
-        /* tone= */ (s) -> s.isMutedDark ? 80.0 : 30.0,
+        /* tone= */ (s) -> s.isMutedDark ? 80.0 : 40.0,
         /* isBackground= */ false,
         /* background= */ (s) -> mutedContainerSurface(),
         /* secondBackground= */ null,
