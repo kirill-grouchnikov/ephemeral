@@ -30,29 +30,89 @@ import java.util.Map;
  * <p>BimodalTonalPalette is intended for use in a single thread due to its stateful caching.
  */
 public final class BimodalTonalPalette implements BaseTonalPalette {
+  public interface TransitionRange {
+    public double getTransitionToneStart();
+    public double getTransitionToneEnd();
+  }
+
+  public static class TransitionRangeFidelityLight implements TransitionRange {
+    private final double fidelityTone;
+
+    public TransitionRangeFidelityLight(double fidelityTone) {
+      this.fidelityTone = fidelityTone;
+    }
+
+    @Override
+    public double getTransitionToneStart() {
+      return this.fidelityTone - 4.0;
+    }
+
+    @Override
+    public double getTransitionToneEnd() {
+      return this.fidelityTone + 8.0;
+    }
+  }
+
+  public static class TransitionRangeFidelityDark implements TransitionRange {
+    private final double fidelityTone;
+
+    public TransitionRangeFidelityDark(double fidelityTone) {
+      this.fidelityTone = fidelityTone;
+    }
+
+    @Override
+    public double getTransitionToneStart() {
+      return this.fidelityTone - 8.0;
+    }
+
+    @Override
+    public double getTransitionToneEnd() {
+      return this.fidelityTone + 10.0;
+    }
+  }
+
+  public static class TransitionRangeBalancedLight implements TransitionRange {
+    @Override
+    public double getTransitionToneStart() {
+      return 82.0;
+    }
+
+    @Override
+    public double getTransitionToneEnd() {
+      return 94.0;
+    }
+  }
+
+  public static class TransitionRangeBalancedDark implements TransitionRange {
+    @Override
+    public double getTransitionToneStart() {
+      return 22.0;
+    }
+
+    @Override
+    public double getTransitionToneEnd() {
+      return 46.0;
+    }
+  }
+
   private final TonalPalette palette1;
   private final TonalPalette palette2;
-  private final double transitionToneStart;
-  private final double transitionToneEnd;
+  private final TransitionRange transitionRange;
 
   private Map<Integer, Integer> cache;
 
   private BimodalTonalPalette(
       TonalPalette palette1,
       TonalPalette palette2,
-      double transitionToneStart,
-      double transitionToneEnd) {
+      TransitionRange transitionRange) {
     this.palette1 = palette1;
     this.palette2 = palette2;
-    this.transitionToneStart = transitionToneStart;
-    this.transitionToneEnd = transitionToneEnd;
+    this.transitionRange = transitionRange;
     this.cache = new HashMap<>();
   }
 
-  public static BimodalTonalPalette from(Hct hct1, Hct hct2, double transitionToneStart,
-      double transitionToneEnd) {
-    return new BimodalTonalPalette(TonalPalette.fromHct(hct1), TonalPalette.fromHct(hct2),
-        transitionToneStart, transitionToneEnd);
+  public static BimodalTonalPalette from(Hct hct1, Hct hct2, TransitionRange transitionRange) {
+    return new BimodalTonalPalette(TonalPalette.fromHct(hct1), TonalPalette.fromHct(hct2), transitionRange);
   }
 
   @Override
@@ -62,9 +122,11 @@ public final class BimodalTonalPalette implements BaseTonalPalette {
 
     Integer answer = cache.get(tone);
     if (answer == null) {
-      if (tone <= this.transitionToneStart) {
+      double transitionToneStart = this.transitionRange.getTransitionToneStart();
+      double transitionToneEnd = this.transitionRange.getTransitionToneEnd();
+      if (tone <= transitionToneStart) {
         answer = tone1;
-      } else if (tone >= this.transitionToneEnd) {
+      } else if (tone >= transitionToneEnd) {
         answer = tone2;
       } else {
         double fraction = (tone - transitionToneStart) / (transitionToneEnd - transitionToneStart);
@@ -88,9 +150,11 @@ public final class BimodalTonalPalette implements BaseTonalPalette {
     Hct hct1 = this.palette1.getHct(tone);
     Hct hct2 = this.palette2.getHct(tone);
 
-    if (tone <= this.transitionToneStart) {
+    double transitionToneStart = this.transitionRange.getTransitionToneStart();
+    double transitionToneEnd = this.transitionRange.getTransitionToneEnd();
+    if (tone <= transitionToneStart) {
       return hct1;
-    } else if (tone >= this.transitionToneEnd) {
+    } else if (tone >= transitionToneEnd) {
       return hct2;
     } else {
       double fraction = (tone - transitionToneStart) / (transitionToneEnd - transitionToneStart);
