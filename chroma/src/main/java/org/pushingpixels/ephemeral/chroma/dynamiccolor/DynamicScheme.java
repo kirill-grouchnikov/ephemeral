@@ -17,6 +17,7 @@
 package org.pushingpixels.ephemeral.chroma.dynamiccolor;
 
 import org.pushingpixels.ephemeral.chroma.hct.Hct;
+import org.pushingpixels.ephemeral.chroma.palettes.BaseTonalPalette;
 import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
 import org.pushingpixels.ephemeral.chroma.utils.MathUtils;
 
@@ -44,14 +45,14 @@ public class DynamicScheme {
   public final double mutedContrastLevel;
   public final double neutralContrastLevel;
 
-  public final TonalPalette primaryPalette;
-  public final TonalPalette mutedPalette;
-  public final TonalPalette neutralPalette;
+  public final BaseTonalPalette primaryPalette;
+  public final BaseTonalPalette mutedPalette;
+  public final BaseTonalPalette neutralPalette;
 
   public DynamicScheme(
-      TonalPalette primaryPalette,
-      TonalPalette mutedPalette,
-      TonalPalette neutralPalette,
+      BaseTonalPalette primaryPalette,
+      BaseTonalPalette mutedPalette,
+      BaseTonalPalette neutralPalette,
       double primarySourceColorTone,
       double mutedSourceColorTone,
       double neutralSourceColorTone,

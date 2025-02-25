@@ -18,6 +18,7 @@ package org.pushingpixels.ephemeral.chroma.dynamiccolor;
 
 import org.pushingpixels.ephemeral.chroma.contrast.Contrast;
 import org.pushingpixels.ephemeral.chroma.hct.Hct;
+import org.pushingpixels.ephemeral.chroma.palettes.BaseTonalPalette;
 import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
 import org.pushingpixels.ephemeral.chroma.utils.MathUtils;
 
@@ -57,7 +58,7 @@ import static java.lang.Math.min;
 @SuppressWarnings({"AndroidJdkLibsChecker", "NewApi"})
 public final class DynamicSchemeColor {
   public final String name;
-  public final Function<DynamicScheme, TonalPalette> palette;
+  public final Function<DynamicScheme, BaseTonalPalette> palette;
   public final Function<DynamicScheme, Double> tone;
   public final boolean isBackground;
   public final Function<DynamicScheme, DynamicSchemeColor> background;
@@ -100,7 +101,7 @@ public final class DynamicSchemeColor {
    */
   public DynamicSchemeColor(
       String name,
-      Function<DynamicScheme, TonalPalette> palette,
+      Function<DynamicScheme, BaseTonalPalette> palette,
       Function<DynamicScheme, Double> tone,
       boolean isBackground,
       Function<DynamicScheme, DynamicSchemeColor> background,

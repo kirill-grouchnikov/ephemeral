@@ -20,16 +20,18 @@ import org.pushingpixels.ephemeral.chroma.hct.Hct;
 import java.util.HashMap;
 import java.util.Map;
 
+// This is a modified version of the original source code, changed to fit the Chroma needs
+
 /**
  * A convenience class for retrieving colors that are constant in hue and chroma, but vary in tone.
  *
  * <p>TonalPalette is intended for use in a single thread due to its stateful caching.
  */
-public final class TonalPalette {
-  Map<Integer, Integer> cache;
-  Hct keyColor;
-  double hue;
-  double chroma;
+public final class TonalPalette implements BaseTonalPalette {
+  private final Map<Integer, Integer> cache;
+  private final Hct keyColor;
+  private final double hue;
+  private final double chroma;
 
   /**
    * Create tones using the HCT hue and chroma from a color.
@@ -76,6 +78,7 @@ public final class TonalPalette {
    * @param tone HCT tone, measured from 0 to 100.
    * @return ARGB representation of a color with that tone.
    */
+  @Override
   public int tone(int tone) {
     Integer color = cache.get(tone);
     if (color == null) {
@@ -86,6 +89,7 @@ public final class TonalPalette {
   }
 
   /** Given a tone, use hue and chroma of palette to create a color, and return it as HCT. */
+  @Override
   public Hct getHct(double tone) {
     return Hct.from(this.hue, this.chroma, tone);
   }
