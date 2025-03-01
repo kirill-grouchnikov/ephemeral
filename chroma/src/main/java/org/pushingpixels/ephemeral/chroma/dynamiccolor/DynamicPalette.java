@@ -92,6 +92,14 @@ public class DynamicPalette {
     return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceHighest());
   }
 
+  public int getTonalContainerSurfaceDim() {
+    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceDim());
+  }
+
+  public int getTonalContainerSurfaceBright() {
+    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceBright());
+  }
+
   public int getOnTonalContainer() {
     return getArgb(new ChromaDynamicPaletteColors().onTonalContainer());
   }
@@ -146,6 +154,14 @@ public class DynamicPalette {
 
   public int getPrimaryContainerSurfaceHighest() {
     return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurfaceHighest());
+  }
+
+  public int getPrimaryContainerSurfaceDim() {
+    return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurfaceDim());
+  }
+
+  public int getPrimaryContainerSurfaceBright() {
+    return getArgb(new ChromaDynamicPaletteColors().primaryContainerSurfaceBright());
   }
 
   public int getOnPrimaryContainer() {

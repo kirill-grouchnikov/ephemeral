@@ -161,6 +161,14 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceHighest(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
 
+  public int getNeutralContainerSurfaceDim() {
+    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceDim(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
+  }
+
+  public int getNeutralContainerSurfaceBright() {
+    return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceBright(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
+  }
+
   public int getOnNeutralContainer() {
     return getArgb(new ChromaDynamicSchemeColors().onNeutralContainer(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }
@@ -215,6 +223,14 @@ public class DynamicScheme {
 
   public int getMutedContainerSurfaceHighest() {
     return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceHighest(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
+  }
+
+  public int getMutedContainerSurfaceDim() {
+    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceDim(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
+  }
+
+  public int getMutedContainerSurfaceBright() {
+    return getArgb(new ChromaDynamicSchemeColors().mutedContainerSurfaceBright(), (s) -> isMutedDark, (s) -> mutedContrastLevel);
   }
 
   public int getOnMutedContainer() {
@@ -273,6 +289,14 @@ public class DynamicScheme {
     return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceHighest(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
 
+  public int getTonalContainerSurfaceDim() {
+    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceDim(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
+  }
+
+  public int getTonalContainerSurfaceBright() {
+    return getArgb(new ChromaDynamicSchemeColors().tonalContainerSurfaceBright(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
+  }
+
   public int getOnTonalContainer() {
     return getArgb(new ChromaDynamicSchemeColors().onTonalContainer(), (s) -> isTonalDark, (s) -> tonalContrastLevel);
   }
@@ -327,6 +351,14 @@ public class DynamicScheme {
 
   public int getPrimaryContainerSurfaceHighest() {
     return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceHighest(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
+  }
+
+  public int getPrimaryContainerSurfaceDim() {
+    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceDim(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
+  }
+
+  public int getPrimaryContainerSurfaceBright() {
+    return getArgb(new ChromaDynamicSchemeColors().primaryContainerSurfaceBright(), (s) -> isPrimaryDark, (s) -> primaryContrastLevel);
   }
 
   public int getOnPrimaryContainer() {

@@ -179,6 +179,46 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+
+    public DynamicBimodalPaletteColor tonalContainerSurfaceDim() {
+        return new DynamicBimodalPaletteColor(
+            /* name= */ "tonal_container_surface_dim",
+            /* tone= */ (p) -> {
+            if (isFidelity(p)) {
+                return p.isDark
+                    ? p.fidelityTone - 10.0
+                    : p.fidelityTone - 6.0;
+            }
+            return p.isDark
+                ? new ContrastCurve(20.0, 20.0, 24.0, 26.0).get(p.contrastLevel)
+                : new ContrastCurve(84.0, 84.0, 82.0, 80.0).get(p.contrastLevel);
+        },
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null);
+    }
+
+
+    public DynamicBimodalPaletteColor tonalContainerSurfaceBright() {
+        return new DynamicBimodalPaletteColor(
+            /* name= */ "tonal_container_surface_bright",
+            /* tone= */ (p) -> {
+            if (isFidelity(p)) {
+                return p.isDark
+                    ? p.fidelityTone + 12.0
+                    : p.fidelityTone + 10.0;
+            }
+            return p.isDark
+                ? new ContrastCurve(42.0, 42.0, 46.0, 48.0).get(p.contrastLevel)
+                : new ContrastCurve(100.0, 100.0, 98.0, 96.0).get(p.contrastLevel);
+        },
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null);
+    }
+
     public DynamicBimodalPaletteColor onTonalContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "on_tonal_container",
@@ -340,6 +380,30 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* tone= */ (p) -> p.isDark
             ? new ContrastCurve(74.0, 74.0, 78.0, 80.0).get(p.contrastLevel)
             : new ContrastCurve(50.0, 50.0, 48.0, 46.0).get(p.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null);
+    }
+
+    public DynamicBimodalPaletteColor primaryContainerSurfaceDim() {
+        return new DynamicBimodalPaletteColor(
+            /* name= */ "primary_container_surface_dim",
+            /* tone= */ (p) -> p.isDark
+            ? new ContrastCurve(70.0, 70.0, 74.0, 76.0).get(p.contrastLevel)
+            : new ContrastCurve(32.0, 32.0, 30.0, 28.0).get(p.contrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null);
+    }
+
+    public DynamicBimodalPaletteColor primaryContainerSurfaceBright() {
+        return new DynamicBimodalPaletteColor(
+            /* name= */ "primary_container_surface_bright",
+            /* tone= */ (p) -> p.isDark
+            ? new ContrastCurve(92.0, 92.0, 96.0, 98.0).get(p.contrastLevel)
+            : new ContrastCurve(55.0, 55.0, 53.0, 51.0).get(p.contrastLevel),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,

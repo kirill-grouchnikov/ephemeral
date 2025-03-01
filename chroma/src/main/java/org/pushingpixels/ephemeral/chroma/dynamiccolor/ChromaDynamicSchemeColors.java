@@ -197,6 +197,48 @@ public final class ChromaDynamicSchemeColors {
         /* toneDeltaPair= */ null);
   }
 
+    public DynamicSchemeColor neutralContainerSurfaceDim() {
+        return new DynamicSchemeColor(
+            /* name= */ "neutral_container_surface_dim",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> {
+                if (isFidelity(s)) {
+                    return s.isNeutralDark
+                        ? s.neutralSourceColorTone - 10.0
+                        : s.neutralSourceColorTone - 6.0;
+                }
+                return s.isNeutralDark
+                    ? new ContrastCurve(20.0, 20.0, 24.0, 26.0).get(s.neutralContrastLevel)
+                    : new ContrastCurve(84.0, 84.0, 82.0, 80.0).get(s.neutralContrastLevel);
+            },
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor neutralContainerSurfaceBright() {
+        return new DynamicSchemeColor(
+            /* name= */ "neutral_container_surface_bright",
+            /* palette= */ (s) -> s.neutralPalette,
+            /* tone= */ (s) -> {
+                if (isFidelity(s)) {
+                    return s.isNeutralDark
+                        ? s.neutralSourceColorTone + 12.0
+                        : s.neutralSourceColorTone + 10.0;
+                }
+                return s.isNeutralDark
+                    ? new ContrastCurve(42.0, 42.0, 46.0, 48.0).get(s.neutralContrastLevel)
+                    : new ContrastCurve(100.0, 100.0, 98.0, 96.0).get(s.neutralContrastLevel);
+            },
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
   public DynamicSchemeColor onNeutralContainer() {
     return new DynamicSchemeColor(
         /* name= */ "on_neutral_container",
@@ -392,6 +434,34 @@ public final class ChromaDynamicSchemeColors {
         /* toneDeltaPair= */ null);
   }
 
+    public DynamicSchemeColor primaryContainerSurfaceDim() {
+        return new DynamicSchemeColor(
+            /* name= */ "primary_container_surface_dim",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isPrimaryDark
+            ? new ContrastCurve(70.0, 70.0, 74.0, 76.0).get(s.primaryContrastLevel)
+            : new ContrastCurve(32.0, 32.0, 30.0, 28.0).get(s.primaryContrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor primaryContainerSurfaceBright() {
+        return new DynamicSchemeColor(
+            /* name= */ "primary_container_surface_bright",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> s.isPrimaryDark
+            ? new ContrastCurve(92.0, 92.0, 96.0, 98.0).get(s.primaryContrastLevel)
+            : new ContrastCurve(55.0, 55.0, 53.0, 51.0).get(s.primaryContrastLevel),
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
   public DynamicSchemeColor onPrimaryContainer() {
     return new DynamicSchemeColor(
         /* name= */ "on_primary_container",
@@ -584,26 +654,68 @@ public final class ChromaDynamicSchemeColors {
         /* toneDeltaPair= */ null);
   }
 
-  public DynamicSchemeColor mutedContainerSurfaceHighest() {
-    return new DynamicSchemeColor(
-        /* name= */ "muted_container_surface_highest",
-        /* palette= */ (s) -> s.mutedPalette,
-        /* tone= */ (s) -> {
-          if (isFidelity(s)) {
-            return s.isMutedDark
-                ? s.mutedSourceColorTone + 10.0
-                : s.mutedSourceColorTone - 4.0;
-          }
-          return s.isMutedDark
-              ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.mutedContrastLevel)
-              : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.mutedContrastLevel);
-        },
-        /* isBackground= */ true,
-        /* background= */ null,
-        /* secondBackground= */ null,
-        /* contrastCurve= */ null,
-        /* toneDeltaPair= */ null);
-  }
+    public DynamicSchemeColor mutedContainerSurfaceHighest() {
+        return new DynamicSchemeColor(
+            /* name= */ "muted_container_surface_highest",
+            /* palette= */ (s) -> s.mutedPalette,
+            /* tone= */ (s) -> {
+                if (isFidelity(s)) {
+                    return s.isMutedDark
+                        ? s.mutedSourceColorTone + 10.0
+                        : s.mutedSourceColorTone - 4.0;
+                }
+                return s.isMutedDark
+                    ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.mutedContrastLevel)
+                    : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.mutedContrastLevel);
+            },
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor mutedContainerSurfaceDim() {
+        return new DynamicSchemeColor(
+            /* name= */ "muted_container_surface_dim",
+            /* palette= */ (s) -> s.mutedPalette,
+            /* tone= */ (s) -> {
+                if (isFidelity(s)) {
+                    return s.isMutedDark
+                        ? s.mutedSourceColorTone - 10.0
+                        : s.mutedSourceColorTone - 6.0;
+                }
+                return s.isMutedDark
+                    ? new ContrastCurve(20.0, 20.0, 24.0, 26.0).get(s.mutedContrastLevel)
+                    : new ContrastCurve(84.0, 84.0, 82.0, 80.0).get(s.mutedContrastLevel);
+            },
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor mutedContainerSurfaceBright() {
+        return new DynamicSchemeColor(
+            /* name= */ "muted_container_surface_bright",
+            /* palette= */ (s) -> s.mutedPalette,
+            /* tone= */ (s) -> {
+                if (isFidelity(s)) {
+                    return s.isMutedDark
+                        ? s.mutedSourceColorTone + 12.0
+                        : s.mutedSourceColorTone + 10.0;
+                }
+                return s.isMutedDark
+                    ? new ContrastCurve(42.0, 42.0, 46.0, 48.0).get(s.mutedContrastLevel)
+                    : new ContrastCurve(100.0, 100.0, 98.0, 96.0).get(s.mutedContrastLevel);
+            },
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
 
   public DynamicSchemeColor onMutedContainer() {
     return new DynamicSchemeColor(
@@ -832,6 +944,48 @@ public final class ChromaDynamicSchemeColors {
         /* contrastCurve= */ null,
         /* toneDeltaPair= */ null);
   }
+
+    public DynamicSchemeColor tonalContainerSurfaceDim() {
+        return new DynamicSchemeColor(
+            /* name= */ "tonal_container_surface_dim",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> {
+                if (isFidelity(s)) {
+                    return s.isTonalDark
+                        ? s.primarySourceColorTone - 10.0
+                        : s.primarySourceColorTone - 6.0;
+                }
+                return s.isTonalDark
+                    ? new ContrastCurve(20.0, 20.0, 24.0, 26.0).get(s.tonalContrastLevel)
+                    : new ContrastCurve(84.0, 84.0, 82.0, 80.0).get(s.tonalContrastLevel);
+            },
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
+
+    public DynamicSchemeColor tonalContainerSurfaceBright() {
+        return new DynamicSchemeColor(
+            /* name= */ "tonal_container_surface_bright",
+            /* palette= */ (s) -> s.primaryPalette,
+            /* tone= */ (s) -> {
+                if (isFidelity(s)) {
+                    return s.isTonalDark
+                        ? s.primarySourceColorTone + 12.0
+                        : s.primarySourceColorTone + 10.0;
+                }
+                return s.isTonalDark
+                    ? new ContrastCurve(42.0, 42.0, 46.0, 48.0).get(s.tonalContrastLevel)
+                    : new ContrastCurve(100.0, 100.0, 98.0, 96.0).get(s.tonalContrastLevel);
+            },
+            /* isBackground= */ true,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ null,
+            /* toneDeltaPair= */ null);
+    }
 
   public DynamicSchemeColor onTonalContainer() {
     return new DynamicSchemeColor(

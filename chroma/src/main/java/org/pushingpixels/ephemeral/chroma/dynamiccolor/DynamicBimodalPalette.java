@@ -131,6 +131,14 @@ public class DynamicBimodalPalette {
     return getArgb(new ChromaDynamicBimodalPaletteColors().tonalContainerSurfaceHighest());
   }
 
+  public int getTonalContainerSurfaceDim() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().tonalContainerSurfaceDim());
+  }
+
+  public int getTonalContainerSurfaceBright() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().tonalContainerSurfaceBright());
+  }
+
   public int getOnTonalContainer() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().onTonalContainer());
   }
@@ -185,6 +193,14 @@ public class DynamicBimodalPalette {
 
   public int getPrimaryContainerSurfaceHighest() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurfaceHighest());
+  }
+
+  public int getPrimaryContainerSurfaceDim() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurfaceDim());
+  }
+
+  public int getPrimaryContainerSurfaceBright() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurfaceBright());
   }
 
   public int getOnPrimaryContainer() {
