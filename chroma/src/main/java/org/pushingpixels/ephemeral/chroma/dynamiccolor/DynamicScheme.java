@@ -125,22 +125,6 @@ public class DynamicScheme {
     return dynamicSchemeColor.getArgb(this, isDark, contrastLevel);
   }
 
-  public int getSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().surface(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
-  }
-
-  public int getSurfaceDim() {
-    return getArgb(new ChromaDynamicSchemeColors().surfaceDim(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
-  }
-
-  public int getSurfaceBright() {
-    return getArgb(new ChromaDynamicSchemeColors().surfaceBright(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
-  }
-  
-  public int getInverseSurface() {
-    return getArgb(new ChromaDynamicSchemeColors().inverseSurface(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
-  }
-
   public int getNeutralContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicSchemeColors().neutralContainerSurfaceLowest(), (s) -> isNeutralDark, (s) -> neutralContrastLevel);
   }

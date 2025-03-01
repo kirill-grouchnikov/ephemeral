@@ -25,75 +25,6 @@ public final class ChromaDynamicSchemeColors {
   public ChromaDynamicSchemeColors() {
   }
 
-  public DynamicSchemeColor highestSurface(DynamicScheme s) {
-    return s.isNeutralDark ? surfaceBright() : surfaceDim();
-  }
-
-  public DynamicSchemeColor surface() {
-    return new DynamicSchemeColor(
-        /* name= */ "surface",
-        /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) -> {
-          if (isFidelity(s)) {
-            return s.neutralSourceColorTone;
-          }
-          return s.isNeutralDark ? 6.0 : 98.0;
-        },
-        /* isBackground= */ true,
-        /* background= */ null,
-        /* secondBackground= */ null,
-        /* contrastCurve= */ null,
-        /* toneDeltaPair= */ null);
-  }
-
-  public DynamicSchemeColor surfaceDim() {
-    return new DynamicSchemeColor(
-        /* name= */ "surface_dim",
-        /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) -> {
-          if (isFidelity(s)) {
-            return s.isNeutralDark ? s.neutralSourceColorTone - 10.0
-                : s.neutralSourceColorTone - 6.0;
-          }
-          return s.isNeutralDark ? 3.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(s.neutralContrastLevel);
-        },
-        /* isBackground= */ true,
-        /* background= */ null,
-        /* secondBackground= */ null,
-        /* contrastCurve= */ null,
-        /* toneDeltaPair= */ null);
-  }
-
-  public DynamicSchemeColor surfaceBright() {
-    return new DynamicSchemeColor(
-        /* name= */ "surface_bright",
-        /* palette= */ (s) -> s.neutralPalette,
-        /* tone= */ (s) -> {
-          if (isFidelity(s)) {
-            return s.isNeutralDark ? s.neutralSourceColorTone + 12.0
-                : s.neutralSourceColorTone + 10.0;
-          }
-          return s.isNeutralDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(s.neutralContrastLevel) : 99.0;
-        },
-        /* isBackground= */ true,
-        /* background= */ null,
-        /* secondBackground= */ null,
-        /* contrastCurve= */ null,
-        /* toneDeltaPair= */ null);
-  }
-
-    public DynamicSchemeColor inverseSurface() {
-        return new DynamicSchemeColor(
-            /* name= */ "inverse_surface",
-            /* palette= */ (s) -> s.neutralPalette,
-            /* tone= */ (s) -> s.isNeutralDark ? 90.0 : 20.0,
-            /* isBackground= */ true,
-            /* background= */ null,
-            /* secondBackground= */ null,
-            /* contrastCurve= */ null,
-            /* toneDeltaPair= */ null);
-    }
-
   public DynamicSchemeColor neutralContainerSurfaceLowest() {
     return new DynamicSchemeColor(
         /* name= */ "neutral_container_surface_lowest",
@@ -252,7 +183,7 @@ public final class ChromaDynamicSchemeColors {
             return s.isNeutralDark ? 90.0 : 10.0;
         },
         /* isBackground= */ false,
-        /* background= */ (s) -> (isFidelity(s)) ? null : highestSurface(s),
+        /* background= */ (s) -> (isFidelity(s)) ? null : neutralContainerSurface(),
         /* secondBackground= */ null,
         /* contrastCurve= */ new ContrastCurve(4.5, 7.0, 11.0, 21.0),
         /* toneDeltaPair= */ null);
@@ -264,7 +195,7 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> s.isNeutralDark ? 80.0 : 40.0,
         /* isBackground= */ false,
-        /* background= */ this::highestSurface,
+        /* background= */ (s) -> (isFidelity(s)) ? null : neutralContainerSurface(),
         /* secondBackground= */ null,
         /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0),
         /* toneDeltaPair= */ null);

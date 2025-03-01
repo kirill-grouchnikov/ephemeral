@@ -56,22 +56,6 @@ public class DynamicPalette {
     return dynamicPaletteColor.getArgb(this);
   }
 
-  public int getSurface() {
-    return getArgb(new ChromaDynamicPaletteColors().surface());
-  }
-
-  public int getSurfaceDim() {
-    return getArgb(new ChromaDynamicPaletteColors().surfaceDim());
-  }
-
-  public int getSurfaceBright() {
-    return getArgb(new ChromaDynamicPaletteColors().surfaceBright());
-  }
-
-  public int getInverseSurface() {
-    return getArgb(new ChromaDynamicPaletteColors().inverseSurface());
-  }
-
   public int getTonalContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceLowest());
   }

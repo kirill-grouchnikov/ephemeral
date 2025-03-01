@@ -95,22 +95,6 @@ public class DynamicBimodalPalette {
     return dynamicPaletteColor.getArgb(this);
   }
 
-  public int getSurface() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().surface());
-  }
-
-  public int getSurfaceDim() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().surfaceDim());
-  }
-
-  public int getSurfaceBright() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().surfaceBright());
-  }
-
-  public int getInverseSurface() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().inverseSurface());
-  }
-
   public int getTonalContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().tonalContainerSurfaceLowest());
   }

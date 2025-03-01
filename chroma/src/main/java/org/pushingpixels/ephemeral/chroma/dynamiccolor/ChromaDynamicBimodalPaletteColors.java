@@ -25,67 +25,6 @@ public final class ChromaDynamicBimodalPaletteColors {
   public ChromaDynamicBimodalPaletteColors() {
   }
 
-  public DynamicBimodalPaletteColor highestSurface(DynamicBimodalPalette p) {
-    return p.isDark ? surfaceBright() : surfaceDim();
-  }
-
-    public DynamicBimodalPaletteColor surface() {
-        return new DynamicBimodalPaletteColor(
-            /* name= */ "surface",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.fidelityTone;
-            }
-            return p.isDark ? 6.0 : 98.0;
-        },
-            /* isBackground= */ true,
-            /* background= */ null,
-            /* secondBackground= */ null,
-            /* contrastCurve= */ null);
-    }
-
-    public DynamicBimodalPaletteColor surfaceDim() {
-        return new DynamicBimodalPaletteColor(
-            /* name= */ "surface_dim",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.isDark ? p.fidelityTone -10.0
-                    : p.fidelityTone - 6.0;
-            }
-            return p.isDark ? 3.0 : new ContrastCurve(87.0, 87.0, 80.0, 75.0).get(p.contrastLevel);
-        },
-            /* isBackground= */ true,
-            /* background= */ null,
-            /* secondBackground= */ null,
-            /* contrastCurve= */ null);
-    }
-
-    public DynamicBimodalPaletteColor surfaceBright() {
-        return new DynamicBimodalPaletteColor(
-            /* name= */ "surface_bright",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.isDark ? p.fidelityTone + 12.0
-                    : p.fidelityTone + 10.0;
-            }
-            return p.isDark ? new ContrastCurve(24.0, 24.0, 29.0, 34.0).get(p.contrastLevel) : 99.0;
-        },
-            /* isBackground= */ true,
-            /* background= */ null,
-            /* secondBackground= */ null,
-            /* contrastCurve= */ null);
-    }
-
-    public DynamicBimodalPaletteColor inverseSurface() {
-        return new DynamicBimodalPaletteColor(
-            /* name= */ "inverse_surface",
-            /* tone= */ (p) -> p.isDark ? 90.0 : 20.0,
-            /* isBackground= */ true,
-            /* background= */ null,
-            /* secondBackground= */ null,
-            /* contrastCurve= */ null);
-    }
-
     public DynamicBimodalPaletteColor tonalContainerSurfaceLowest() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_lowest",
