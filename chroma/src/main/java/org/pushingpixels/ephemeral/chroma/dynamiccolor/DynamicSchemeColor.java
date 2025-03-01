@@ -265,6 +265,8 @@ public final class DynamicSchemeColor {
     } else {
       // Case 2: No contrast pair; just solve for itself.
       double answer = tone.apply(scheme);
+      answer = Math.max(answer, 0.0);
+      answer = Math.min(answer, 100.0);
 
       if (background == null) {
         return answer; // No adjustment for colors with no background.

@@ -99,12 +99,14 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "neutral_container_surface_lowest",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
-          if (isFidelity(s)) {
+            if (isFidelity(s)) {
+                return s.isNeutralDark
+                    ? s.neutralSourceColorTone - 8.0
+                    : s.neutralSourceColorTone + 8.0;
+            }
             return s.isNeutralDark
-                ? s.neutralSourceColorTone - 2.0
-                : s.neutralSourceColorTone + 2.0;
-          }
-          return s.isNeutralDark ? new ContrastCurve(4.0, 4.0, 2.0, 0.0).get(s.neutralContrastLevel) : 100.0;
+                ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(s.neutralContrastLevel)
+                : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -118,14 +120,14 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "neutral_container_surface_low",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
-          if (isFidelity(s)) {
+            if (isFidelity(s)) {
+                return s.isNeutralDark
+                    ? s.neutralSourceColorTone - 2.0
+                    : s.neutralSourceColorTone + 4.0;
+            }
             return s.isNeutralDark
-                ? s.neutralSourceColorTone + 4.0
-                : s.neutralSourceColorTone - 2.0;
-          }
-          return s.isNeutralDark
-              ? new ContrastCurve(10.0, 10.0, 11.0, 12.0).get(s.neutralContrastLevel)
-              : new ContrastCurve(96.0, 96.0, 96.0, 95.0).get(s.neutralContrastLevel);
+                ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(s.neutralContrastLevel)
+                : new ContrastCurve(92.0, 92.0, 90.0, 88.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -140,13 +142,11 @@ public final class ChromaDynamicSchemeColors {
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
            if (isFidelity(s)) {
-             return s.isNeutralDark
-                 ? s.neutralSourceColorTone + 6.0
-                 : s.neutralSourceColorTone - 4.0;
+             return s.neutralSourceColorTone;
            }
            return s.isNeutralDark
-               ? new ContrastCurve(12.0, 12.0, 16.0, 20.0).get(s.neutralContrastLevel)
-               : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(s.neutralContrastLevel);
+               ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(s.neutralContrastLevel)
+               : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -160,14 +160,14 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "neutral_container_surface_high",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
-          if (isFidelity(s)) {
+            if (isFidelity(s)) {
+                return s.isNeutralDark
+                    ? s.neutralSourceColorTone + 5.0
+                    : s.neutralSourceColorTone - 2.0;
+            }
             return s.isNeutralDark
-                ? s.neutralSourceColorTone + 11.0
-                : s.neutralSourceColorTone - 6.0;
-          }
-          return s.isNeutralDark
-              ? new ContrastCurve(17.0, 17.0, 21.0, 25.0).get(s.neutralContrastLevel)
-              : new ContrastCurve(92.0, 92.0, 88.0, 85.0).get(s.neutralContrastLevel);
+                ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(s.neutralContrastLevel)
+                : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
@@ -181,14 +181,14 @@ public final class ChromaDynamicSchemeColors {
         /* name= */ "neutral_container_surface_highest",
         /* palette= */ (s) -> s.neutralPalette,
         /* tone= */ (s) -> {
-          if (isFidelity(s)) {
+            if (isFidelity(s)) {
+                return s.isNeutralDark
+                    ? s.neutralSourceColorTone + 10.0
+                    : s.neutralSourceColorTone - 4.0;
+            }
             return s.isNeutralDark
-                ? s.neutralSourceColorTone + 16.0
-                : s.neutralSourceColorTone - 8.0;
-          }
-          return s.isNeutralDark
-              ? new ContrastCurve(22.0, 22.0, 26.0, 30.0).get(s.neutralContrastLevel)
-              : new ContrastCurve(90.0, 90.0, 84.0, 80.0).get(s.neutralContrastLevel);
+                ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(s.neutralContrastLevel)
+                : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(s.neutralContrastLevel);
         },
         /* isBackground= */ true,
         /* background= */ null,
