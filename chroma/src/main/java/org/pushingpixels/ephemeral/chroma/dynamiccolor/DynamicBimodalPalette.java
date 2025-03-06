@@ -32,7 +32,6 @@ public class DynamicBimodalPalette {
     FULL_SPAN, TONAL_CONTAINER_SURFACES
   }
 
-  public final boolean isFidelity;
   public final boolean isDark;
   public final double contrastLevel;
   public final TonalPalette paletteOne;
@@ -40,55 +39,20 @@ public class DynamicBimodalPalette {
   public final double fidelityTone;
   public final TransitionRange transitionRange;
 
-  private DynamicBimodalPalette(
+  public DynamicBimodalPalette(
       Hct seedOne,
       Hct seedTwo,
       TransitionRange transitionRange,
-      boolean isFidelity,
       double fidelityTone,
       boolean isDark,
       double contrastLevel) {
     this.transitionRange = transitionRange;
-    this.isFidelity = isFidelity;
     this.fidelityTone = fidelityTone;
     this.isDark = isDark;
     this.contrastLevel = contrastLevel;
 
     this.paletteOne = TonalPalette.fromHct(seedOne);
     this.paletteTwo = TonalPalette.fromHct(seedTwo);
-  }
-
-  public static DynamicBimodalPalette fidelity(
-      Hct seedOne,
-      Hct seedTwo,
-      TransitionRange transitionRange,
-      boolean isDark,
-      double fidelityTone,
-      double contrastLevel) {
-    return new DynamicBimodalPalette(
-        seedOne,
-        seedTwo,
-        transitionRange,
-        true,
-        fidelityTone,
-        isDark,
-        contrastLevel);
-  }
-
-  public static DynamicBimodalPalette balanced(
-      Hct seedOne,
-      Hct seedTwo,
-      TransitionRange transitionRange,
-      boolean isDark,
-      double contrastLevel) {
-    return new DynamicBimodalPalette(
-        seedOne,
-        seedTwo,
-        transitionRange,
-        false,
-        -1,
-        isDark,
-        contrastLevel);
   }
 
   /* internal */

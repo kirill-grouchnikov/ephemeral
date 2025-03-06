@@ -28,16 +28,9 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor tonalContainerSurfaceLowest() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_lowest",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.isDark
-                    ? p.fidelityTone - 8.0
-                    : p.fidelityTone + 8.0;
-            }
-            return p.isDark
-                ? new ContrastCurve(22.0, 22.0, 26.0, 28.0).get(p.contrastLevel)
-                : new ContrastCurve(94.0, 94.0, 92.0, 90.0).get(p.contrastLevel);
-        },
+            /* tone= */ (p) -> p.isDark
+                ? p.fidelityTone - 8.0
+                : p.fidelityTone + 8.0,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -47,16 +40,9 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor tonalContainerSurfaceLow() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_low",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.isDark
-                    ? p.fidelityTone - 2.0
-                    : p.fidelityTone + 4.0;
-            }
-            return p.isDark
-                ? new ContrastCurve(28.0, 28.0, 32.0, 34.0).get(p.contrastLevel)
-                : new ContrastCurve(92.0, 92.0, 90.0, 88.0).get(p.contrastLevel);
-        },
+            /* tone= */ (p) -> p.isDark
+                ? p.fidelityTone - 2.0
+                : p.fidelityTone + 4.0,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -66,14 +52,7 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor tonalContainerSurface() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.fidelityTone;
-            }
-            return p.isDark
-                ? new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(p.contrastLevel)
-                : new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(p.contrastLevel);
-        },
+            /* tone= */ (p) -> p.fidelityTone,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -83,16 +62,9 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor tonalContainerSurfaceHigh() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_high",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.isDark
-                    ? p.fidelityTone + 5.0
-                    : p.fidelityTone - 2.0;
-            }
-            return p.isDark
-                ? new ContrastCurve(35.0, 35.0, 39.0, 41.0).get(p.contrastLevel)
-                : new ContrastCurve(88.0, 88.0, 86.0, 84.0).get(p.contrastLevel);
-        },
+            /* tone= */ (p) -> p.isDark
+                ? p.fidelityTone + 5.0
+                : p.fidelityTone - 2.0,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -102,16 +74,9 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor tonalContainerSurfaceHighest() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_highest",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.isDark
-                    ? p.fidelityTone + 10.0
-                    : p.fidelityTone - 4.0;
-            }
-            return p.isDark
-                ? new ContrastCurve(40.0, 40.0, 44.0, 46.0).get(p.contrastLevel)
-                : new ContrastCurve(86.0, 86.0, 84.0, 82.0).get(p.contrastLevel);
-        },
+            /* tone= */ (p) -> p.isDark
+                ? p.fidelityTone + 10.0
+                : p.fidelityTone - 4.0,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -122,16 +87,9 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor tonalContainerSurfaceDim() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_dim",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.isDark
-                    ? p.fidelityTone - 10.0
-                    : p.fidelityTone - 6.0;
-            }
-            return p.isDark
-                ? new ContrastCurve(20.0, 20.0, 24.0, 26.0).get(p.contrastLevel)
-                : new ContrastCurve(84.0, 84.0, 82.0, 80.0).get(p.contrastLevel);
-        },
+            /* tone= */ (p) -> p.isDark
+                ? p.fidelityTone - 10.0
+                : p.fidelityTone - 6.0,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -142,16 +100,9 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor tonalContainerSurfaceBright() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_bright",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return p.isDark
-                    ? p.fidelityTone + 12.0
-                    : p.fidelityTone + 10.0;
-            }
-            return p.isDark
-                ? new ContrastCurve(42.0, 42.0, 46.0, 48.0).get(p.contrastLevel)
-                : new ContrastCurve(100.0, 100.0, 98.0, 96.0).get(p.contrastLevel);
-        },
+            /* tone= */ (p) -> p.isDark
+                ? p.fidelityTone + 12.0
+                : p.fidelityTone + 10.0,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -161,16 +112,11 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor onTonalContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "on_tonal_container",
-            /* tone= */ (p) -> {
-            if (isFidelity(p)) {
-                return DynamicBimodalPaletteColor.foregroundTone(tonalContainerSurface().tone.apply(p),
-                    new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.contrastLevel),
-                    false, p.isDark);
-            }
-            return p.isDark ? 90.0 : 30.0;
-        },
+            /* tone= */ (p) -> DynamicBimodalPaletteColor.foregroundTone(tonalContainerSurface().tone.apply(p),
+                new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.contrastLevel),
+                false, p.isDark),
         /* isBackground= */ false,
-        /* background= */ (p) -> (isFidelity(p)) ? null : tonalContainerSurface(),
+        /* background= */ null,
         /* secondBackground= */ null,
         /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
@@ -446,11 +392,7 @@ public final class ChromaDynamicBimodalPaletteColors {
             return 0.0;
         }
 
-        if (palette.isFidelity) {
-            return palette.isDark ? palette.fidelityTone - 10.0 : palette.fidelityTone - 6.0;
-        }
-
-        return palette.isDark ? 20.0 : 84.0;
+        return palette.isDark ? palette.fidelityTone - 10.0 : palette.fidelityTone - 6.0;
     }
 
     /* internal */ double getTransitionRangeToneEnd(DynamicBimodalPalette palette) {
@@ -458,14 +400,6 @@ public final class ChromaDynamicBimodalPaletteColors {
             return 100.0;
         }
 
-        if (palette.isFidelity) {
-            return palette.isDark ? palette.fidelityTone + 12.0 : palette.fidelityTone + 10.0;
-        }
-
-        return palette.isDark ? 42.0 : 100.0;
+        return palette.isDark ? palette.fidelityTone + 12.0 : palette.fidelityTone + 10.0;
     }
-
-    private boolean isFidelity(DynamicBimodalPalette palette) {
-    return palette.isFidelity;
-  }
 }

@@ -193,12 +193,12 @@ public final class DynamicBimodalPaletteColor {
         // Don't "improve" what's good enough.
       } else {
         // Rough improvement.
-        answer = DynamicBimodalPaletteColor.foregroundTone(bgTone, desiredRatio, !palette.isFidelity,
+        answer = DynamicBimodalPaletteColor.foregroundTone(bgTone, desiredRatio, false,
             palette.isDark);
       }
 
       if (decreasingContrast) {
-        answer = DynamicBimodalPaletteColor.foregroundTone(bgTone, desiredRatio, !palette.isFidelity,
+        answer = DynamicBimodalPaletteColor.foregroundTone(bgTone, desiredRatio, false,
             palette.isDark);
       }
 
@@ -275,7 +275,7 @@ public final class DynamicBimodalPaletteColor {
     boolean preferLighter = tonePrefersLightForeground(bgTone);
 
     if (preferLighter) {
-      // "Neglible difference" handles an edge case where the initial contrast ratio is high
+      // "Negligible difference" handles an edge case where the initial contrast ratio is high
       // (ex. 13.0), and the ratio passed to the function is that high ratio, and both the lighter
       // and darker ratio fails to pass that ratio.
       //

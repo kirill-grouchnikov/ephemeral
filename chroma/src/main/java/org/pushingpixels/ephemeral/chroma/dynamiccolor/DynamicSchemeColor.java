@@ -360,7 +360,7 @@ public final class DynamicSchemeColor {
     boolean preferLighter = tonePrefersLightForeground(bgTone);
 
     if (preferLighter) {
-      // "Neglible difference" handles an edge case where the initial contrast ratio is high
+      // "Negligible difference" handles an edge case where the initial contrast ratio is high
       // (ex. 13.0), and the ratio passed to the function is that high ratio, and both the lighter
       // and darker ratio fails to pass that ratio.
       //
