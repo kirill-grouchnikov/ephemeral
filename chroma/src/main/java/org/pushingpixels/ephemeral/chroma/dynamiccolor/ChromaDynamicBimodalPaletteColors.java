@@ -16,8 +16,6 @@
 
 package org.pushingpixels.ephemeral.chroma.dynamiccolor;
 
-import org.pushingpixels.ephemeral.chroma.hct.Hct;
-
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
 /** Named colors, otherwise known as tokens, or roles, in the Ephemeral Design system. */
@@ -29,8 +27,8 @@ public final class ChromaDynamicBimodalPaletteColors {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_lowest",
             /* tone= */ (p) -> p.isDark
-                ? p.fidelityTone - 8.0 * p.transitionRangeAmplitudeFactor
-                : p.fidelityTone + 8.0 * p.transitionRangeAmplitudeFactor,
+                ? p.fidelityTone - 8.0 * p.tonalSurfaceRangeAmplitudeFactor
+                : p.fidelityTone + 8.0 * p.tonalSurfaceRangeAmplitudeFactor,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -41,8 +39,8 @@ public final class ChromaDynamicBimodalPaletteColors {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_low",
             /* tone= */ (p) -> p.isDark
-                ? p.fidelityTone - 2.0 * p.transitionRangeAmplitudeFactor
-                : p.fidelityTone + 4.0 * p.transitionRangeAmplitudeFactor,
+                ? p.fidelityTone - 2.0 * p.tonalSurfaceRangeAmplitudeFactor
+                : p.fidelityTone + 4.0 * p.tonalSurfaceRangeAmplitudeFactor,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -63,8 +61,8 @@ public final class ChromaDynamicBimodalPaletteColors {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_high",
             /* tone= */ (p) -> p.isDark
-                ? p.fidelityTone + 5.0 * p.transitionRangeAmplitudeFactor
-                : p.fidelityTone - 2.0 * p.transitionRangeAmplitudeFactor,
+                ? p.fidelityTone + 5.0 * p.tonalSurfaceRangeAmplitudeFactor
+                : p.fidelityTone - 2.0 * p.tonalSurfaceRangeAmplitudeFactor,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -75,8 +73,8 @@ public final class ChromaDynamicBimodalPaletteColors {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_highest",
             /* tone= */ (p) -> p.isDark
-                ? p.fidelityTone + 10.0 * p.transitionRangeAmplitudeFactor
-                : p.fidelityTone - 4.0 * p.transitionRangeAmplitudeFactor,
+                ? p.fidelityTone + 10.0 * p.tonalSurfaceRangeAmplitudeFactor
+                : p.fidelityTone - 4.0 * p.tonalSurfaceRangeAmplitudeFactor,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -88,8 +86,8 @@ public final class ChromaDynamicBimodalPaletteColors {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_dim",
             /* tone= */ (p) -> p.isDark
-                ? p.fidelityTone - 10.0 * p.transitionRangeAmplitudeFactor
-                : p.fidelityTone - 6.0 * p.transitionRangeAmplitudeFactor,
+                ? p.fidelityTone - 10.0 * p.tonalSurfaceRangeAmplitudeFactor
+                : p.fidelityTone - 6.0 * p.tonalSurfaceRangeAmplitudeFactor,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -101,8 +99,8 @@ public final class ChromaDynamicBimodalPaletteColors {
         return new DynamicBimodalPaletteColor(
             /* name= */ "tonal_container_surface_bright",
             /* tone= */ (p) -> p.isDark
-                ? p.fidelityTone + 12.0 * p.transitionRangeAmplitudeFactor
-                : p.fidelityTone + 10.0 * p.transitionRangeAmplitudeFactor,
+                ? p.fidelityTone + 12.0 * p.tonalSurfaceRangeAmplitudeFactor
+                : p.fidelityTone + 10.0 * p.tonalSurfaceRangeAmplitudeFactor,
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -392,8 +390,8 @@ public final class ChromaDynamicBimodalPaletteColors {
             return 0.0;
         }
 
-        return palette.isDark ? palette.fidelityTone - 10.0 * palette.transitionRangeAmplitudeFactor
-            : palette.fidelityTone - 6.0 * palette.transitionRangeAmplitudeFactor;
+        return palette.isDark ? palette.fidelityTone - 10.0 * palette.tonalSurfaceRangeAmplitudeFactor
+            : palette.fidelityTone - 6.0 * palette.tonalSurfaceRangeAmplitudeFactor;
     }
 
     /* internal */ double getTransitionRangeToneEnd(DynamicBimodalPalette palette) {
@@ -401,7 +399,7 @@ public final class ChromaDynamicBimodalPaletteColors {
             return 100.0;
         }
 
-        return palette.isDark ? palette.fidelityTone + 12.0 * palette.transitionRangeAmplitudeFactor
-            : palette.fidelityTone + 10.0 * palette.transitionRangeAmplitudeFactor;
+        return palette.isDark ? palette.fidelityTone + 12.0 * palette.tonalSurfaceRangeAmplitudeFactor
+            : palette.fidelityTone + 10.0 * palette.tonalSurfaceRangeAmplitudeFactor;
     }
 }
