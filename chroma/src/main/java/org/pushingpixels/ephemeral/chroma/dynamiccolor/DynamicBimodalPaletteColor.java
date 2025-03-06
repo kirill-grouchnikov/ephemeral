@@ -144,24 +144,10 @@ public final class DynamicBimodalPaletteColor {
     Hct fromSeedOne = palette.paletteOne.getHct(tone);
     Hct fromSeedTwo = palette.paletteTwo.getHct(tone);
 
+    double transitionToneStart = palette.getTransitionRangeToneStart();
+    double transitionToneEnd = palette.getTransitionRangeToneEnd();
     Hct answer;
     // Do we need to interpolate?
-    double transitionToneStart;
-    double transitionToneEnd;
-    if (palette.transitionRange == DynamicBimodalPalette.TransitionRange.FULL_SPAN) {
-      transitionToneStart = 0.0;
-      transitionToneEnd = 100.0;
-    } else {
-      if (palette.isFidelity) {
-        transitionToneStart = palette.isDark ? palette.fidelityTone - 8.0 :
-            palette.fidelityTone - 4.0;
-        transitionToneEnd = palette.isDark ? palette.fidelityTone + 10.0 :
-            palette.fidelityTone + 8.0;
-      } else {
-        transitionToneStart = palette.isDark ? 22.0 : 82.0;
-        transitionToneEnd = palette.isDark ? 46.0 : 94.0;
-      }
-    }
     if (tone <= transitionToneStart) {
       answer = fromSeedOne;
     } else if (tone >= transitionToneEnd) {

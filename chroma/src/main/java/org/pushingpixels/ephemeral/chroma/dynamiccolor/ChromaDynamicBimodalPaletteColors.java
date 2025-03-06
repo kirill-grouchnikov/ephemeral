@@ -441,6 +441,30 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ new ContrastCurve(1.0, 1.0, 3.0, 4.5));
     }
 
+    /* internal */ double getTransitionRangeToneStart(DynamicBimodalPalette palette) {
+        if (palette.transitionRange == DynamicBimodalPalette.TransitionRange.FULL_SPAN) {
+            return 0.0;
+        }
+
+        if (palette.isFidelity) {
+            return palette.isDark ? palette.fidelityTone - 10.0 : palette.fidelityTone - 6.0;
+        }
+
+        return palette.isDark ? 20.0 : 84.0;
+    }
+
+    /* internal */ double getTransitionRangeToneEnd(DynamicBimodalPalette palette) {
+        if (palette.transitionRange == DynamicBimodalPalette.TransitionRange.FULL_SPAN) {
+            return 100.0;
+        }
+
+        if (palette.isFidelity) {
+            return palette.isDark ? palette.fidelityTone + 12.0 : palette.fidelityTone + 10.0;
+        }
+
+        return palette.isDark ? 42.0 : 100.0;
+    }
+
     private boolean isFidelity(DynamicBimodalPalette palette) {
     return palette.isFidelity;
   }

@@ -91,6 +91,16 @@ public class DynamicBimodalPalette {
         contrastLevel);
   }
 
+  /* internal */
+  double getTransitionRangeToneStart() {
+    return new ChromaDynamicBimodalPaletteColors().getTransitionRangeToneStart(this);
+  }
+
+  /* internal */
+  double getTransitionRangeToneEnd() {
+    return new ChromaDynamicBimodalPaletteColors().getTransitionRangeToneEnd(this);
+  }
+
   public int getArgb(DynamicBimodalPaletteColor dynamicPaletteColor) {
     return dynamicPaletteColor.getArgb(this);
   }
