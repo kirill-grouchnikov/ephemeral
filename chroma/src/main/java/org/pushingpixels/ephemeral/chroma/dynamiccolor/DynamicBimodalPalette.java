@@ -38,15 +38,18 @@ public class DynamicBimodalPalette {
   public final TonalPalette paletteTwo;
   public final double fidelityTone;
   public final TransitionRange transitionRange;
+  public final double transitionRangeAmplitudeFactor;
 
   public DynamicBimodalPalette(
       Hct seedOne,
       Hct seedTwo,
       TransitionRange transitionRange,
+      double transitionRangeAmplitudeFactor,
       double fidelityTone,
       boolean isDark,
       double contrastLevel) {
     this.transitionRange = transitionRange;
+    this.transitionRangeAmplitudeFactor = transitionRangeAmplitudeFactor;
     this.fidelityTone = fidelityTone;
     this.isDark = isDark;
     this.contrastLevel = contrastLevel;
