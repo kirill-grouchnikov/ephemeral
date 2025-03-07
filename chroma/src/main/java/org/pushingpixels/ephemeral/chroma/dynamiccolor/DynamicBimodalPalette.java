@@ -32,40 +32,37 @@ public class DynamicBimodalPalette {
     FULL_SPAN, TONAL_CONTAINER_SURFACES
   }
 
-  public final boolean isDark;
-  public final double contrastLevel;
   public final TonalPalette paletteOne;
   public final TonalPalette paletteTwo;
   public final double fidelityTone;
-  public final TransitionRange transitionRange;
-  public final double tonalSurfaceRangeAmplitudeFactor;
+  public final TransitionRange tonalTransitionRange;
+  public final ContainerConfiguration primaryContainerConfiguration;
+  public final ContainerConfiguration tonalContainerConfiguration;
 
   public DynamicBimodalPalette(
       Hct seedOne,
       Hct seedTwo,
-      TransitionRange transitionRange,
-      double tonalSurfaceRangeAmplitudeFactor,
+      TransitionRange tonalTransitionRange,
       double fidelityTone,
-      boolean isDark,
-      double contrastLevel) {
-    this.transitionRange = transitionRange;
-    this.tonalSurfaceRangeAmplitudeFactor = tonalSurfaceRangeAmplitudeFactor;
+      ContainerConfiguration primaryContainerConfiguration,
+      ContainerConfiguration tonalContainerConfiguration) {
+    this.tonalTransitionRange = tonalTransitionRange;
     this.fidelityTone = fidelityTone;
-    this.isDark = isDark;
-    this.contrastLevel = contrastLevel;
+    this.primaryContainerConfiguration = primaryContainerConfiguration;
+    this.tonalContainerConfiguration = tonalContainerConfiguration;
 
     this.paletteOne = TonalPalette.fromHct(seedOne);
     this.paletteTwo = TonalPalette.fromHct(seedTwo);
   }
 
   /* internal */
-  double getTransitionRangeToneStart() {
-    return new ChromaDynamicBimodalPaletteColors().getTransitionRangeToneStart(this);
+  double getTonalTransitionRangeToneStart() {
+    return new ChromaDynamicBimodalPaletteColors().getTonalTransitionRangeToneStart(this);
   }
 
   /* internal */
-  double getTransitionRangeToneEnd() {
-    return new ChromaDynamicBimodalPaletteColors().getTransitionRangeToneEnd(this);
+  double getTonalTransitionRangeToneEnd() {
+    return new ChromaDynamicBimodalPaletteColors().getTonalTransitionRangeToneEnd(this);
   }
 
   public int getArgb(DynamicBimodalPaletteColor dynamicPaletteColor) {
