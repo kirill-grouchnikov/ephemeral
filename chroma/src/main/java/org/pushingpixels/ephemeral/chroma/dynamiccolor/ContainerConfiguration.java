@@ -30,6 +30,10 @@ public class ContainerConfiguration {
         return new ContainerConfiguration(true, 0.0f, 1.0f);
     }
 
+    public ContainerConfiguration(boolean isDark, double contrastLevel) {
+        this(isDark, contrastLevel, 1.0);
+    }
+
     public ContainerConfiguration(boolean isDark, double contrastLevel, double surfaceRangeAmplitudeFactor) {
         this.isDark = isDark;
         this.contrastLevel = contrastLevel;
