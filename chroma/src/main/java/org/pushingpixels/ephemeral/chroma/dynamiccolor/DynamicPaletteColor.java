@@ -174,13 +174,11 @@ public final class DynamicPaletteColor {
         // Don't "improve" what's good enough.
       } else {
         // Rough improvement.
-        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio, !palette.isFidelity,
-            palette.isDark);
+        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio, palette.isDark);
       }
 
       if (decreasingContrast) {
-        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio, !palette.isFidelity,
-            palette.isDark);
+        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio, palette.isDark);
       }
 
       if (isBackground && 50 <= answer && answer < 60) {
@@ -242,37 +240,11 @@ public final class DynamicPaletteColor {
    * Given a background tone, find a foreground tone, while ensuring they reach a contrast ratio
    * that is as close to ratio as possible.
    */
-  public static double foregroundTone(double bgTone, double ratio,
-      boolean allowDynamicPreference, boolean isDark ) {
+  public static double foregroundTone(double bgTone, double ratio, boolean isDark ) {
     double lighterTone = Contrast.lighterUnsafe(bgTone, ratio);
     double darkerTone = Contrast.darkerUnsafe(bgTone, ratio);
 
-    if (!allowDynamicPreference) {
-      return isDark ? lighterTone : darkerTone;
-    }
-
-    double lighterRatio = Contrast.ratioOfTones(lighterTone, bgTone);
-    double darkerRatio = Contrast.ratioOfTones(darkerTone, bgTone);
-    boolean preferLighter = tonePrefersLightForeground(bgTone);
-
-    if (preferLighter) {
-      // "Negligible difference" handles an edge case where the initial contrast ratio is high
-      // (ex. 13.0), and the ratio passed to the function is that high ratio, and both the lighter
-      // and darker ratio fails to pass that ratio.
-      //
-      // This was observed with Tonal Spot's On Primary Container turning black momentarily between
-      // high and max contrast in light mode. PC's standard tone was T90, OPC's was T10, it was
-      // light mode, and the contrast level was 0.6568521221032331.
-      boolean negligibleDifference =
-          Math.abs(lighterRatio - darkerRatio) < 0.1 && lighterRatio < ratio && darkerRatio < ratio;
-      if (lighterRatio >= ratio || lighterRatio >= darkerRatio || negligibleDifference) {
-        return lighterTone;
-      } else {
-        return darkerTone;
-      }
-    } else {
-      return darkerRatio >= ratio || darkerRatio >= lighterRatio ? darkerTone : lighterTone;
-    }
+    return isDark ? lighterTone : darkerTone;
   }
 
   /**

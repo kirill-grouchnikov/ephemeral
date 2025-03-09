@@ -29,7 +29,6 @@ import org.pushingpixels.ephemeral.chroma.utils.MathUtils;
  * 3. Contrast level. (-1 to 1, currently contrast ratio 3.0 and 7.0)
  */
 public class DynamicPalette {
-  public final boolean isFidelity;
   public final boolean isDark;
   public final double contrastLevel;
   public final TonalPalette palette;
@@ -37,10 +36,8 @@ public class DynamicPalette {
 
   public DynamicPalette(
       Hct sourceColorHct,
-      boolean isFidelity,
       boolean isDark,
       double contrastLevel) {
-    this.isFidelity = isFidelity;
     this.isDark = isDark;
     this.contrastLevel = contrastLevel;
 
