@@ -18,7 +18,6 @@ package org.pushingpixels.ephemeral.chroma.dynamiccolor;
 
 import org.pushingpixels.ephemeral.chroma.hct.Hct;
 import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
-import org.pushingpixels.ephemeral.chroma.utils.MathUtils;
 
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
@@ -53,67 +52,67 @@ public class DynamicPalette {
     return dynamicPaletteColor.getArgb(this);
   }
 
-  public int getTonalContainerSurfaceLowest() {
-    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceLowest());
+  public int getContainerSurfaceLowest() {
+    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceLowest());
   }
 
-  public int getTonalContainerSurfaceLow() {
-    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceLow());
+  public int getContainerSurfaceLow() {
+    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceLow());
   }
 
-  public int getTonalContainerSurface() {
-    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurface());
+  public int getContainerSurface() {
+    return getArgb(new ChromaDynamicPaletteColors().containerSurface());
   }
 
-  public int getTonalContainerSurfaceHigh() {
-    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceHigh());
+  public int getContainerSurfaceHigh() {
+    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceHigh());
   }
 
-  public int getTonalContainerSurfaceHighest() {
-    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceHighest());
+  public int getContainerSurfaceHighest() {
+    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceHighest());
   }
 
-  public int getTonalContainerSurfaceDim() {
-    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceDim());
+  public int getContainerSurfaceDim() {
+    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceDim());
   }
 
-  public int getTonalContainerSurfaceBright() {
-    return getArgb(new ChromaDynamicPaletteColors().tonalContainerSurfaceBright());
+  public int getContainerSurfaceBright() {
+    return getArgb(new ChromaDynamicPaletteColors().containerSurfaceBright());
   }
 
-  public int getOnTonalContainer() {
-    return getArgb(new ChromaDynamicPaletteColors().onTonalContainer());
+  public int getOnContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().onContainer());
   }
 
-  public int getOnTonalContainerVariant() {
-    return getArgb(new ChromaDynamicPaletteColors().onTonalContainerVariant());
+  public int getOnContainerVariant() {
+    return getArgb(new ChromaDynamicPaletteColors().onContainerVariant());
   }
 
-  public int getTonalContainerOutline() {
-    return getArgb(new ChromaDynamicPaletteColors().tonalContainerOutline());
+  public int getContainerOutline() {
+    return getArgb(new ChromaDynamicPaletteColors().containerOutline());
   }
 
-  public int getTonalContainerOutlineVariant() {
-    return getArgb(new ChromaDynamicPaletteColors().tonalContainerOutlineVariant());
+  public int getContainerOutlineVariant() {
+    return getArgb(new ChromaDynamicPaletteColors().containerOutlineVariant());
   }
 
-  public int getInverseTonalContainerSurface() {
-    return getArgb(new ChromaDynamicPaletteColors().inverseTonalContainerSurface());
+  public int getInverseContainerSurface() {
+    return getArgb(new ChromaDynamicPaletteColors().inverseContainerSurface());
   }
 
-  public int getInverseOnTonalContainer() {
-    return getArgb(new ChromaDynamicPaletteColors().inverseOnTonalContainer());
+  public int getInverseOnContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().inverseOnContainer());
   }
 
-  public int getInverseTonalContainerOutline() {
-    return getArgb(new ChromaDynamicPaletteColors().inverseTonalContainerOutline());
+  public int getInverseContainerOutline() {
+    return getArgb(new ChromaDynamicPaletteColors().inverseContainerOutline());
   }
 
-  public int getComplementaryTonalContainerOutline() {
-    return getArgb(new ChromaDynamicPaletteColors().complementaryTonalContainerOutline());
+  public int getComplementaryContainerOutline() {
+    return getArgb(new ChromaDynamicPaletteColors().complementaryContainerOutline());
   }
 
-  public int getComplementaryOnTonalContainer() {
-    return getArgb(new ChromaDynamicPaletteColors().complementaryOnTonalContainer());
+  public int getComplementaryOnContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().complementaryOnContainer());
   }
 }

@@ -144,8 +144,8 @@ public final class DynamicBimodalPaletteColor {
     Hct fromSeedOne = palette.paletteOne.getHct(tone);
     Hct fromSeedTwo = palette.paletteTwo.getHct(tone);
 
-    double transitionToneStart = palette.getTonalTransitionRangeToneStart();
-    double transitionToneEnd = palette.getTonalTransitionRangeToneEnd();
+    double transitionToneStart = palette.getTransitionRangeToneStart();
+    double transitionToneEnd = palette.getTransitionRangeToneEnd();
     Hct answer;
     // Do we need to interpolate?
     if (tone <= transitionToneStart) {
@@ -172,7 +172,7 @@ public final class DynamicBimodalPaletteColor {
 
   /** Returns the tone in HCT, ranging from 0 to 100, of the resolved color given palette. */
   public double getTone(DynamicBimodalPalette palette) {
-    boolean decreasingContrast = palette.tonalContainerConfiguration.getContrastLevel() < 0;
+    boolean decreasingContrast = palette.containerConfiguration.getContrastLevel() < 0;
 
       double answer = tone.apply(palette);
 
@@ -187,19 +187,19 @@ public final class DynamicBimodalPaletteColor {
 
       double bgTone = backgroundPaletteColor.getTone(palette);
 
-      double desiredRatio = contrastCurve.get(palette.tonalContainerConfiguration.getContrastLevel());
+      double desiredRatio = contrastCurve.get(palette.containerConfiguration.getContrastLevel());
 
       if (Contrast.ratioOfTones(bgTone, answer) >= desiredRatio) {
         // Don't "improve" what's good enough.
       } else {
         // Rough improvement.
         answer = DynamicBimodalPaletteColor.foregroundTone(bgTone, desiredRatio, false,
-            palette.tonalContainerConfiguration.isDark());
+            palette.containerConfiguration.isDark());
       }
 
       if (decreasingContrast) {
         answer = DynamicBimodalPaletteColor.foregroundTone(bgTone, desiredRatio, false,
-            palette.tonalContainerConfiguration.isDark());
+            palette.containerConfiguration.isDark());
       }
 
       if (isBackground && 50 <= answer && answer < 60) {

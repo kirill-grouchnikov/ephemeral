@@ -16,8 +16,6 @@
 
 package org.pushingpixels.ephemeral.chroma.dynamiccolor;
 
-import org.pushingpixels.ephemeral.chroma.hct.Hct;
-
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
 /** Named colors, otherwise known as tokens, or roles, in the Ephemeral Design system. */
@@ -25,9 +23,9 @@ public final class ChromaDynamicPaletteColors {
   public ChromaDynamicPaletteColors() {
   }
 
-    public DynamicPaletteColor tonalContainerSurfaceLowest() {
+    public DynamicPaletteColor containerSurfaceLowest() {
         return new DynamicPaletteColor(
-            /* name= */ "tonal_container_surface_lowest",
+            /* name= */ "container_surface_lowest",
             /* tone= */ (p) -> p.isDark
                 ? p.sourceColorTone - 8.0
                 : p.sourceColorTone + 8.0,
@@ -37,9 +35,9 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor tonalContainerSurfaceLow() {
+    public DynamicPaletteColor containerSurfaceLow() {
         return new DynamicPaletteColor(
-            /* name= */ "tonal_container_surface_low",
+            /* name= */ "container_surface_low",
             /* tone= */ (p) -> p.isDark
                 ? p.sourceColorTone - 2.0
                 : p.sourceColorTone + 4.0,
@@ -49,9 +47,9 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor tonalContainerSurface() {
+    public DynamicPaletteColor containerSurface() {
         return new DynamicPaletteColor(
-            /* name= */ "tonal_container_surface",
+            /* name= */ "container_surface",
             /* tone= */ (p) -> p.sourceColorTone,
             /* isBackground= */ true,
             /* background= */ null,
@@ -59,9 +57,9 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor tonalContainerSurfaceHigh() {
+    public DynamicPaletteColor containerSurfaceHigh() {
         return new DynamicPaletteColor(
-            /* name= */ "tonal_container_surface_high",
+            /* name= */ "container_surface_high",
             /* tone= */ (p) -> p.isDark
                 ? p.sourceColorTone + 5.0
                 : p.sourceColorTone - 2.0,
@@ -71,9 +69,9 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor tonalContainerSurfaceHighest() {
+    public DynamicPaletteColor containerSurfaceHighest() {
         return new DynamicPaletteColor(
-            /* name= */ "tonal_container_surface_highest",
+            /* name= */ "container_surface_highest",
             /* tone= */ (p) -> p.isDark
                 ? p.sourceColorTone + 10.0
                 : p.sourceColorTone - 4.0,
@@ -83,9 +81,9 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor tonalContainerSurfaceDim() {
+    public DynamicPaletteColor containerSurfaceDim() {
         return new DynamicPaletteColor(
-            /* name= */ "tonal_container_surface_dim",
+            /* name= */ "container_surface_dim",
             /* tone= */ (p) -> p.isDark ? p.sourceColorTone - 10.0
                 : p.sourceColorTone - 6.0,
             /* isBackground= */ true,
@@ -94,9 +92,9 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor tonalContainerSurfaceBright() {
+    public DynamicPaletteColor containerSurfaceBright() {
         return new DynamicPaletteColor(
-            /* name= */ "tonal_container_surface_bright",
+            /* name= */ "container_surface_bright",
             /* tone= */ (p) -> p.isDark ? p.sourceColorTone + 12.0
                 : p.sourceColorTone + 10.0,
             /* isBackground= */ true,
@@ -105,10 +103,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor onTonalContainer() {
+    public DynamicPaletteColor onContainer() {
         return new DynamicPaletteColor(
-            /* name= */ "on_tonal_container",
-            /* tone= */ (p) -> DynamicPaletteColor.foregroundTone(tonalContainerSurface().tone.apply(p),
+            /* name= */ "on_container",
+            /* tone= */ (p) -> DynamicPaletteColor.foregroundTone(containerSurface().tone.apply(p),
                 new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.contrastLevel),
                 p.isDark),
         /* isBackground= */ false,
@@ -117,19 +115,19 @@ public final class ChromaDynamicPaletteColors {
         /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
-    public DynamicPaletteColor onTonalContainerVariant() {
+    public DynamicPaletteColor onContainerVariant() {
         return new DynamicPaletteColor(
-            /* name= */ "on_tonal_container_variant",
+            /* name= */ "on_container_variant",
             /* tone= */ (p) -> p.isDark ? 80.0 : 40.0,
             /* isBackground= */ false,
-            /* background= */ (p) -> tonalContainerSurface(),
+            /* background= */ (p) -> containerSurface(),
             /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
-    public DynamicPaletteColor tonalContainerOutline() {
+    public DynamicPaletteColor containerOutline() {
         return new DynamicPaletteColor(
-            /* name= */ "tonal_container_outline",
+            /* name= */ "container_outline",
             /* tone= */ (p) -> p.isDark
                 ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel)
                 : new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.contrastLevel),
@@ -139,9 +137,9 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor tonalContainerOutlineVariant() {
+    public DynamicPaletteColor containerOutlineVariant() {
         return new DynamicPaletteColor(
-            /* name= */ "tonal_container_outline_variant",
+            /* name= */ "container_outline_variant",
             /* tone= */ (p) -> p.isDark
                 ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel)
                 : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.contrastLevel),
@@ -151,9 +149,9 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor inverseTonalContainerSurface() {
+    public DynamicPaletteColor inverseContainerSurface() {
         return new DynamicPaletteColor(
-            /* name= */ "inverse_tonal_container_surface",
+            /* name= */ "inverse_container_surface",
             /* tone= */ (p) -> p.isDark
             ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(p.contrastLevel)
             : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(p.contrastLevel),
@@ -163,19 +161,19 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor inverseOnTonalContainer() {
+    public DynamicPaletteColor inverseOnContainer() {
         return new DynamicPaletteColor(
-            /* name= */ "inverse_on_tonal_container",
+            /* name= */ "inverse_on_container",
             /* tone= */ (p) -> p.isDark ? 30.0 : 90.0,
             /* isBackground= */ false,
-            /* background= */ (p) -> inverseTonalContainerSurface(),
+            /* background= */ (p) -> inverseContainerSurface(),
             /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
-    public DynamicPaletteColor inverseTonalContainerOutline() {
+    public DynamicPaletteColor inverseContainerOutline() {
         return new DynamicPaletteColor(
-            /* name= */ "inverse_tonal_container_outline",
+            /* name= */ "inverse_container_outline",
             /* tone= */ (p) -> p.isDark
             ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.contrastLevel)
             : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel),
@@ -185,19 +183,19 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor complementaryOnTonalContainer() {
+    public DynamicPaletteColor complementaryOnContainer() {
         return new DynamicPaletteColor(
-            /* name= */ "complementary_on_tonal_container",
+            /* name= */ "complementary_on_container",
             /* tone= */ (p) -> p.isDark ? 10.0 : 80.0,
             /* isBackground= */ false,
-            /* background= */ (p) -> inverseTonalContainerSurface(),
+            /* background= */ (p) -> inverseContainerSurface(),
             /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
-    public DynamicPaletteColor complementaryTonalContainerOutline() {
+    public DynamicPaletteColor complementaryContainerOutline() {
         return new DynamicPaletteColor(
-            /* name= */ "complementary_tonal_container_outline",
+            /* name= */ "complementary_container_outline",
             /* tone= */ (p) -> p.isDark
             ? new ContrastCurve(85.0, 90.0, 95.0, 100.0).get(p.contrastLevel)
             : new ContrastCurve(90.0, 95.0, 98.0, 100.0).get(p.contrastLevel),
