@@ -36,7 +36,6 @@ public class DynamicBimodalPalette {
   public final TonalPalette paletteTwo;
   public final double fidelityTone;
   public final TransitionRange tonalTransitionRange;
-  public final ContainerConfiguration primaryContainerConfiguration;
   public final ContainerConfiguration tonalContainerConfiguration;
 
   public DynamicBimodalPalette(
@@ -44,11 +43,9 @@ public class DynamicBimodalPalette {
       Hct seedTwo,
       TransitionRange tonalTransitionRange,
       double fidelityTone,
-      ContainerConfiguration primaryContainerConfiguration,
       ContainerConfiguration tonalContainerConfiguration) {
     this.tonalTransitionRange = tonalTransitionRange;
     this.fidelityTone = fidelityTone;
-    this.primaryContainerConfiguration = primaryContainerConfiguration;
     this.tonalContainerConfiguration = tonalContainerConfiguration;
 
     this.paletteOne = TonalPalette.fromHct(seedOne);
@@ -131,69 +128,5 @@ public class DynamicBimodalPalette {
 
   public int getComplementaryTonalContainerOutline() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().complementaryTonalContainerOutline());
-  }
-
-  public int getPrimaryContainerSurfaceLowest() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurfaceLowest());
-  }
-
-  public int getPrimaryContainerSurfaceLow() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurfaceLow());
-  }
-
-  public int getPrimaryContainerSurface() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurface());
-  }
-
-  public int getPrimaryContainerSurfaceHigh() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurfaceHigh());
-  }
-
-  public int getPrimaryContainerSurfaceHighest() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurfaceHighest());
-  }
-
-  public int getPrimaryContainerSurfaceDim() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurfaceDim());
-  }
-
-  public int getPrimaryContainerSurfaceBright() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerSurfaceBright());
-  }
-
-  public int getOnPrimaryContainer() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().onPrimaryContainer());
-  }
-
-  public int getOnPrimaryContainerVariant() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().onPrimaryContainerVariant());
-  }
-
-  public int getPrimaryContainerOutline() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerOutline());
-  }
-
-  public int getPrimaryContainerOutlineVariant() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().primaryContainerOutlineVariant());
-  }
-
-  public int getInversePrimaryContainerSurface() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().inversePrimaryContainerSurface());
-  }
-
-  public int getInverseOnPrimaryContainer() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().inverseOnPrimaryContainer());
-  }
-
-  public int getInversePrimaryContainerOutline() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().inversePrimaryContainerOutline());
-  }
-
-  public int getComplementaryOnPrimaryContainer() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().complementaryOnPrimaryContainer());
-  }
-
-  public int getComplementaryPrimaryContainerOutline() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().complementaryPrimaryContainerOutline());
   }
 }
