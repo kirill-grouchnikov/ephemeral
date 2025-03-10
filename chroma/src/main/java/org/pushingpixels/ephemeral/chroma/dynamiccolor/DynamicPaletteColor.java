@@ -153,7 +153,7 @@ public final class DynamicPaletteColor {
 
   /** Returns the tone in HCT, ranging from 0 to 100, of the resolved color given palette. */
   public double getTone(DynamicPalette palette) {
-    boolean decreasingContrast = palette.contrastLevel < 0;
+    boolean decreasingContrast = palette.containerConfiguration.getContrastLevel() < 0;
 
       double answer = tone.apply(palette);
 
@@ -168,17 +168,19 @@ public final class DynamicPaletteColor {
 
       double bgTone = backgroundPaletteColor.getTone(palette);
 
-      double desiredRatio = contrastCurve.get(palette.contrastLevel);
+      double desiredRatio = contrastCurve.get(palette.containerConfiguration.getContrastLevel());
 
       if (Contrast.ratioOfTones(bgTone, answer) >= desiredRatio) {
         // Don't "improve" what's good enough.
       } else {
         // Rough improvement.
-        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio, palette.isDark);
+        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio,
+            palette.containerConfiguration.isDark());
       }
 
       if (decreasingContrast) {
-        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio, palette.isDark);
+        answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio,
+            palette.containerConfiguration.isDark());
       }
 
       if (isBackground && 50 <= answer && answer < 60) {

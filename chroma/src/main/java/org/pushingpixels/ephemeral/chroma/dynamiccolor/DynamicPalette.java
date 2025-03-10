@@ -28,17 +28,14 @@ import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
  * 3. Contrast level. (-1 to 1, currently contrast ratio 3.0 and 7.0)
  */
 public class DynamicPalette {
-  public final boolean isDark;
-  public final double contrastLevel;
+  public final ContainerConfiguration containerConfiguration;
   public final TonalPalette palette;
   public final double sourceColorTone;
 
   public DynamicPalette(
       Hct sourceColorHct,
-      boolean isDark,
-      double contrastLevel) {
-    this.isDark = isDark;
-    this.contrastLevel = contrastLevel;
+      ContainerConfiguration containerConfiguration) {
+    this.containerConfiguration = containerConfiguration;
 
     this.palette = TonalPalette.fromHct(sourceColorHct);
     this.sourceColorTone = sourceColorHct.getTone();

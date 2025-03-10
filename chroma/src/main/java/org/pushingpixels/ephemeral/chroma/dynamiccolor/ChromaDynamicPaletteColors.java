@@ -26,7 +26,7 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerSurfaceLowest() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_lowest",
-            /* tone= */ (p) -> p.isDark
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
                 ? p.sourceColorTone - 8.0
                 : p.sourceColorTone + 8.0,
             /* isBackground= */ true,
@@ -38,7 +38,7 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerSurfaceLow() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_low",
-            /* tone= */ (p) -> p.isDark
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
                 ? p.sourceColorTone - 2.0
                 : p.sourceColorTone + 4.0,
             /* isBackground= */ true,
@@ -60,7 +60,7 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerSurfaceHigh() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_high",
-            /* tone= */ (p) -> p.isDark
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
                 ? p.sourceColorTone + 5.0
                 : p.sourceColorTone - 2.0,
             /* isBackground= */ true,
@@ -72,7 +72,7 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerSurfaceHighest() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_highest",
-            /* tone= */ (p) -> p.isDark
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
                 ? p.sourceColorTone + 10.0
                 : p.sourceColorTone - 4.0,
             /* isBackground= */ true,
@@ -84,7 +84,7 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerSurfaceDim() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_dim",
-            /* tone= */ (p) -> p.isDark ? p.sourceColorTone - 10.0
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.sourceColorTone - 10.0
                 : p.sourceColorTone - 6.0,
             /* isBackground= */ true,
             /* background= */ null,
@@ -95,7 +95,7 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerSurfaceBright() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_bright",
-            /* tone= */ (p) -> p.isDark ? p.sourceColorTone + 12.0
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.sourceColorTone + 12.0
                 : p.sourceColorTone + 10.0,
             /* isBackground= */ true,
             /* background= */ null,
@@ -107,8 +107,8 @@ public final class ChromaDynamicPaletteColors {
         return new DynamicPaletteColor(
             /* name= */ "on_container",
             /* tone= */ (p) -> DynamicPaletteColor.foregroundTone(containerSurface().tone.apply(p),
-                new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.contrastLevel),
-                p.isDark),
+                new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.containerConfiguration.getContrastLevel()),
+                p.containerConfiguration.isDark()),
         /* isBackground= */ false,
         /* background= */ null,
         /* secondBackground= */ null,
@@ -118,7 +118,7 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor onContainerVariant() {
         return new DynamicPaletteColor(
             /* name= */ "on_container_variant",
-            /* tone= */ (p) -> p.isDark ? 80.0 : 40.0,
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? 80.0 : 40.0,
             /* isBackground= */ false,
             /* background= */ (p) -> containerSurface(),
             /* secondBackground= */ null,
@@ -128,9 +128,9 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "container_outline",
-            /* tone= */ (p) -> p.isDark
-                ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel)
-                : new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.contrastLevel),
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+                ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.containerConfiguration.getContrastLevel())
+                : new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -140,9 +140,9 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerOutlineVariant() {
         return new DynamicPaletteColor(
             /* name= */ "container_outline_variant",
-            /* tone= */ (p) -> p.isDark
-                ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel)
-                : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.contrastLevel),
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+                ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.containerConfiguration.getContrastLevel())
+                : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -152,9 +152,9 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor inverseContainerSurface() {
         return new DynamicPaletteColor(
             /* name= */ "inverse_container_surface",
-            /* tone= */ (p) -> p.isDark
-            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(p.contrastLevel)
-            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(p.contrastLevel),
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+            ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(p.containerConfiguration.getContrastLevel())
+            : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -164,7 +164,7 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor inverseOnContainer() {
         return new DynamicPaletteColor(
             /* name= */ "inverse_on_container",
-            /* tone= */ (p) -> p.isDark ? 30.0 : 90.0,
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? 30.0 : 90.0,
             /* isBackground= */ false,
             /* background= */ (p) -> inverseContainerSurface(),
             /* secondBackground= */ null,
@@ -174,9 +174,9 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor inverseContainerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "inverse_container_outline",
-            /* tone= */ (p) -> p.isDark
-            ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.contrastLevel)
-            : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.contrastLevel),
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+            ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.containerConfiguration.getContrastLevel())
+            : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -186,7 +186,7 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor complementaryOnContainer() {
         return new DynamicPaletteColor(
             /* name= */ "complementary_on_container",
-            /* tone= */ (p) -> p.isDark ? 10.0 : 80.0,
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? 10.0 : 80.0,
             /* isBackground= */ false,
             /* background= */ (p) -> inverseContainerSurface(),
             /* secondBackground= */ null,
@@ -196,9 +196,9 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor complementaryContainerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "complementary_container_outline",
-            /* tone= */ (p) -> p.isDark
-            ? new ContrastCurve(85.0, 90.0, 95.0, 100.0).get(p.contrastLevel)
-            : new ContrastCurve(90.0, 95.0, 98.0, 100.0).get(p.contrastLevel),
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+            ? new ContrastCurve(85.0, 90.0, 95.0, 100.0).get(p.containerConfiguration.getContrastLevel())
+            : new ContrastCurve(90.0, 95.0, 98.0, 100.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
