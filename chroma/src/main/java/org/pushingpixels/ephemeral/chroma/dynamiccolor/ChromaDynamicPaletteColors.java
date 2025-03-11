@@ -27,8 +27,8 @@ public final class ChromaDynamicPaletteColors {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_lowest",
             /* tone= */ (p) -> p.containerConfiguration.isDark()
-                ? p.sourceColorTone - 8.0
-                : p.sourceColorTone + 8.0,
+                ? p.sourceColorTone - 8.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
+                : p.sourceColorTone + 8.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -39,8 +39,8 @@ public final class ChromaDynamicPaletteColors {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_low",
             /* tone= */ (p) -> p.containerConfiguration.isDark()
-                ? p.sourceColorTone - 2.0
-                : p.sourceColorTone + 4.0,
+                ? p.sourceColorTone - 2.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
+                : p.sourceColorTone + 4.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -61,8 +61,8 @@ public final class ChromaDynamicPaletteColors {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_high",
             /* tone= */ (p) -> p.containerConfiguration.isDark()
-                ? p.sourceColorTone + 5.0
-                : p.sourceColorTone - 2.0,
+                ? p.sourceColorTone + 5.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
+                : p.sourceColorTone - 2.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -73,8 +73,8 @@ public final class ChromaDynamicPaletteColors {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_highest",
             /* tone= */ (p) -> p.containerConfiguration.isDark()
-                ? p.sourceColorTone + 10.0
-                : p.sourceColorTone - 4.0,
+                ? p.sourceColorTone + 10.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
+                : p.sourceColorTone - 4.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -84,8 +84,9 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerSurfaceDim() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_dim",
-            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.sourceColorTone - 10.0
-                : p.sourceColorTone - 6.0,
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+                ? p.sourceColorTone - 10.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
+                : p.sourceColorTone - 6.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
@@ -95,8 +96,9 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor containerSurfaceBright() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_bright",
-            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.sourceColorTone + 12.0
-                : p.sourceColorTone + 10.0,
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+                ? p.sourceColorTone + 12.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
+                : p.sourceColorTone + 10.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
