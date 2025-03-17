@@ -120,7 +120,9 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor onContainerVariant() {
         return new DynamicPaletteColor(
             /* name= */ "on_container_variant",
-            /* tone= */ (p) -> p.containerConfiguration.isDark() ? 80.0 : 40.0,
+            /* tone= */ (p) -> DynamicPaletteColor.foregroundTone(containerSurface().tone.apply(p),
+                new ContrastCurve(4.5, 5.0, 7.5, 10.0).get(p.containerConfiguration.getContrastLevel()),
+                p.containerConfiguration.isDark()),
             /* isBackground= */ false,
             /* background= */ (p) -> containerSurface(),
             /* secondBackground= */ null,

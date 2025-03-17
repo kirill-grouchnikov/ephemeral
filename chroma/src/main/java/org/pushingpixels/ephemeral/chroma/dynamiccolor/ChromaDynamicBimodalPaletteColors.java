@@ -122,7 +122,9 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor onContainerVariant() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "on_container_variant",
-            /* tone= */ (p) -> p.containerConfiguration.isDark() ? 80.0 : 40.0,
+            /* tone= */ (p) -> DynamicBimodalPaletteColor.foregroundTone(containerSurface().tone.apply(p),
+                new ContrastCurve(4.5, 5.0, 7.5, 10.0).get(p.containerConfiguration.getContrastLevel()),
+                false, p.containerConfiguration.isDark()),
             /* isBackground= */ false,
             /* background= */ (p) -> containerSurface(),
             /* secondBackground= */ null,
