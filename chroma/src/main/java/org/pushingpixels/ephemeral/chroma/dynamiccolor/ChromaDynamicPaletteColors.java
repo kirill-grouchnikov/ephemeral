@@ -115,9 +115,15 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor onContainer() {
         return new DynamicPaletteColor(
             /* name= */ "on_container",
-            /* tone= */ (p) -> DynamicPaletteColor.foregroundTone(containerSurface().tone.apply(p),
-                new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.containerConfiguration.getContrastLevel()),
-                p.containerConfiguration.isDark()),
+            /* tone= */ (p) -> {
+                ContrastCurve contrastCurve = p.containerConfiguration.isDark()
+                    ? new ContrastCurve(5.0, 7.0, 9.5, 12.0)
+                    : new ContrastCurve(4.5, 6.0, 9.0, 12.0);
+                return DynamicPaletteColor.foregroundTone(
+                    containerSurface().tone.apply(p),
+                    contrastCurve.get(p.containerConfiguration.getContrastLevel()),
+                    p.containerConfiguration.isDark());
+            },
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ null,
@@ -128,9 +134,15 @@ public final class ChromaDynamicPaletteColors {
     public DynamicPaletteColor onContainerVariant() {
         return new DynamicPaletteColor(
             /* name= */ "on_container_variant",
-            /* tone= */ (p) -> DynamicPaletteColor.foregroundTone(containerSurface().tone.apply(p),
-                new ContrastCurve(4.5, 5.0, 7.5, 10.0).get(p.containerConfiguration.getContrastLevel()),
-                p.containerConfiguration.isDark()),
+            /* tone= */ (p) -> {
+                ContrastCurve contrastCurve = p.containerConfiguration.isDark()
+                    ? new ContrastCurve(5.0, 6.0, 8.0, 10.0)
+                    : new ContrastCurve(4.5, 5.0, 7.5, 10.0);
+                return DynamicPaletteColor.foregroundTone(
+                    containerSurface().tone.apply(p),
+                    contrastCurve.get(p.containerConfiguration.getContrastLevel()),
+                    p.containerConfiguration.isDark());
+            },
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ (p) -> containerSurface(),
