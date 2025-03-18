@@ -58,6 +58,7 @@ public final class DynamicPaletteColor {
   public final String name;
   public final Function<DynamicPalette, Double> tone;
   public final boolean isBackground;
+  public final boolean isInverse;
   public final Function<DynamicPalette, DynamicPaletteColor> background;
   public final Function<DynamicPalette, DynamicPaletteColor> secondBackground;
   public final ContrastCurve contrastCurve;
@@ -94,6 +95,7 @@ public final class DynamicPaletteColor {
       String name,
       Function<DynamicPalette, Double> tone,
       boolean isBackground,
+      boolean isInverse,
       Function<DynamicPalette, DynamicPaletteColor> background,
       Function<DynamicPalette, DynamicPaletteColor> secondBackground,
       ContrastCurve contrastCurve) {
@@ -101,6 +103,7 @@ public final class DynamicPaletteColor {
     this.name = name;
     this.tone = tone;
     this.isBackground = isBackground;
+    this.isInverse = isInverse;
     this.background = background;
     this.secondBackground = secondBackground;
     this.contrastCurve = contrastCurve;
@@ -175,12 +178,12 @@ public final class DynamicPaletteColor {
       } else {
         // Rough improvement.
         answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio,
-            palette.containerConfiguration.isDark());
+            isInverse ^ palette.containerConfiguration.isDark());
       }
 
       if (decreasingContrast) {
         answer = DynamicPaletteColor.foregroundTone(bgTone, desiredRatio,
-            palette.containerConfiguration.isDark());
+            isInverse ^ palette.containerConfiguration.isDark());
       }
 
       if (isBackground && 50 <= answer && answer < 60) {

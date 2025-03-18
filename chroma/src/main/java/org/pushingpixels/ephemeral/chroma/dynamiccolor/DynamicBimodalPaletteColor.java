@@ -58,6 +58,7 @@ public final class DynamicBimodalPaletteColor {
   public final String name;
   public final Function<DynamicBimodalPalette, Double> tone;
   public final boolean isBackground;
+  public final boolean isInverse;
   public final Function<DynamicBimodalPalette, DynamicBimodalPaletteColor> background;
   public final Function<DynamicBimodalPalette, DynamicBimodalPaletteColor> secondBackground;
   public final ContrastCurve contrastCurve;
@@ -94,6 +95,7 @@ public final class DynamicBimodalPaletteColor {
       String name,
       Function<DynamicBimodalPalette, Double> tone,
       boolean isBackground,
+      boolean isInverse,
       Function<DynamicBimodalPalette, DynamicBimodalPaletteColor> background,
       Function<DynamicBimodalPalette, DynamicBimodalPaletteColor> secondBackground,
       ContrastCurve contrastCurve) {
@@ -101,6 +103,7 @@ public final class DynamicBimodalPaletteColor {
     this.name = name;
     this.tone = tone;
     this.isBackground = isBackground;
+    this.isInverse = isInverse;
     this.background = background;
     this.secondBackground = secondBackground;
     this.contrastCurve = contrastCurve;
@@ -194,12 +197,12 @@ public final class DynamicBimodalPaletteColor {
       } else {
         // Rough improvement.
         answer = DynamicBimodalPaletteColor.foregroundTone(bgTone, desiredRatio, false,
-            palette.containerConfiguration.isDark());
+            isInverse ^ palette.containerConfiguration.isDark());
       }
 
       if (decreasingContrast) {
         answer = DynamicBimodalPaletteColor.foregroundTone(bgTone, desiredRatio, false,
-            palette.containerConfiguration.isDark());
+            isInverse ^ palette.containerConfiguration.isDark());
       }
 
       if (isBackground && 50 <= answer && answer < 60) {

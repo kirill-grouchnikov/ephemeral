@@ -30,6 +30,7 @@ public final class ChromaDynamicPaletteColors {
                 ? p.sourceColorTone - 8.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
                 : p.sourceColorTone + 8.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -42,6 +43,7 @@ public final class ChromaDynamicPaletteColors {
                 ? p.sourceColorTone - 2.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
                 : p.sourceColorTone + 4.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -52,6 +54,7 @@ public final class ChromaDynamicPaletteColors {
             /* name= */ "container_surface",
             /* tone= */ (p) -> p.sourceColorTone,
             /* isBackground= */ true,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -64,6 +67,7 @@ public final class ChromaDynamicPaletteColors {
                 ? p.sourceColorTone + 5.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
                 : p.sourceColorTone - 2.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -76,6 +80,7 @@ public final class ChromaDynamicPaletteColors {
                 ? p.sourceColorTone + 10.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
                 : p.sourceColorTone - 4.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -88,6 +93,7 @@ public final class ChromaDynamicPaletteColors {
                 ? p.sourceColorTone - 10.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
                 : p.sourceColorTone - 6.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -100,6 +106,7 @@ public final class ChromaDynamicPaletteColors {
                 ? p.sourceColorTone + 12.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor()
                 : p.sourceColorTone + 10.0 * p.containerConfiguration.getSurfaceRangeAmplitudeFactor(),
             /* isBackground= */ true,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -111,10 +118,11 @@ public final class ChromaDynamicPaletteColors {
             /* tone= */ (p) -> DynamicPaletteColor.foregroundTone(containerSurface().tone.apply(p),
                 new ContrastCurve(4.5, 6.0, 9.0, 12.0).get(p.containerConfiguration.getContrastLevel()),
                 p.containerConfiguration.isDark()),
-        /* isBackground= */ false,
-        /* background= */ null,
-        /* secondBackground= */ null,
-        /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
     public DynamicPaletteColor onContainerVariant() {
@@ -124,6 +132,7 @@ public final class ChromaDynamicPaletteColors {
                 new ContrastCurve(4.5, 5.0, 7.5, 10.0).get(p.containerConfiguration.getContrastLevel()),
                 p.containerConfiguration.isDark()),
             /* isBackground= */ false,
+            /* isInverse= */ false,
             /* background= */ (p) -> containerSurface(),
             /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
@@ -136,6 +145,7 @@ public final class ChromaDynamicPaletteColors {
                 ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.containerConfiguration.getContrastLevel())
                 : new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -148,6 +158,7 @@ public final class ChromaDynamicPaletteColors {
                 ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.containerConfiguration.getContrastLevel())
                 : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -160,6 +171,7 @@ public final class ChromaDynamicPaletteColors {
             ? new ContrastCurve(90.0, 90.0, 88.0, 86.0).get(p.containerConfiguration.getContrastLevel())
             : new ContrastCurve(30.0, 30.0, 34.0, 36.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ true,
+            /* isInverse= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -170,6 +182,7 @@ public final class ChromaDynamicPaletteColors {
             /* name= */ "inverse_on_container",
             /* tone= */ (p) -> p.containerConfiguration.isDark() ? 30.0 : 90.0,
             /* isBackground= */ false,
+            /* isInverse= */ true,
             /* background= */ (p) -> inverseContainerSurface(),
             /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
@@ -182,6 +195,7 @@ public final class ChromaDynamicPaletteColors {
             ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.containerConfiguration.getContrastLevel())
             : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
+            /* isInverse= */ true,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
@@ -192,6 +206,7 @@ public final class ChromaDynamicPaletteColors {
             /* name= */ "complementary_on_container",
             /* tone= */ (p) -> p.containerConfiguration.isDark() ? 10.0 : 80.0,
             /* isBackground= */ false,
+            /* isInverse= */ false,
             /* background= */ (p) -> inverseContainerSurface(),
             /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
@@ -204,6 +219,7 @@ public final class ChromaDynamicPaletteColors {
             ? new ContrastCurve(85.0, 90.0, 95.0, 100.0).get(p.containerConfiguration.getContrastLevel())
             : new ContrastCurve(90.0, 95.0, 98.0, 100.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
+            /* isInverse= */ false,
             /* background= */ null,
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
