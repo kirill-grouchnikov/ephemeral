@@ -169,7 +169,7 @@ public final class ChromaDynamicBimodalPaletteColors {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_outline_variant",
             /* tone= */ (p) -> p.containerConfiguration.isDark()
-                ? new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.containerConfiguration.getContrastLevel())
+                ? new ContrastCurve(35.0, 30.0, 20.0, 10.0).get(p.containerConfiguration.getContrastLevel())
                 : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
             /* isInverse= */ false,
@@ -206,7 +206,7 @@ public final class ChromaDynamicBimodalPaletteColors {
         return new DynamicBimodalPaletteColor(
             /* name= */ "inverse_container_outline",
             /* tone= */ (p) -> p.containerConfiguration.isDark()
-                ? new ContrastCurve(55.0, 50.0, 40.0, 30.0).get(p.containerConfiguration.getContrastLevel())
+                ? new ContrastCurve(25.0, 20.0, 15.0, 5.0).get(p.containerConfiguration.getContrastLevel())
                 : new ContrastCurve(15.0, 10.0, 5.0, 0.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
             /* isInverse= */ true,
