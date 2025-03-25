@@ -239,6 +239,17 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+    public DynamicBimodalPaletteColor accentOnContainer() {
+        return new DynamicBimodalPaletteColor(
+            /* name= */ "accent_on_container",
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? 80.0 : 40.0,
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ (p) -> containerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+    }
+
     /* internal */ double getTransitionRangeToneStart(DynamicBimodalPalette palette) {
         if (palette.transitionRange == DynamicBimodalPalette.TransitionRange.FULL_SPAN) {
             return 0.0;

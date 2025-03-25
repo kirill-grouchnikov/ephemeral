@@ -17,6 +17,7 @@
 package org.pushingpixels.ephemeral.chroma.dynamiccolor;
 
 import org.pushingpixels.ephemeral.chroma.hct.Hct;
+import org.pushingpixels.ephemeral.chroma.palettes.TokenPalette;
 import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
 
 // This is a modified version of the original source code, changed to fit the Chroma needs
@@ -27,7 +28,7 @@ import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
  * 2. Whether or not its dark mode.
  * 3. Contrast level. (-1 to 1, currently contrast ratio 3.0 and 7.0)
  */
-public class DynamicBimodalPalette {
+public class DynamicBimodalPalette implements TokenPalette {
   public enum TransitionRange {
     FULL_SPAN, TONAL_CONTAINER_SURFACES
   }
@@ -66,67 +67,88 @@ public class DynamicBimodalPalette {
     return dynamicPaletteColor.getArgb(this);
   }
 
+  @Override
   public int getContainerSurfaceLowest() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().containerSurfaceLowest());
   }
 
+  @Override
   public int getContainerSurfaceLow() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().containerSurfaceLow());
   }
 
+  @Override
   public int getContainerSurface() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().containerSurface());
   }
 
+  @Override
   public int getContainerSurfaceHigh() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().containerSurfaceHigh());
   }
 
+  @Override
   public int getContainerSurfaceHighest() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().containerSurfaceHighest());
   }
 
+  @Override
   public int getContainerSurfaceDim() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().containerSurfaceDim());
   }
 
+  @Override
   public int getContainerSurfaceBright() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().containerSurfaceBright());
   }
 
+  @Override
   public int getOnContainer() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().onContainer());
   }
 
+  @Override
   public int getOnContainerVariant() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().onContainerVariant());
   }
 
+  @Override
   public int getContainerOutline() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().containerOutline());
   }
 
+  @Override
   public int getContainerOutlineVariant() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().containerOutlineVariant());
   }
 
+  @Override
   public int getInverseContainerSurface() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().inverseContainerSurface());
   }
 
+  @Override
   public int getInverseOnContainer() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().inverseOnContainer());
   }
 
+  @Override
   public int getInverseContainerOutline() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().inverseContainerOutline());
   }
 
+  @Override
   public int getComplementaryOnContainer() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().complementaryOnContainer());
   }
 
+  @Override
   public int getComplementaryContainerOutline() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().complementaryContainerOutline());
+  }
+
+  @Override
+  public int getAccentOnContainer() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().accentOnContainer());
   }
 }

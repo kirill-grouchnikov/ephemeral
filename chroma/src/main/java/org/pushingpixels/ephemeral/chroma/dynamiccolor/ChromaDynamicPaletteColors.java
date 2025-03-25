@@ -236,4 +236,15 @@ public final class ChromaDynamicPaletteColors {
             /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
+
+    public DynamicPaletteColor accentOnContainer() {
+        return new DynamicPaletteColor(
+            /* name= */ "accent_on_container",
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? 80.0 : 40.0,
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ (p) -> containerSurface(),
+            /* secondBackground= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+    }
 }
