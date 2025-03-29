@@ -60,7 +60,6 @@ public final class DynamicPaletteColor {
   public final boolean isBackground;
   public final boolean isInverse;
   public final Function<DynamicPalette, DynamicPaletteColor> background;
-  public final Function<DynamicPalette, DynamicPaletteColor> secondBackground;
   public final ContrastCurve contrastCurve;
 
   public final Function<DynamicPalette, Double> opacity;
@@ -86,8 +85,6 @@ public final class DynamicPaletteColor {
    *     foreground.
    * @param background The background of the dynamic color (as a function of a `DynamicPalette`), if
    *     it exists.
-   * @param secondBackground A second background of the dynamic color (as a function of a
-   *     `DynamicPalette`), if it exists.
    * @param contrastCurve A `ContrastCurve` object specifying how its contrast against its
    *     background should behave in various contrast levels options.
    */
@@ -97,7 +94,6 @@ public final class DynamicPaletteColor {
       boolean isBackground,
       boolean isInverse,
       Function<DynamicPalette, DynamicPaletteColor> background,
-      Function<DynamicPalette, DynamicPaletteColor> secondBackground,
       ContrastCurve contrastCurve) {
 
     this.name = name;
@@ -105,7 +101,6 @@ public final class DynamicPaletteColor {
     this.isBackground = isBackground;
     this.isInverse = isInverse;
     this.background = background;
-    this.secondBackground = secondBackground;
     this.contrastCurve = contrastCurve;
     this.opacity = null;
   }
@@ -193,49 +188,6 @@ public final class DynamicPaletteColor {
         } else {
           answer = 60;
         }
-      }
-
-      if (secondBackground != null) {
-        // Case 3: Adjust for dual backgrounds.
-
-        double bgTone1 = background.apply(palette).getTone(palette);
-        double bgTone2 = secondBackground.apply(palette).getTone(palette);
-
-        double upper = max(bgTone1, bgTone2);
-        double lower = min(bgTone1, bgTone2);
-
-        if (Contrast.ratioOfTones(upper, answer) >= desiredRatio
-            && Contrast.ratioOfTones(lower, answer) >= desiredRatio) {
-          return answer;
-        }
-
-        // The darkest light tone that satisfies the desired ratio,
-        // or -1 if such ratio cannot be reached.
-        double lightOption = Contrast.lighter(upper, desiredRatio);
-
-        // The lightest dark tone that satisfies the desired ratio,
-        // or -1 if such ratio cannot be reached.
-        double darkOption = Contrast.darker(lower, desiredRatio);
-
-        // Tones suitable for the foreground.
-        ArrayList<Double> availables = new ArrayList<>();
-        if (lightOption != -1) {
-          availables.add(lightOption);
-        }
-        if (darkOption != -1) {
-          availables.add(darkOption);
-        }
-
-        boolean prefersLight =
-            DynamicPaletteColor.tonePrefersLightForeground(bgTone1)
-                || DynamicPaletteColor.tonePrefersLightForeground(bgTone2);
-        if (prefersLight) {
-          return (lightOption == -1) ? 100 : lightOption;
-        }
-        if (availables.size() == 1) {
-          return availables.get(0);
-        }
-        return (darkOption == -1) ? 0 : darkOption;
       }
 
       return answer;

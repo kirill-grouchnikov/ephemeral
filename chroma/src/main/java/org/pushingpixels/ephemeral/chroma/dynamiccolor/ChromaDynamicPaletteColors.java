@@ -32,7 +32,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ true,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -45,7 +44,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ true,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -56,7 +54,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ true,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -69,7 +66,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ true,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -82,7 +78,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ true,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -95,7 +90,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ true,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -108,7 +102,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ true,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -127,7 +120,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
@@ -146,7 +138,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ (p) -> containerSurface(),
-            /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
@@ -159,7 +150,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -172,7 +162,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -185,7 +174,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ true,
             /* isInverse= */ true,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -196,7 +184,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ true,
             /* background= */ (p) -> inverseContainerSurface(),
-            /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
@@ -209,7 +196,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ true,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -220,7 +206,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ (p) -> inverseContainerSurface(),
-            /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
@@ -233,7 +218,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ null,
-            /* secondBackground= */ null,
             /* contrastCurve= */ null);
     }
 
@@ -244,7 +228,6 @@ public final class ChromaDynamicPaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ (p) -> containerSurface(),
-            /* secondBackground= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 }
