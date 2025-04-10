@@ -204,10 +204,18 @@ public final class ChromaDynamicBimodalPaletteColors {
     public DynamicBimodalPaletteColor complementaryOnContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "complementary_on_container",
-            /* tone= */ (p) -> p.containerConfiguration.isDark() ? 10.0 : 80.0,
+            /* tone= */ (p) -> {
+                ContrastCurve contrastCurve = p.containerConfiguration.isDark()
+                    ? new ContrastCurve(4.5, 6.0, 9.0, 12.0)
+                    : new ContrastCurve(5.0, 7.0, 9.5, 12.0);
+                return DynamicPaletteColor.foregroundTone(
+                    containerSurface().tone.apply(p),
+                    contrastCurve.get(p.containerConfiguration.getContrastLevel()),
+                    !p.containerConfiguration.isDark());
+            },
             /* isBackground= */ false,
             /* isInverse= */ false,
-            /* background= */ (p) -> inverseContainerSurface(),
+            /* background= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
