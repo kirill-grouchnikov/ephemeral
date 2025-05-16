@@ -31,8 +31,8 @@ import java.util.Map;
  */
 public final class BimodalTonalPalette implements BaseTonalPalette {
   public interface TransitionRange {
-    public double getTransitionToneStart();
-    public double getTransitionToneEnd();
+    double getTransitionToneStart();
+    double getTransitionToneEnd();
   }
 
   public static class TransitionRangeFidelityLight implements TransitionRange {

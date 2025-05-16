@@ -27,10 +27,10 @@ public interface BaseTonalPalette {
    * @param tone HCT tone, measured from 0 to 100.
    * @return ARGB representation of a color with that tone.
    */
-  public int tone(int tone);
+  int tone(int tone);
 
   /**
    * Given a tone, return the HCT color that corresponds to it in this palette.
    */
-  public Hct getHct(double tone);
+  Hct getHct(double tone);
 }

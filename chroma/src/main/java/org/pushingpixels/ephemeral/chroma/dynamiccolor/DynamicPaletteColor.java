@@ -20,12 +20,8 @@ import org.pushingpixels.ephemeral.chroma.contrast.Contrast;
 import org.pushingpixels.ephemeral.chroma.hct.Hct;
 import org.pushingpixels.ephemeral.chroma.utils.MathUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Function;
-
-import static java.lang.Math.max;
-import static java.lang.Math.min;
 
 // This is a modified version of the original source code, changed to fit the Chroma needs
 

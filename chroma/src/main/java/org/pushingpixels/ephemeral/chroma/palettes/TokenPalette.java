@@ -16,11 +16,6 @@
 
 package org.pushingpixels.ephemeral.chroma.palettes;
 
-import org.pushingpixels.ephemeral.chroma.dynamiccolor.ChromaDynamicPaletteColors;
-import org.pushingpixels.ephemeral.chroma.dynamiccolor.ContainerConfiguration;
-import org.pushingpixels.ephemeral.chroma.dynamiccolor.DynamicPaletteColor;
-import org.pushingpixels.ephemeral.chroma.hct.Hct;
-
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
 public interface TokenPalette {
