@@ -117,6 +117,18 @@ public final class Hct {
     setInternalState(HctSolver.solveToInt(hue, chroma, newTone));
   }
 
+  public static boolean isBlue(double hue) {
+    return hue >= 250 && hue < 270;
+  }
+
+  public static boolean isYellow(double hue) {
+    return hue >= 105 && hue < 125;
+  }
+
+  public static boolean isCyan(double hue) {
+    return hue >= 170 && hue < 207;
+  }
+
   /**
    * Translate a color into different ViewingConditions.
    *

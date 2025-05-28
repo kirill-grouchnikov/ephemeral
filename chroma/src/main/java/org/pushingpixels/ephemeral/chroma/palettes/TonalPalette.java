@@ -82,10 +82,26 @@ public final class TonalPalette implements BaseTonalPalette {
   public int tone(int tone) {
     Integer color = cache.get(tone);
     if (color == null) {
-      color = Hct.from(this.hue, this.chroma, tone).toInt();
-      cache.put(tone, color);
+      if (tone == 99 && Hct.isYellow(this.hue)) {
+        color = averageArgb(this.tone(98), this.tone(100));
+      } else {
+        color = Hct.from(this.hue, this.chroma, tone).toInt();
+      }
     }
     return color;
+  }
+
+  private int averageArgb(int argb1, int argb2) {
+    int red1 = (argb1 >>> 16) & 0xff;
+    int green1 = (argb1 >>> 8) & 0xff;
+    int blue1 = argb1 & 0xff;
+    int red2 = (argb2 >>> 16) & 0xff;
+    int green2 = (argb2 >>> 8) & 0xff;
+    int blue2 = argb2 & 0xff;
+    int red = Math.round((red1 + red2) / 2f);
+    int green = Math.round((green1 + green2) / 2f);
+    int blue = Math.round((blue1 + blue2) / 2f);
+    return (255 << 24 | (red & 255) << 16 | (green & 255) << 8 | (blue & 255)) >>> 0;
   }
 
   /** Given a tone, use hue and chroma of palette to create a color, and return it as HCT. */
