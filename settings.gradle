@@ -16,5 +16,5 @@
 
 rootProject.name = "ephemeral"
 
-include 'chroma'
+include 'chroma-java'
 
