@@ -19,10 +19,9 @@
 
 * [Component states](docs/theming/skins/componentstates.md)
 * Colors
-  * [Color schemes](docs/theming/skins/colorschemes.md)
-  * [Color scheme association kinds](docs/theming/skins/colorschemeassociationkinds.md)
-  * [Color scheme file format](docs/theming/skins/colorschemes-fileformat.md)
-  * [Color scheme bundles](docs/theming/skins/colorschemebundles.md)
+  * [Color tokens](docs/theming/skins/colortokens.md)
+  * [Color tokens association kinds](docs/theming/skins/colortokensassociationkinds.md)
+  * [Color tokens bundles](docs/theming/skins/colortokensbundles.md)
 * Skins
   * [Skin overview](docs/theming/skins/overview.md)
   * [Light skins](docs/theming/skins/toneddown.md)
