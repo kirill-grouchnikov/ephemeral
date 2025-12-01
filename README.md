@@ -28,9 +28,9 @@
   * [Dark skins](docs/theming/skins/dark.md)
 * Painters
   * [Painter overview](docs/theming/painters/overview.md)
-  * [Fill painters](docs/theming/painters/fill.md)
+  * [Surface painters](docs/theming/painters/surface.md)
+  * [Outline painters](docs/theming/painters/outline.md)
   * [Highlight painters](docs/theming/painters/highlight.md)
-  * [Border painters](docs/theming/painters/border.md)
   * [Decoration painters](docs/theming/painters/decoration.md)
   * [Overlay painters](docs/theming/painters/overlay.md)
 * [Themed states](docs/theming/themed-states.md)
