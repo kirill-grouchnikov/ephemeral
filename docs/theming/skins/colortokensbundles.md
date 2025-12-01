@@ -1,6 +1,6 @@
 ## Ephemeral theming - color tokens bundles
 
-A **color tokens bundle** is a set of information that allows painting controls in a specific decoration area. The `ContainerColorTokensBundle` contains all the APIs officially supported by Aurora color tokens bundles.
+A **color tokens bundle** is a set of information that allows painting controls in a specific decoration area. 
 
 ### Basics
 

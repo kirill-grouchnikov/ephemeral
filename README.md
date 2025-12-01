@@ -60,6 +60,19 @@
 * Miscellaneous
   * [Context menus](docs/component/ContextMenu.md)
   * [Popup positioning](docs/component/PopupPositioning.md)
+* Ribbon
+  * [Overview](docs/component/RibbonOverview.md)
+  * [API skeleton](docs/component/RibbonApiSkeleton.md)
+  * [Working with command projections](docs/component/RibbonBandCommandProjections.md)
+  * [Working with component projections](docs/component/RibbonBandComponentProjections.md)
+  * [Working with galleries](docs/component/RibbonBandGalleries.md)
+  * [Keytips](docs/component/RibbonKeytips.md)
+  * [What happens when you resize the ribbon](docs/component/RibbonResizing.md)
+  * [Application menu](docs/component/RibbonApplicationMenu.md)
+  * [Anchored commands](docs/component/RibbonAnchoredCommands.md)
+  * [Contextual task groups](docs/component/RibbonContextualTaskGroups.md)
+  * [Taskbar](docs/component/RibbonTaskbar.md)
+  * [Global contextual listener](docs/component/RibbonContextualListener.md)
 
 ## Using Ephemeral
 
