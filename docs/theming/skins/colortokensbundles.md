@@ -12,7 +12,7 @@ Here is a screenshot of three buttons (active, enabled and disabled) under the c
 
 ### More states
 
-In addition to the three primary color schemes, Ephemeral allows specifying which color tokens should be used for components in specific component state(s).
+In addition to the three primary color tokens, Ephemeral allows specifying which color tokens should be used for components in specific component state(s).
 
 For example, you can use this API if you want to visualy distinguish between buttons in rollover state and rollover selected state. Here is a screenshot of buttons in different states under the emulated Office Silver 2007 skin:
 

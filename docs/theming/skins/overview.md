@@ -46,7 +46,7 @@ The documentation on [decoration painters](../painters/decoration.md) explains t
 <img alt="Nebula Amethyst" src="https://raw.githubusercontent.com/kirill-grouchnikov/ephemeral/breeze/docs/images/theming/skins/nebulaamethyst1.png" width="340" height="258">
 </p>
 
-Configured decoration areas will have their background painted by the skin's [decoration painter](../painters/decoration.md) based on the default color scheme of the registered color scheme bundle.
+Configured decoration areas will have their background painted by the skin's [decoration painter](../painters/decoration.md) based on the default color tokens of the registered color tokens bundle.
 
 ### Overlays        
 To add polishing touches to the specific decoration areas, use [overlay painters](../painters/overlay.md).
@@ -77,4 +77,4 @@ As another example, here are two `Nebula` skins that use different accents on to
 <img alt="Nebula Brick Wall" src="https://raw.githubusercontent.com/kirill-grouchnikov/ephemeral/breeze/docs/images/theming/skins/nebulabrickwall1.png" width="340" height="258">
 </p>
 
-The first passes light silver tokens as the window chrome accent, while the second passes orange tokens as the window chrome accent. This particular accented skin family uses the window chrome accent on the root pane border, the title pane and the menu bar - while maintaining the overall consistency of its visual "language", such as decoration painter, fill painter, color scheme for active controls in the main UI area, etc.
+The first passes light silver tokens as the window chrome accent, while the second passes orange tokens as the window chrome accent. This particular accented skin family uses the window chrome accent on the root pane border, the title pane and the menu bar - while maintaining the overall consistency of its visual "language", such as decoration painter, surface painter, color tokens for active controls in the main UI area, etc.
