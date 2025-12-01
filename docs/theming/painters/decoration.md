@@ -36,7 +36,7 @@ Let's go back to the original screenshot:
 
 <img src="https://raw.githubusercontent.com/kirill-grouchnikov/ephemeral/breeze/docs/images/theming/painters/decoration/full.png" width="766"/>
 
-It illustrates that the specific skin assigns different color schemes to different decoration areas. Components in those areas get the background and foreground colors based on their assigned color scheme (without any custom application code), thus creating visual distinction between different application areas.
+It illustrates that the specific skin assigns different color tokens to different decoration areas. Components in those areas get the background and foreground colors based on their assigned color tokens (without any custom application code), thus creating visual distinction between different application areas.
 
 ### Working with decoration painters
 
@@ -52,4 +52,4 @@ A decoration painter operates on:
 * Contour to fill
 * The size of the application window
 * The offset of the component from the top-left corner of the application window
-* Ephemeral [color scheme](../skins/colorschemes.md) to be used to compute the decoration fill colors
+* Ephemeral [color tokens](../skins/colortokens.md) to be used to compute the decoration fill colors

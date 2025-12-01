@@ -1,11 +1,6 @@
 ## Ephemeral theming - highlight painters
 
-The highlight painter is used to paint special highlightable areas of application content. The choice of when to use the highlight painter vs the fill painter is left for the application side to decide. Some applications may decide to use different visuals for selected items in lists or grids, in which case they may opt to use the highlight painter.
-
-A highlight painter operates on:
-
-* Component dimensions (width and height)
-* Ephemeral [color scheme](../skins/colorschemes.md) to be used to compute the highlight fill colors
+The highlight painter is used to paint special highlightable areas of application content. In Ephemeral, the highlight painter is using the same API as the [surface painter](surface.md). The choice of when to use the highlight painter vs the surface painter is left for the application side to decide. Some applications may decide to use different visuals for selected items in lists or grids, in which case they may opt to use the highlight painter.
 
 In the next screenshot, Ephemeral highlight painter is used for the selected list item visuals:
 
@@ -17,8 +12,8 @@ Here is another example:
 
 The yellow highlights in the leftmost pane and the blue highlights in the middle pane are provided by the combination of using the highlight painter and a custom application skin. The custom application skin uses:
 
-* Registering yellow and blue color schemes as highlight color schemes on the [color scheme bundles](../skins/colorschemebundles.md) configured on these panes.
-* Registering a brown color scheme with a highlight border [color scheme association kind](../skins/colorschemeassociationkinds.md) on the left pane.
+* Registering yellow and blue color tokens as highlight color tokens on the [color tokens bundles](../skins/colortokensbundles.md) configured on these panes.
+* Registering brown color tokens with the highlight  [color tokens association kind](../skins/colortokensassociationkinds.md) on the left pane.
 * And the highlight painter configured to draw a flat (no gradient) highlight appearance.
 
 ### Working with highlight painters

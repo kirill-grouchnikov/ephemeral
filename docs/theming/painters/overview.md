@@ -6,14 +6,15 @@ An Ephemeral **painter** encapsulates common painting logic. For example, in Eph
 * Lets applications to specify a custom (branding) painter which is applied to all relevant composables.
 * Lets applications and third-party developers to provide consistent appearance of custom components without locking themselves to low-level implementation details.
 
-Ephemeral uses four types of painters which are used on different types of controls and window areas, along with a number of core painter implementations. Interested applications can also create custom implementations of the relevant painter interfaces and combine them together in a skin that creates a unique visual appearance based on the specific design requirements.
+Ephemeral uses five types of painters which are used on different types of controls and window areas, along with a number of core painter implementations. Interested applications can also create custom implementations of the relevant painter interfaces and combine them together in a skin that creates a unique visual appearance based on the specific design requirements.
 
 ### Painter types
 
 Ephemeral uses the following painter types:
 
-* [Fill painters](fill.md)
-* [Border painters](border.md)
+* [Surface painters](surface.md)
+* [Outline painters](outline.md)
+* [Highlight painters](highlight.md)
 * [Decoration painters](decoration.md)
 * [Overlay painters](overlay.md)
 

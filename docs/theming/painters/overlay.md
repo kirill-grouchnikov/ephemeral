@@ -11,7 +11,7 @@ The overlays are best illustrated with screenshots. The following screenshot is 
 This skin defines custom visual appearance for the title pane, the menu bar and the status bar - the background of these areas is painted by the matching decoration painter - in this case, the `MarbleNoiseDecorationPainter`. To add the final polishing touch and create a unique visual footprint for this skin, we use a number of overlay painters. The Nebula Brick Wall skin defines two separate overlay painters, each one associated with the relevant decoration areas:
 
 * The `TopShadowOverlayPainter` is associated with the `Toolbar` decoration area - adding the drop shadow along the top edge of all application toolbars (see the bottom half of the zoomed area in the screenshot above).
-* The `BottomLineOverlayPainter` is associated with `TitlePane` and `Header` decoration areas - adding a thin separator line along the bottom edge of the title pane and the menubar (see the top half of the zoomed area in the screenshot above). Note that the application needs to specify what color is used to paint the separator line based on the matching color scheme.
+* The `BottomLineOverlayPainter` is associated with `TitlePane` and `Header` decoration areas - adding a thin separator line along the bottom edge of the title pane and the menubar (see the top half of the zoomed area in the screenshot above). Note that the application needs to specify what color is used to paint the separator line based on the matching color tokens.
 
 Here is the same skeleton window under the [Gemini](../skins/toneddown.md#gemini) skin:
 
@@ -47,4 +47,4 @@ If you wish to use the overlay painter(s) of the current skin to provide additio
 An overlay painter operates on:
 
 * Decoration area dimensions (width and height)
-* Ephemeral [color scheme](../skins/colorschemes.md) to be used to compute the overlay colors
+* Ephemeral [color tokens](../skins/colortokens.md) to be used to compute the overlay colors
