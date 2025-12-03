@@ -37,7 +37,7 @@ allprojects {
     defaultTasks 'build', 'jar'
 
     // Configure Java compilation for all the projects
-    tasks.withType(JavaCompile) {
+    tasks.withType(JavaCompile).configureEach {
         // enforce Java 9 as the source + target + compile time level
         javaCompiler = javaToolchains.compilerFor {
             languageVersion = JavaLanguageVersion.of(9)
@@ -59,12 +59,10 @@ allprojects {
         clean {
             delete 'out'     // interpreted relative to the project directory
         }
-
-        disableAutoTargetJvm()
     }
 
     // Configure the jar task for all the projects
-    tasks.withType(Jar) {
+    tasks.withType(Jar).configureEach {
         // create reproducible builds by removing timestamps and doing cross-platform file order
         preserveFileTimestamps = false
         reproducibleFileOrder = true
@@ -80,7 +78,7 @@ allprojects {
     }
 
     gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
+        tasks.withType(JavaCompile).configureEach {
             options.compilerArgs << "-Xlint:unchecked"
         }
     }
@@ -98,32 +96,36 @@ apply plugin: "com.github.ben-manes.versions"
 // jars are grouped into three folders: 'core' for app-facing modules (such as Animation,
 // Common, Theming, Component), 'demo' for modules that have demos and 'tools' for
 // modules with various tools.
-task copyJars(type: Copy) {
-    delete "drop/${project.version}"
+tasks.register("copyJars") {
+    delete "${rootProject.projectDir}/drop/${project.version}"
     subprojects {
         project ->
-            project.afterEvaluate {
-                copy {
-                    def projectName = project.name
-                    from file("${project.buildDir}/libs/${rootProject.name}-${projectName}-${project.version}.jar")
-                    into file("drop/${project.version}")
-                }
+            copy {
+                def projectName = project.name
+                from file("${project.layout.buildDirectory.asFile.get().absolutePath}/libs/${rootProject.name}-${projectName}-${project.version}.jar")
+                into file("${rootProject.projectDir}/drop/${project.version}/")
             }
     }
 }
 
 // Collects all the dependencies in build/libs
-task getDependencies(type: Copy) {
-    into 'build/libs'
-    from {
-        subprojects.collect { it.configurations.compileClasspath }
-    }
-    doLast {
-        println("Copied all dependencies to build/libs")
+tasks.register("getDependencies") {
+    subprojects.forEach {
+        subproject -> subproject.configurations.matching { it.name == "compileClasspath"}.forEach {
+            configuration -> configuration.getFiles().forEach {
+                file ->
+                    {
+                        project.copy {
+                            from(file.absoluteFile)
+                            into("${rootProject.projectDir}/build/libs")
+                        }
+                    }
+            }
+        }
     }
 }
 
-task printRuntimeDependencies {
+tasks.register("printRuntimeDependencies") {
     doLast {
         println "Project runtime dependencies:"
         allprojects.each { p ->
