@@ -17,6 +17,7 @@
 package org.pushingpixels.ephemeral.chroma.palettes;
 
 import org.pushingpixels.ephemeral.chroma.hct.Hct;
+
 import java.util.HashMap;
 import java.util.Map;
 
