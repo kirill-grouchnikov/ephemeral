@@ -80,7 +80,7 @@ public class Blend {
    *
    * @param from ARGB representation of color
    * @param to ARGB representation of color
-   * @param amount how much blending to perform; 0.0 >= and <= 1.0
+   * @param amount how much blending to perform; [0.0-1.0]
    * @return from, with a hue blended towards to. Chroma and tone are constant.
    */
   public static int hctHue(int from, int to, double amount) {
@@ -96,7 +96,7 @@ public class Blend {
    *
    * @param from ARGB representation of color
    * @param to ARGB representation of color
-   * @param amount how much blending to perform; 0.0 >= and <= 1.0
+   * @param amount how much blending to perform; [0.0-1.0]
    * @return from, blended towards to. Hue, chroma, and tone will change.
    */
   public static int cam16Ucs(int from, int to, double amount) {

@@ -108,7 +108,7 @@ public final class Contrast {
    * <p>Y and L* are pure functions of each other, so it possible to use perceptually accurate color
    * spaces, and measure contrast, and measure contrast in a much more understandable way: instead
    * of a ratio, a linear difference. This allows a designer to determine what they need to adjust a
-   * color's lightness to in order to reach their desired contrast, instead of guessing & checking
+   * color's lightness to in order to reach their desired contrast, instead of guessing and checking
    * with hex codes.
    */
   public static double ratioOfTones(double t1, double t2) {
@@ -161,7 +161,7 @@ public final class Contrast {
   }
 
   /**
-   * Returns T in HCT, L* in L*a*b* <= tone parameter that ensures ratio with input T/L*. Returns -1
+   * Returns T in HCT, L* in L*a*b* less or equal to tone parameter that ensures ratio with input T/L*. Returns -1
    * if ratio cannot be achieved.
    *
    * @param tone Tone return value must contrast with.
@@ -193,7 +193,7 @@ public final class Contrast {
   }
 
   /**
-   * Tone <= tone parameter that ensures ratio. 0 if ratio cannot be achieved.
+   * Tone less or equal tone parameter that ensures ratio. 0 if ratio cannot be achieved.
    *
    * <p>This method is unsafe because the returned value is guaranteed to be in bounds, but, the in
    * bounds return value may not reach the desired ratio.
