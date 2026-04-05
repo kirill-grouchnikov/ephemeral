@@ -103,6 +103,11 @@ public class DynamicBimodalPalette implements TokenPalette {
   }
 
   @Override
+  public int getContainerShadow() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().containerShadow());
+  }
+
+  @Override
   public int getOnContainer() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().onContainer());
   }

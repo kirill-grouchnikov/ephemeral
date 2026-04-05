@@ -86,6 +86,11 @@ public class DynamicPalette implements TokenPalette {
   }
 
   @Override
+  public int getContainerShadow() {
+    return getArgb(new ChromaDynamicPaletteColors().containerShadow());
+  }
+
+  @Override
   public int getOnContainer() {
     return getArgb(new ChromaDynamicPaletteColors().onContainer());
   }

@@ -107,6 +107,18 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+    public DynamicBimodalPaletteColor containerShadow() {
+        return new DynamicBimodalPaletteColor(
+            /* name= */ "container_shadow",
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+                ? new ContrastCurve(10.0, 5.0, 2.0, 0.0).get(p.containerConfiguration.getContrastLevel())
+                : new ContrastCurve(20.0, 12.0, 5.0, 0.0).get(p.containerConfiguration.getContrastLevel()),
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ null);
+    }
+
     public DynamicBimodalPaletteColor onContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "on_container",

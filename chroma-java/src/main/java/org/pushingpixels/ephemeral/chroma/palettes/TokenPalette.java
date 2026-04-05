@@ -33,6 +33,8 @@ public interface TokenPalette {
 
   int getContainerSurfaceBright();
 
+  int getContainerShadow();
+
   int getOnContainer();
 
   int getOnContainerVariant();
