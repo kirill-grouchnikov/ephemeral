@@ -88,6 +88,7 @@ public final class TonalPalette implements BaseTonalPalette {
       } else {
         color = Hct.from(this.hue, this.chroma, tone).toInt();
       }
+      cache.put(tone, color);
     }
     return color;
   }
@@ -108,6 +109,9 @@ public final class TonalPalette implements BaseTonalPalette {
   /** Given a tone, use hue and chroma of palette to create a color, and return it as HCT. */
   @Override
   public Hct getHct(double tone) {
+    if (tone == 99.0 && Hct.isYellow(this.hue)) {
+      return Hct.fromInt(tone(99));
+    }
     return Hct.from(this.hue, this.chroma, tone);
   }
 
