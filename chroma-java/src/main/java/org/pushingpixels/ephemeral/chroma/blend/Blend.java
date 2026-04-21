@@ -71,7 +71,7 @@ public class Blend {
                 + rotationDegrees * MathUtils.rotationDirection(fromHct.getHue(), toHct.getHue()));
     double outputChroma = fromHct.getChroma() * (1.0 - amount) + toHct.getChroma() * amount;
     double outputTone = fromHct.getTone() * (1.0 - amount) + toHct.getTone() * amount;
-    return Hct.from(toHct.getHue(), outputChroma, outputTone).toInt();
+    return Hct.from(outputHue, outputChroma, outputTone).toInt();
   }
 
   /**
