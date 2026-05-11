@@ -23,7 +23,7 @@ import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
 /**
- * Provides important settings for creating colors dynamically, and a tonal palette. Requires:
+ * A primary entry point for single-source color palettes.
  * 1. Source color.
  * 2. Container configuration (dark mode, contrast level, ...)
  */

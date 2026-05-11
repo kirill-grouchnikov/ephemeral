@@ -23,10 +23,9 @@ import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
 /**
- * Provides important settings for creating colors dynamically, and a tonal palette. Requires:
- * 1. Two source colors.
- * 2. Transition range between these two colors across the full tonal range.
- * 3. Container configuration (dark mode, contrast level, ...)
+ * A primary entry point for duotone palettes.
+ * 1. Two source colors, one for container colors and one for on-container colors.
+ * 2. Container configuration (dark mode, contrast level, ...)
  */
 public class DuotonePalette implements TokenPalette {
   public final TonalPalette containerPalette;

@@ -23,7 +23,7 @@ import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
 /**
- * Provides important settings for creating colors dynamically, and a tonal palette. Requires:
+ * A primary entry point for bimodal palettes.
  * 1. Two source colors.
  * 2. Transition range between these two colors across the full tonal range.
  * 3. Container configuration (dark mode, contrast level, ...)
