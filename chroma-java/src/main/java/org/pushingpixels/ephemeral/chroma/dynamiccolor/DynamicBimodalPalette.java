@@ -24,9 +24,9 @@ import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
 
 /**
  * Provides important settings for creating colors dynamically, and a tonal palette. Requires:
- * 1. A color. (source color)
- * 2. Whether or not its dark mode.
- * 3. Contrast level. (-1 to 1, currently contrast ratio 3.0 and 7.0)
+ * 1. Two source colors.
+ * 2. Transition range between these two colors across the full tonal range.
+ * 3. Container configuration (dark mode, contrast level, ...)
  */
 public class DynamicBimodalPalette implements TokenPalette {
   public enum TransitionRange {
