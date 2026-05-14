@@ -54,4 +54,8 @@ public interface TokenPalette {
   int getComplementaryOnContainer();
 
   int getAccentOnContainer();
+
+  int getMarkerOnContainer();
+
+  int getComplementaryMarkerOnContainer();
 }

@@ -138,4 +138,14 @@ public class DynamicPalette implements TokenPalette {
   public int getAccentOnContainer() {
     return getArgb(new ChromaDynamicPaletteColors().accentOnContainer());
   }
+
+  @Override
+  public int getMarkerOnContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().markerOnContainer());
+  }
+
+  @Override
+  public int getComplementaryMarkerOnContainer() {
+    return getArgb(new ChromaDynamicPaletteColors().complementaryMarkerOnContainer());
+  }
 }

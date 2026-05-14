@@ -156,4 +156,14 @@ public class DynamicBimodalPalette implements TokenPalette {
   public int getAccentOnContainer() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().accentOnContainer());
   }
+
+  @Override
+  public int getMarkerOnContainer() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().markerOnContainer());
+  }
+
+  @Override
+  public int getComplementaryMarkerOnContainer() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().complementaryMarkerOnContainer());
+  }
 }

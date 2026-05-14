@@ -250,4 +250,24 @@ public final class ChromaDynamicPaletteColors {
             /* background= */ (p) -> containerSurface(),
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
+
+    public DynamicPaletteColor markerOnContainer() {
+        return new DynamicPaletteColor(
+            /* name= */ "marker_on_container",
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.sourceColorTone + 30.0 : p.sourceColorTone - 30.0,
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ null);
+    }
+
+    public DynamicPaletteColor complementaryMarkerOnContainer() {
+        return new DynamicPaletteColor(
+            /* name= */ "complementary_marker_on_container",
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.sourceColorTone - 15.0 : p.sourceColorTone + 15.0,
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ null);
+    }
 }

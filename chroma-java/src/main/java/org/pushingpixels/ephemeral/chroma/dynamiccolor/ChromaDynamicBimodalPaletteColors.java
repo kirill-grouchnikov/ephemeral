@@ -253,6 +253,26 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+    public DynamicBimodalPaletteColor markerOnContainer() {
+        return new DynamicBimodalPaletteColor(
+            /* name= */ "marker_on_container",
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.fidelityTone + 30.0 : p.fidelityTone - 30.0,
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ null);
+    }
+
+    public DynamicBimodalPaletteColor complementaryMarkerOnContainer() {
+        return new DynamicBimodalPaletteColor(
+            /* name= */ "complementary_marker_on_container",
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.fidelityTone - 15.0 : p.fidelityTone + 15.0,
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ null);
+    }
+
     /* internal */ double getTransitionRangeToneStart(DynamicBimodalPalette palette) {
         if (palette.transitionRange == DynamicBimodalPalette.TransitionRange.FULL_SPAN) {
             return 0.0;

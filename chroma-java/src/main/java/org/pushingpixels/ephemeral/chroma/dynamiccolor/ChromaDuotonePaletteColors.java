@@ -256,4 +256,26 @@ public final class ChromaDuotonePaletteColors {
             /* background= */ (p) -> containerSurface(),
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
+
+    public DuotonePaletteColor markerOnContainer() {
+        return new DuotonePaletteColor(
+            /* name= */ "marker_on_container",
+            /* tonalPalette= */ (p) -> p.containerPalette,
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.containerSourceColorTone + 30.0 : p.containerSourceColorTone - 30.0,
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ null);
+    }
+
+    public DuotonePaletteColor complementaryMarkerOnContainer() {
+        return new DuotonePaletteColor(
+            /* name= */ "complementary_marker_on_container",
+            /* tonalPalette= */ (p) -> p.containerPalette,
+            /* tone= */ (p) -> p.containerConfiguration.isDark() ? p.containerSourceColorTone - 15.0 : p.containerSourceColorTone + 15.0,
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ null);
+    }
 }

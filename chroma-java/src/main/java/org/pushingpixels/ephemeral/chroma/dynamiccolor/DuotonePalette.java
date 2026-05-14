@@ -139,4 +139,14 @@ public class DuotonePalette implements TokenPalette {
   public int getAccentOnContainer() {
     return getArgb(new ChromaDuotonePaletteColors().accentOnContainer());
   }
+
+  @Override
+  public int getMarkerOnContainer() {
+    return getArgb(new ChromaDuotonePaletteColors().markerOnContainer());
+  }
+
+  @Override
+  public int getComplementaryMarkerOnContainer() {
+    return getArgb(new ChromaDuotonePaletteColors().complementaryMarkerOnContainer());
+  }
 }
