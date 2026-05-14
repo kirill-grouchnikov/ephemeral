@@ -135,7 +135,7 @@ public final class ChromaDuotonePaletteColors {
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ null,
-            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+            /* contrastCurve= */ null);
     }
 
     public DuotonePaletteColor onContainerVariant() {
