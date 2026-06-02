@@ -32,8 +32,8 @@ The skin definition consists of the following:
   * [Highlight painters](../painters/highlight.md)
   * [Decoration painter](../painters/decoration.md).
 * Miscellaneous:
-  * Button shaper.
-  * Optional [overlay painters](../painters/overlay.md) for some decoration areas.
+  * Component shaper.
+  * Root pane decorator.
 
 In order to define a valid skin, you need to specify all its mandatory parameters. A valid skin must have a color tokens bundle for `DecorationAreaType.None`, a button shaper, a surface painter, a decoration painter, a highlight painter and an outline painter. All other parts are optional.
 
@@ -49,7 +49,7 @@ The documentation on [decoration painters](../painters/decoration.md) explains t
 Configured decoration areas will have their background painted by the skin's [decoration painter](../painters/decoration.md) based on the default color tokens of the registered color tokens bundle.
 
 ### Overlays        
-To add polishing touches to the specific decoration areas, use [overlay painters](../painters/overlay.md).
+To add polishing touches to the specific decoration areas, use [overlay painters](../painters/decoration.md#overlay-painters).
 
 The [Nebula skin](toneddown.md#nebula) is configured to paint drop shadows on the toolbars and separators on title panes and headers:
 

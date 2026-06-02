@@ -16,7 +16,6 @@ Ephemeral uses the following painter types:
 * [Outline painters](outline.md)
 * [Highlight painters](highlight.md)
 * [Decoration painters](decoration.md)
-* [Overlay painters](overlay.md)
 
 The vast majority of Ephemeral visuals are painted by using these painters.
 
