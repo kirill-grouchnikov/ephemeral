@@ -32,7 +32,6 @@
   * [Outline painters](docs/theming/painters/outline.md)
   * [Highlight painters](docs/theming/painters/highlight.md)
   * [Decoration painters](docs/theming/painters/decoration.md)
-  * [Overlay painters](docs/theming/painters/overlay.md)
 * [Themed states](docs/theming/themed-states.md)
 
 ### Window
