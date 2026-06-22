@@ -21,6 +21,13 @@
 <img alt="Magellan" src="https://raw.githubusercontent.com/kirill-grouchnikov/ephemeral/breeze/docs/images/theming/skins/magellan2.png" width="340" height="258">
 </p>
 
+### Blueprint
+
+<p align="left">
+<img alt="Blueprint" src="https://raw.githubusercontent.com/kirill-grouchnikov/ephemeral/breeze/docs/images/theming/skins/blueprint1.png" width="340" height="258">
+<img alt="Blueprint" src="https://raw.githubusercontent.com/kirill-grouchnikov/ephemeral/breeze/docs/images/theming/skins/blueprint2.png" width="340" height="258">
+</p>
+
 ### Graphite
 
 <p align="left">
