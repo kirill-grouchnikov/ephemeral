@@ -127,6 +127,19 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+    public DuotonePaletteColor onContainerLow() {
+        return new DuotonePaletteColor(
+            /* name= */ "on_container_low",
+            /* tonalPalette= */ (p) -> p.onContainerPalette,
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+            ? p.onContainerSourceColorTone - 10.0
+            : p.onContainerSourceColorTone + 10.0,
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+    }
+
     public DuotonePaletteColor onContainer() {
         return new DuotonePaletteColor(
             /* name= */ "on_container",
@@ -138,17 +151,30 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DuotonePaletteColor onContainerVariant() {
+    public DuotonePaletteColor onContainerHigh() {
         return new DuotonePaletteColor(
-            /* name= */ "on_container_variant",
+            /* name= */ "on_container_high",
             /* tonalPalette= */ (p) -> p.onContainerPalette,
             /* tone= */ (p) -> p.containerConfiguration.isDark()
-                ? p.onContainerSourceColorTone - 10.0
-                : p.onContainerSourceColorTone + 10.0,
+                ? p.onContainerSourceColorTone + 5.0
+                : p.onContainerSourceColorTone - 5.0,
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ null,
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+    }
+
+    public DuotonePaletteColor containerOutlineLow() {
+        return new DuotonePaletteColor(
+            /* name= */ "container_outline_low",
+            /* tonalPalette= */ (p) -> p.containerPalette,
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+            ? new ContrastCurve(35.0, 30.0, 20.0, 10.0).get(p.containerConfiguration.getContrastLevel())
+            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.containerConfiguration.getContrastLevel()),
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ null);
     }
 
     public DuotonePaletteColor containerOutline() {
@@ -164,13 +190,13 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DuotonePaletteColor containerOutlineVariant() {
+    public DuotonePaletteColor containerOutlineHigh() {
         return new DuotonePaletteColor(
-            /* name= */ "container_outline_variant",
+            /* name= */ "container_outline_high",
             /* tonalPalette= */ (p) -> p.containerPalette,
             /* tone= */ (p) -> p.containerConfiguration.isDark()
-                ? new ContrastCurve(35.0, 30.0, 20.0, 10.0).get(p.containerConfiguration.getContrastLevel())
-                : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.containerConfiguration.getContrastLevel()),
+                ? new ContrastCurve(8.0, 5.0, 2.0, 0.0).get(p.containerConfiguration.getContrastLevel())
+                : new ContrastCurve(40.0, 35.0, 25.0, 20.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ null,

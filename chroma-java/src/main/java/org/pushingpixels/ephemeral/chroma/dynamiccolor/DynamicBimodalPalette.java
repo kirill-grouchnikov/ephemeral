@@ -108,13 +108,23 @@ public class DynamicBimodalPalette implements TokenPalette {
   }
 
   @Override
+  public int getOnContainerLow() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().onContainerLow());
+  }
+
+  @Override
   public int getOnContainer() {
     return getArgb(new ChromaDynamicBimodalPaletteColors().onContainer());
   }
 
   @Override
-  public int getOnContainerVariant() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().onContainerVariant());
+  public int getOnContainerHigh() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().onContainerHigh());
+  }
+
+  @Override
+  public int getContainerOutlineLow() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().containerOutlineLow());
   }
 
   @Override
@@ -123,8 +133,8 @@ public class DynamicBimodalPalette implements TokenPalette {
   }
 
   @Override
-  public int getContainerOutlineVariant() {
-    return getArgb(new ChromaDynamicBimodalPaletteColors().containerOutlineVariant());
+  public int getContainerOutlineHigh() {
+    return getArgb(new ChromaDynamicBimodalPaletteColors().containerOutlineHigh());
   }
 
   @Override

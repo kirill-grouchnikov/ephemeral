@@ -35,13 +35,17 @@ public interface TokenPalette {
 
   int getContainerShadow();
 
+  int getOnContainerLow();
+
   int getOnContainer();
 
-  int getOnContainerVariant();
+  int getOnContainerHigh();
+
+  int getContainerOutlineLow();
 
   int getContainerOutline();
 
-  int getContainerOutlineVariant();
+  int getContainerOutlineHigh();
 
   int getInverseContainerSurface();
 

@@ -117,6 +117,24 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+    public DynamicPaletteColor onContainerLow() {
+        return new DynamicPaletteColor(
+            /* name= */ "on_container_low",
+            /* tone= */ (p) -> {
+            ContrastCurve contrastCurve = p.containerConfiguration.isDark()
+                ? new ContrastCurve(5.0, 6.0, 8.0, 10.0)
+                : new ContrastCurve(4.5, 5.0, 7.5, 10.0);
+            return DynamicPaletteColor.foregroundTone(
+                containerSurface().tone.apply(p),
+                contrastCurve.get(p.containerConfiguration.getContrastLevel()),
+                p.containerConfiguration.isDark());
+        },
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ (p) -> containerSurface(),
+            /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+    }
+
     public DynamicPaletteColor onContainer() {
         return new DynamicPaletteColor(
             /* name= */ "on_container",
@@ -135,13 +153,13 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
-    public DynamicPaletteColor onContainerVariant() {
+    public DynamicPaletteColor onContainerHigh() {
         return new DynamicPaletteColor(
-            /* name= */ "on_container_variant",
+            /* name= */ "on_container_high",
             /* tone= */ (p) -> {
                 ContrastCurve contrastCurve = p.containerConfiguration.isDark()
-                    ? new ContrastCurve(5.0, 6.0, 8.0, 10.0)
-                    : new ContrastCurve(4.5, 5.0, 7.5, 10.0);
+                    ? new ContrastCurve(5.0, 8.0, 11.0, 14.0)
+                    : new ContrastCurve(4.5, 7.0, 10.5, 14.0);
                 return DynamicPaletteColor.foregroundTone(
                     containerSurface().tone.apply(p),
                     contrastCurve.get(p.containerConfiguration.getContrastLevel()),
@@ -151,6 +169,18 @@ public final class ChromaDynamicPaletteColors {
             /* isInverse= */ false,
             /* background= */ (p) -> containerSurface(),
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
+    }
+
+    public DynamicPaletteColor containerOutlineLow() {
+        return new DynamicPaletteColor(
+            /* name= */ "container_outline_low",
+            /* tone= */ (p) -> p.containerConfiguration.isDark()
+            ? new ContrastCurve(35.0, 30.0, 20.0, 10.0).get(p.containerConfiguration.getContrastLevel())
+            : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.containerConfiguration.getContrastLevel()),
+            /* isBackground= */ false,
+            /* isInverse= */ false,
+            /* background= */ null,
+            /* contrastCurve= */ null);
     }
 
     public DynamicPaletteColor containerOutline() {
@@ -165,12 +195,12 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
-    public DynamicPaletteColor containerOutlineVariant() {
+    public DynamicPaletteColor containerOutlineHigh() {
         return new DynamicPaletteColor(
-            /* name= */ "container_outline_variant",
+            /* name= */ "container_outline_high",
             /* tone= */ (p) -> p.containerConfiguration.isDark()
-                ? new ContrastCurve(35.0, 30.0, 20.0, 10.0).get(p.containerConfiguration.getContrastLevel())
-                : new ContrastCurve(85.0, 80.0, 70.0, 50.0).get(p.containerConfiguration.getContrastLevel()),
+                ? new ContrastCurve(8.0, 5.0, 2.0, 0.0).get(p.containerConfiguration.getContrastLevel())
+                : new ContrastCurve(40.0, 35.0, 25.0, 20.0).get(p.containerConfiguration.getContrastLevel()),
             /* isBackground= */ false,
             /* isInverse= */ false,
             /* background= */ null,

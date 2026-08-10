@@ -90,13 +90,23 @@ public class DynamicPalette implements TokenPalette {
   }
 
   @Override
+  public int getOnContainerLow() {
+    return getArgb(new ChromaDynamicPaletteColors().onContainerLow());
+  }
+
+  @Override
   public int getOnContainer() {
     return getArgb(new ChromaDynamicPaletteColors().onContainer());
   }
 
   @Override
-  public int getOnContainerVariant() {
-    return getArgb(new ChromaDynamicPaletteColors().onContainerVariant());
+  public int getOnContainerHigh() {
+    return getArgb(new ChromaDynamicPaletteColors().onContainerHigh());
+  }
+
+  @Override
+  public int getContainerOutlineLow() {
+    return getArgb(new ChromaDynamicPaletteColors().containerOutlineLow());
   }
 
   @Override
@@ -105,8 +115,8 @@ public class DynamicPalette implements TokenPalette {
   }
 
   @Override
-  public int getContainerOutlineVariant() {
-    return getArgb(new ChromaDynamicPaletteColors().containerOutlineVariant());
+  public int getContainerOutlineHigh() {
+    return getArgb(new ChromaDynamicPaletteColors().containerOutlineHigh());
   }
 
   @Override
