@@ -115,17 +115,29 @@ public final class TonalPalette implements BaseTonalPalette {
     return Hct.from(this.hue, this.chroma, tone);
   }
 
-  /** The chroma of the Tonal Palette, in HCT. Ranges from 0 to ~130 (for sRGB gamut). */
+  /**
+   * The chroma of the Tonal Palette, in HCT. Ranges from 0 to ~130 (for sRGB gamut).
+   *
+   * @return the chroma value
+   */
   public double getChroma() {
     return this.chroma;
   }
 
-  /** The hue of the Tonal Palette, in HCT. Ranges from 0 to 360. */
+  /**
+   * The hue of the Tonal Palette, in HCT. Ranges from 0 to 360.
+   *
+   * @return the hue value
+   */
   public double getHue() {
     return this.hue;
   }
 
-  /** The key color is the first tone, starting from T50, that matches the palette's chroma. */
+  /**
+   * The key color is the first tone, starting from T50, that matches the palette's chroma.
+   *
+   * @return the key color as an HCT color
+   */
   public Hct getKeyColor() {
     return this.keyColor;
   }

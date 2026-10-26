@@ -18,11 +18,18 @@ package org.pushingpixels.ephemeral.chroma.dynamiccolor;
 
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
-/** Named colors, otherwise known as tokens, or roles, in the Ephemeral Design system. */
+/**
+ * Named colors, otherwise known as tokens, or roles, for dynamic bimodal palettes in the Ephemeral Design system.
+ */
 public final class ChromaDynamicBimodalPaletteColors {
+  /** Creates a ChromaDynamicBimodalPaletteColors instance. */
   public ChromaDynamicBimodalPaletteColors() {
   }
 
+  /**
+   * Returns the lowest contrast surface container color.
+   * @return the dynamic bimodal palette color for the lowest contrast surface container
+   */
     public DynamicBimodalPaletteColor containerSurfaceLowest() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_surface_lowest",
@@ -35,6 +42,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the low contrast surface container color.
+   * @return the dynamic bimodal palette color for the low contrast surface container
+   */
     public DynamicBimodalPaletteColor containerSurfaceLow() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_surface_low",
@@ -47,6 +58,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the base surface container color.
+   * @return the dynamic bimodal palette color for the base surface container
+   */
     public DynamicBimodalPaletteColor containerSurface() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_surface",
@@ -57,6 +72,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the high contrast surface container color.
+   * @return the dynamic bimodal palette color for the high contrast surface container
+   */
     public DynamicBimodalPaletteColor containerSurfaceHigh() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_surface_high",
@@ -69,6 +88,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the highest contrast surface container color.
+   * @return the dynamic bimodal palette color for the highest contrast surface container
+   */
     public DynamicBimodalPaletteColor containerSurfaceHighest() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_surface_highest",
@@ -82,6 +105,10 @@ public final class ChromaDynamicBimodalPaletteColors {
     }
 
 
+  /**
+   * Returns the dimmed surface container color.
+   * @return the dynamic bimodal palette color for the dimmed surface container
+   */
     public DynamicBimodalPaletteColor containerSurfaceDim() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_surface_dim",
@@ -95,6 +122,10 @@ public final class ChromaDynamicBimodalPaletteColors {
     }
 
 
+  /**
+   * Returns the bright surface container color.
+   * @return the dynamic bimodal palette color for the bright surface container
+   */
     public DynamicBimodalPaletteColor containerSurfaceBright() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_surface_bright",
@@ -107,6 +138,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the shadow color.
+   * @return the dynamic bimodal palette color for shadows
+   */
     public DynamicBimodalPaletteColor containerShadow() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_shadow",
@@ -119,6 +154,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the low contrast on-container color.
+   * @return the dynamic bimodal palette color for low contrast on-container
+   */
     public DynamicBimodalPaletteColor onContainerLow() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "on_container_low",
@@ -137,6 +176,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the on-container color.
+   * @return the dynamic bimodal palette color for on-container
+   */
     public DynamicBimodalPaletteColor onContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "on_container",
@@ -155,6 +198,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the high contrast on-container color.
+   * @return the dynamic bimodal palette color for high contrast on-container
+   */
     public DynamicBimodalPaletteColor onContainerHigh() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "on_container_high",
@@ -173,6 +220,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the low contrast outline color.
+   * @return the dynamic bimodal palette color for low contrast outline
+   */
     public DynamicBimodalPaletteColor containerOutlineLow() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_outline_low",
@@ -185,6 +236,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the outline color.
+   * @return the dynamic bimodal palette color for outline
+   */
     public DynamicBimodalPaletteColor containerOutline() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_outline",
@@ -197,6 +252,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the high contrast outline color.
+   * @return the dynamic bimodal palette color for high contrast outline
+   */
     public DynamicBimodalPaletteColor containerOutlineHigh() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "container_outline_high",
@@ -209,6 +268,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the inverse surface container color.
+   * @return the dynamic bimodal palette color for inverse surface container
+   */
     public DynamicBimodalPaletteColor inverseContainerSurface() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "inverse_container_surface",
@@ -221,6 +284,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the inverse on-container color.
+   * @return the dynamic bimodal palette color for inverse on-container
+   */
     public DynamicBimodalPaletteColor inverseOnContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "inverse_on_container",
@@ -231,6 +298,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the inverse outline color.
+   * @return the dynamic bimodal palette color for inverse outline
+   */
     public DynamicBimodalPaletteColor inverseContainerOutline() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "inverse_container_outline",
@@ -243,6 +314,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the complementary on-container color.
+   * @return the dynamic bimodal palette color for complementary on-container
+   */
     public DynamicBimodalPaletteColor complementaryOnContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "complementary_on_container",
@@ -261,6 +336,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the complementary outline color.
+   * @return the dynamic bimodal palette color for complementary outline
+   */
     public DynamicBimodalPaletteColor complementaryContainerOutline() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "complementary_container_outline",
@@ -273,6 +352,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the accent on-container color.
+   * @return the dynamic bimodal palette color for accent on-container
+   */
     public DynamicBimodalPaletteColor accentOnContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "accent_on_container",
@@ -283,6 +366,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the marker on-container color.
+   * @return the dynamic bimodal palette color for marker on-container
+   */
     public DynamicBimodalPaletteColor markerOnContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "marker_on_container",
@@ -293,6 +380,10 @@ public final class ChromaDynamicBimodalPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the complementary marker on-container color.
+   * @return the dynamic bimodal palette color for complementary marker on-container
+   */
     public DynamicBimodalPaletteColor complementaryMarkerOnContainer() {
         return new DynamicBimodalPaletteColor(
             /* name= */ "complementary_marker_on_container",

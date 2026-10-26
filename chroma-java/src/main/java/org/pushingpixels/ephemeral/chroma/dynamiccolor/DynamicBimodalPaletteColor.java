@@ -51,19 +51,26 @@ import java.util.function.Function;
 // AndroidManifest with an SDK set higher than 14.
 @SuppressWarnings({"AndroidJdkLibsChecker", "NewApi"})
 public final class DynamicBimodalPaletteColor {
+  /** The name of the dynamic color. */
   public final String name;
+  /** Function that provides the tone. */
   public final Function<DynamicBimodalPalette, Double> tone;
+  /** Whether this dynamic color is a background. */
   public final boolean isBackground;
+  /** Whether this dynamic color is inverse. */
   public final boolean isInverse;
+  /** The background of the dynamic color. */
   public final Function<DynamicBimodalPalette, DynamicBimodalPaletteColor> background;
+  /** The contrast curve for the dynamic color. */
   public final ContrastCurve contrastCurve;
 
+  /** The opacity function for the dynamic color. */
   public final Function<DynamicBimodalPalette, Double> opacity;
 
   private final HashMap<DynamicBimodalPalette, Hct> hctCache = new HashMap<>();
 
   /**
-   * A constructor for DynamicColor.
+   * A constructor for DynamicBimodalPaletteColor.
    *
    * <p>_Strongly_ prefer using one of the convenience constructors. This class is arguably too
    * flexible to ensure it can support any scenario. Functional arguments allow overriding without
@@ -79,6 +86,7 @@ public final class DynamicBimodalPaletteColor {
    * @param tone Function that provides a tone, given a DynamicBimodalPalette.
    * @param isBackground Whether this dynamic color is a background, with some other color as the
    *     foreground.
+   * @param isInverse Whether this color is an inverse color.
    * @param background The background of the dynamic color (as a function of a `DynamicBimodalPalette`), if
    *     it exists.
    * @param contrastCurve A `ContrastCurve` object specifying how its contrast against its
@@ -106,6 +114,7 @@ public final class DynamicBimodalPaletteColor {
    *
    * @param palette Defines the conditions of the user interface, for example, whether or not it is
    *     dark mode or light mode, and what the desired contrast level is.
+   * @return the ARGB color value
    */
   public int getArgb(DynamicBimodalPalette palette) {
     int argb = getHct(palette).toInt();
@@ -122,6 +131,7 @@ public final class DynamicBimodalPaletteColor {
    *
    * @param palette Defines the conditions of the user interface, for example, whether or not it is
    *     dark mode or light mode, and what the desired contrast level is.
+   * @return the HCT color
    */
   public Hct getHct(DynamicBimodalPalette palette) {
     Hct cachedAnswer = hctCache.get(palette);
@@ -164,7 +174,12 @@ public final class DynamicBimodalPaletteColor {
     return answer;
   }
 
-  /** Returns the tone in HCT, ranging from 0 to 100, of the resolved color given palette. */
+  /**
+   * Returns the tone in HCT, ranging from 0 to 100, of the resolved color given palette.
+   *
+   * @param palette the dynamic bimodal palette defining the UI conditions
+   * @return the tone value
+   */
   public double getTone(DynamicBimodalPalette palette) {
     boolean decreasingContrast = palette.containerConfiguration.getContrastLevel() < 0;
 
@@ -211,6 +226,12 @@ public final class DynamicBimodalPaletteColor {
   /**
    * Given a background tone, find a foreground tone, while ensuring they reach a contrast ratio
    * that is as close to ratio as possible.
+   *
+   * @param bgTone the background tone
+   * @param ratio the desired contrast ratio
+   * @param allowDynamicPreference whether to allow dynamic preference for lighter/darker tones
+   * @param isDark whether the theme is dark
+   * @return the foreground tone
    */
   public static double foregroundTone(double bgTone, double ratio,
       boolean allowDynamicPreference, boolean isDark ) {
@@ -248,6 +269,9 @@ public final class DynamicBimodalPaletteColor {
   /**
    * Adjust a tone down such that white has 4.5 contrast, if the tone is reasonably close to
    * supporting it.
+   *
+   * @param tone the tone to adjust
+   * @return the adjusted tone
    */
   public static double enableLightForeground(double tone) {
     if (tonePrefersLightForeground(tone) && !toneAllowsLightForeground(tone)) {
@@ -265,12 +289,20 @@ public final class DynamicBimodalPaletteColor {
    *
    * <p>Since `tertiaryContainer` in dark monochrome scheme requires a tone of 60, it should not be
    * adjusted. Therefore, 60 is excluded here.
+   *
+   * @param tone the tone to check
+   * @return true if a light foreground is preferred for the given tone
    */
   public static boolean tonePrefersLightForeground(double tone) {
     return Math.round(tone) < 60;
   }
 
-  /** Tones less than ~T50 always permit white at 4.5 contrast. */
+  /**
+   * Tones less than ~T50 always permit white at 4.5 contrast.
+   *
+   * @param tone the tone to check
+   * @return true if a light foreground is allowed at the given tone
+   */
   public static boolean toneAllowsLightForeground(double tone) {
     return Math.round(tone) <= 49;
   }

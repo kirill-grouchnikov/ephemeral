@@ -18,11 +18,18 @@ package org.pushingpixels.ephemeral.chroma.dynamiccolor;
 
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
-/** Named colors, otherwise known as tokens, or roles, in the Ephemeral Design system. */
+/**
+ * Named colors, otherwise known as tokens, or roles, for duotone palettes in the Ephemeral Design system.
+ */
 public final class ChromaDuotonePaletteColors {
+  /** Creates a ChromaDuotonePaletteColors instance. */
   public ChromaDuotonePaletteColors() {
   }
 
+  /**
+   * Returns the lowest contrast surface container color.
+   * @return the duotone palette color for the lowest contrast surface container
+   */
     public DuotonePaletteColor containerSurfaceLowest() {
         return new DuotonePaletteColor(
             /* name= */ "container_surface_lowest",
@@ -36,6 +43,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the low contrast surface container color.
+   * @return the duotone palette color for the low contrast surface container
+   */
     public DuotonePaletteColor containerSurfaceLow() {
         return new DuotonePaletteColor(
             /* name= */ "container_surface_low",
@@ -49,6 +60,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the base surface container color.
+   * @return the duotone palette color for the base surface container
+   */
     public DuotonePaletteColor containerSurface() {
         return new DuotonePaletteColor(
             /* name= */ "container_surface",
@@ -60,6 +75,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the high contrast surface container color.
+   * @return the duotone palette color for the high contrast surface container
+   */
     public DuotonePaletteColor containerSurfaceHigh() {
         return new DuotonePaletteColor(
             /* name= */ "container_surface_high",
@@ -73,6 +92,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the highest contrast surface container color.
+   * @return the duotone palette color for the highest contrast surface container
+   */
     public DuotonePaletteColor containerSurfaceHighest() {
         return new DuotonePaletteColor(
             /* name= */ "container_surface_highest",
@@ -87,6 +110,10 @@ public final class ChromaDuotonePaletteColors {
     }
 
 
+  /**
+   * Returns the dimmed surface container color.
+   * @return the duotone palette color for the dimmed surface container
+   */
     public DuotonePaletteColor containerSurfaceDim() {
         return new DuotonePaletteColor(
             /* name= */ "container_surface_dim",
@@ -101,6 +128,10 @@ public final class ChromaDuotonePaletteColors {
     }
 
 
+  /**
+   * Returns the bright surface container color.
+   * @return the duotone palette color for the bright surface container
+   */
     public DuotonePaletteColor containerSurfaceBright() {
         return new DuotonePaletteColor(
             /* name= */ "container_surface_bright",
@@ -114,6 +145,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the shadow color.
+   * @return the duotone palette color for shadows
+   */
     public DuotonePaletteColor containerShadow() {
         return new DuotonePaletteColor(
             /* name= */ "container_shadow",
@@ -127,6 +162,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the low contrast on-container color.
+   * @return the duotone palette color for low contrast on-container
+   */
     public DuotonePaletteColor onContainerLow() {
         return new DuotonePaletteColor(
             /* name= */ "on_container_low",
@@ -140,6 +179,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the on-container color.
+   * @return the duotone palette color for on-container
+   */
     public DuotonePaletteColor onContainer() {
         return new DuotonePaletteColor(
             /* name= */ "on_container",
@@ -151,6 +194,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the high contrast on-container color.
+   * @return the duotone palette color for high contrast on-container
+   */
     public DuotonePaletteColor onContainerHigh() {
         return new DuotonePaletteColor(
             /* name= */ "on_container_high",
@@ -164,6 +211,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the low contrast outline color.
+   * @return the duotone palette color for low contrast outline
+   */
     public DuotonePaletteColor containerOutlineLow() {
         return new DuotonePaletteColor(
             /* name= */ "container_outline_low",
@@ -177,6 +228,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the outline color.
+   * @return the duotone palette color for outline
+   */
     public DuotonePaletteColor containerOutline() {
         return new DuotonePaletteColor(
             /* name= */ "container_outline",
@@ -190,6 +245,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the high contrast outline color.
+   * @return the duotone palette color for high contrast outline
+   */
     public DuotonePaletteColor containerOutlineHigh() {
         return new DuotonePaletteColor(
             /* name= */ "container_outline_high",
@@ -203,6 +262,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the inverse surface container color.
+   * @return the duotone palette color for inverse surface container
+   */
     public DuotonePaletteColor inverseContainerSurface() {
         return new DuotonePaletteColor(
             /* name= */ "inverse_container_surface",
@@ -216,6 +279,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the inverse on-container color.
+   * @return the duotone palette color for inverse on-container
+   */
     public DuotonePaletteColor inverseOnContainer() {
         return new DuotonePaletteColor(
             /* name= */ "inverse_on_container",
@@ -227,6 +294,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the inverse outline color.
+   * @return the duotone palette color for inverse outline
+   */
     public DuotonePaletteColor inverseContainerOutline() {
         return new DuotonePaletteColor(
             /* name= */ "inverse_container_outline",
@@ -240,6 +311,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the complementary on-container color.
+   * @return the duotone palette color for complementary on-container
+   */
     public DuotonePaletteColor complementaryOnContainer() {
         return new DuotonePaletteColor(
             /* name= */ "complementary_on_container",
@@ -259,6 +334,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the complementary outline color.
+   * @return the duotone palette color for complementary outline
+   */
     public DuotonePaletteColor complementaryContainerOutline() {
         return new DuotonePaletteColor(
             /* name= */ "complementary_container_outline",
@@ -272,6 +351,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the accent on-container color.
+   * @return the duotone palette color for accent on-container
+   */
     public DuotonePaletteColor accentOnContainer() {
         return new DuotonePaletteColor(
             /* name= */ "accent_on_container",
@@ -283,6 +366,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the marker on-container color.
+   * @return the duotone palette color for marker on-container
+   */
     public DuotonePaletteColor markerOnContainer() {
         return new DuotonePaletteColor(
             /* name= */ "marker_on_container",
@@ -294,6 +381,10 @@ public final class ChromaDuotonePaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the complementary marker on-container color.
+   * @return the duotone palette color for complementary marker on-container
+   */
     public DuotonePaletteColor complementaryMarkerOnContainer() {
         return new DuotonePaletteColor(
             /* name= */ "complementary_marker_on_container",

@@ -43,6 +43,13 @@ public final class ColorBlindTonalPalette implements BaseTonalPalette {
     this.cache = new HashMap<>();
   }
 
+  /**
+   * Creates a color-blind adapted tonal palette from a base palette and a color blindness type.
+   *
+   * @param palette the base tonal palette to adapt
+   * @param colorBlindnessKind the type of color blindness to simulate
+   * @return a new ColorBlindTonalPalette instance
+   */
   public static ColorBlindTonalPalette from(BaseTonalPalette palette, ColorBlindnessKind colorBlindnessKind) {
     return new ColorBlindTonalPalette(palette, colorBlindnessKind);
   }

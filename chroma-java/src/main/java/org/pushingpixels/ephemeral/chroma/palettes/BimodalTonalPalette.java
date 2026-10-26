@@ -30,14 +30,33 @@ import java.util.Map;
  * <p>BimodalTonalPalette is intended for use in a single thread due to its stateful caching.
  */
 public final class BimodalTonalPalette implements BaseTonalPalette {
+  /**
+   * Defines the tone range over which a transition between two palettes occurs.
+   */
   public interface TransitionRange {
+    /**
+     * Returns the starting tone of the transition range.
+     * @return the start tone value
+     */
     double getTransitionToneStart();
+
+    /**
+     * Returns the ending tone of the transition range.
+     * @return the end tone value
+     */
     double getTransitionToneEnd();
   }
 
+  /**
+   * A transition range that prioritizes fidelity to the source color in light tones.
+   */
   public static class TransitionRangeFidelityLight implements TransitionRange {
     private final double fidelityTone;
 
+    /**
+     * Creates a fidelity-based light transition range.
+     * @param fidelityTone the tone value at which fidelity is centered
+     */
     public TransitionRangeFidelityLight(double fidelityTone) {
       this.fidelityTone = fidelityTone;
     }
@@ -53,9 +72,16 @@ public final class BimodalTonalPalette implements BaseTonalPalette {
     }
   }
 
+  /**
+   * A transition range that prioritizes fidelity to the source color in dark tones.
+   */
   public static class TransitionRangeFidelityDark implements TransitionRange {
     private final double fidelityTone;
 
+    /**
+     * Creates a fidelity-based dark transition range.
+     * @param fidelityTone the tone value at which fidelity is centered
+     */
     public TransitionRangeFidelityDark(double fidelityTone) {
       this.fidelityTone = fidelityTone;
     }
@@ -71,7 +97,14 @@ public final class BimodalTonalPalette implements BaseTonalPalette {
     }
   }
 
+  /**
+   * A balanced transition range for light tones, transitioning between tone 82 and 94.
+   */
   public static class TransitionRangeBalancedLight implements TransitionRange {
+    /** Creates a balanced light transition range. */
+    public TransitionRangeBalancedLight() {
+    }
+
     @Override
     public double getTransitionToneStart() {
       return 82.0;
@@ -83,7 +116,14 @@ public final class BimodalTonalPalette implements BaseTonalPalette {
     }
   }
 
+  /**
+   * A balanced transition range for dark tones, transitioning between tone 22 and 46.
+   */
   public static class TransitionRangeBalancedDark implements TransitionRange {
+    /** Creates a balanced dark transition range. */
+    public TransitionRangeBalancedDark() {
+    }
+
     @Override
     public double getTransitionToneStart() {
       return 22.0;
@@ -111,6 +151,14 @@ public final class BimodalTonalPalette implements BaseTonalPalette {
     this.cache = new HashMap<>();
   }
 
+  /**
+   * Creates a BimodalTonalPalette from two HCT colors and a transition range.
+   *
+   * @param hct1 the first HCT color seed
+   * @param hct2 the second HCT color seed
+   * @param transitionRange the range over which the two palettes transition
+   * @return a new BimodalTonalPalette instance
+   */
   public static BimodalTonalPalette from(Hct hct1, Hct hct2, TransitionRange transitionRange) {
     return new BimodalTonalPalette(TonalPalette.fromHct(hct1), TonalPalette.fromHct(hct2), transitionRange);
   }

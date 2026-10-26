@@ -28,12 +28,24 @@ import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
  * 2. Container configuration (dark mode, contrast level, ...)
  */
 public class DuotonePalette implements TokenPalette {
+  /** The tonal palette for container colors. */
   public final TonalPalette containerPalette;
+  /** The tonal palette for on-container colors. */
   public final TonalPalette onContainerPalette;
+  /** The tone of the container source color. */
   public final double containerSourceColorTone;
+  /** The tone of the on-container source color. */
   public final double onContainerSourceColorTone;
+  /** The container configuration (dark mode, contrast level, etc.). */
   public final ContainerConfiguration containerConfiguration;
 
+  /**
+   * Creates a duotone palette from two HCT seed colors and a container configuration.
+   *
+   * @param seedContainer the HCT color for container colors
+   * @param seedOnContainer the HCT color for on-container colors
+   * @param containerConfiguration the container configuration
+   */
   public DuotonePalette(
       Hct seedContainer,
       Hct seedOnContainer,
@@ -46,6 +58,12 @@ public class DuotonePalette implements TokenPalette {
     this.onContainerSourceColorTone = seedOnContainer.getTone();
   }
 
+  /**
+   * Returns the ARGB color value for the given duotone palette color.
+   *
+   * @param dynamicPaletteColor the duotone palette color descriptor
+   * @return the ARGB color value
+   */
   public int getArgb(DuotonePaletteColor dynamicPaletteColor) {
     return dynamicPaletteColor.getArgb(this);
   }

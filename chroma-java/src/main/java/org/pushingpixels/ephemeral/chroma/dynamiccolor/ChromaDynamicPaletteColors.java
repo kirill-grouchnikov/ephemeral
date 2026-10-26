@@ -18,11 +18,18 @@ package org.pushingpixels.ephemeral.chroma.dynamiccolor;
 
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
-/** Named colors, otherwise known as tokens, or roles, in the Ephemeral Design system. */
+/**
+ * Named colors, otherwise known as tokens, or roles, for dynamic palettes in the Ephemeral Design system.
+ */
 public final class ChromaDynamicPaletteColors {
+  /** Creates a ChromaDynamicPaletteColors instance. */
   public ChromaDynamicPaletteColors() {
   }
 
+  /**
+   * Returns the lowest contrast surface container color.
+   * @return the dynamic palette color for the lowest contrast surface container
+   */
     public DynamicPaletteColor containerSurfaceLowest() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_lowest",
@@ -35,6 +42,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the low contrast surface container color.
+   * @return the dynamic palette color for the low contrast surface container
+   */
     public DynamicPaletteColor containerSurfaceLow() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_low",
@@ -47,6 +58,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the base surface container color.
+   * @return the dynamic palette color for the base surface container
+   */
     public DynamicPaletteColor containerSurface() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface",
@@ -57,6 +72,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the high contrast surface container color.
+   * @return the dynamic palette color for the high contrast surface container
+   */
     public DynamicPaletteColor containerSurfaceHigh() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_high",
@@ -69,6 +88,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the highest contrast surface container color.
+   * @return the dynamic palette color for the highest contrast surface container
+   */
     public DynamicPaletteColor containerSurfaceHighest() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_highest",
@@ -81,6 +104,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the dimmed surface container color.
+   * @return the dynamic palette color for the dimmed surface container
+   */
     public DynamicPaletteColor containerSurfaceDim() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_dim",
@@ -93,6 +120,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the bright surface container color.
+   * @return the dynamic palette color for the bright surface container
+   */
     public DynamicPaletteColor containerSurfaceBright() {
         return new DynamicPaletteColor(
             /* name= */ "container_surface_bright",
@@ -105,6 +136,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the shadow color.
+   * @return the dynamic palette color for shadows
+   */
     public DynamicPaletteColor containerShadow() {
         return new DynamicPaletteColor(
             /* name= */ "container_shadow",
@@ -117,6 +152,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the low contrast on-container color.
+   * @return the dynamic palette color for low contrast on-container
+   */
     public DynamicPaletteColor onContainerLow() {
         return new DynamicPaletteColor(
             /* name= */ "on_container_low",
@@ -135,6 +174,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the on-container color.
+   * @return the dynamic palette color for on-container
+   */
     public DynamicPaletteColor onContainer() {
         return new DynamicPaletteColor(
             /* name= */ "on_container",
@@ -153,6 +196,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the high contrast on-container color.
+   * @return the dynamic palette color for high contrast on-container
+   */
     public DynamicPaletteColor onContainerHigh() {
         return new DynamicPaletteColor(
             /* name= */ "on_container_high",
@@ -171,6 +218,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the low contrast outline color.
+   * @return the dynamic palette color for low contrast outline
+   */
     public DynamicPaletteColor containerOutlineLow() {
         return new DynamicPaletteColor(
             /* name= */ "container_outline_low",
@@ -183,6 +234,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the outline color.
+   * @return the dynamic palette color for outline
+   */
     public DynamicPaletteColor containerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "container_outline",
@@ -195,6 +250,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the high contrast outline color.
+   * @return the dynamic palette color for high contrast outline
+   */
     public DynamicPaletteColor containerOutlineHigh() {
         return new DynamicPaletteColor(
             /* name= */ "container_outline_high",
@@ -207,6 +266,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the inverse surface container color.
+   * @return the dynamic palette color for inverse surface container
+   */
     public DynamicPaletteColor inverseContainerSurface() {
         return new DynamicPaletteColor(
             /* name= */ "inverse_container_surface",
@@ -219,6 +282,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the inverse on-container color.
+   * @return the dynamic palette color for inverse on-container
+   */
     public DynamicPaletteColor inverseOnContainer() {
         return new DynamicPaletteColor(
             /* name= */ "inverse_on_container",
@@ -229,6 +296,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the inverse outline color.
+   * @return the dynamic palette color for inverse outline
+   */
     public DynamicPaletteColor inverseContainerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "inverse_container_outline",
@@ -241,6 +312,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the complementary on-container color.
+   * @return the dynamic palette color for complementary on-container
+   */
     public DynamicPaletteColor complementaryOnContainer() {
         return new DynamicPaletteColor(
             /* name= */ "complementary_on_container",
@@ -259,6 +334,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the complementary outline color.
+   * @return the dynamic palette color for complementary outline
+   */
     public DynamicPaletteColor complementaryContainerOutline() {
         return new DynamicPaletteColor(
             /* name= */ "complementary_container_outline",
@@ -271,6 +350,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the accent on-container color.
+   * @return the dynamic palette color for accent on-container
+   */
     public DynamicPaletteColor accentOnContainer() {
         return new DynamicPaletteColor(
             /* name= */ "accent_on_container",
@@ -281,6 +364,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ new ContrastCurve(3.0, 4.5, 7.0, 11.0));
     }
 
+  /**
+   * Returns the marker on-container color.
+   * @return the dynamic palette color for marker on-container
+   */
     public DynamicPaletteColor markerOnContainer() {
         return new DynamicPaletteColor(
             /* name= */ "marker_on_container",
@@ -291,6 +378,10 @@ public final class ChromaDynamicPaletteColors {
             /* contrastCurve= */ null);
     }
 
+  /**
+   * Returns the complementary marker on-container color.
+   * @return the dynamic palette color for complementary marker on-container
+   */
     public DynamicPaletteColor complementaryMarkerOnContainer() {
         return new DynamicPaletteColor(
             /* name= */ "complementary_marker_on_container",

@@ -20,6 +20,9 @@ import org.pushingpixels.ephemeral.chroma.hct.Hct;
 
 // This is a modified version of the original source code, changed to fit the Chroma needs
 
+/**
+ * A palette that generates colors at specific tones using the HCT color space.
+ */
 public interface BaseTonalPalette {
   /**
    * Create an ARGB color from this palette and the provided HCT tone.
@@ -31,6 +34,9 @@ public interface BaseTonalPalette {
 
   /**
    * Given a tone, return the HCT color that corresponds to it in this palette.
+   *
+   * @param tone HCT tone, measured from 0 to 100.
+   * @return the HCT color corresponding to the given tone in this palette.
    */
   Hct getHct(double tone);
 }

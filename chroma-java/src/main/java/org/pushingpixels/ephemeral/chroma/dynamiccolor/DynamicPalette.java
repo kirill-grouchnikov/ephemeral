@@ -28,10 +28,19 @@ import org.pushingpixels.ephemeral.chroma.palettes.TonalPalette;
  * 2. Container configuration (dark mode, contrast level, ...)
  */
 public class DynamicPalette implements TokenPalette {
+  /** The container configuration. */
   public final ContainerConfiguration containerConfiguration;
+  /** The tonal palette. */
   public final TonalPalette palette;
+  /** The tone of the source color. */
   public final double sourceColorTone;
 
+  /**
+   * Creates a dynamic palette from a source HCT color and container configuration.
+   *
+   * @param sourceColorHct the source HCT color
+   * @param containerConfiguration the container configuration
+   */
   public DynamicPalette(
       Hct sourceColorHct,
       ContainerConfiguration containerConfiguration) {
@@ -41,10 +50,22 @@ public class DynamicPalette implements TokenPalette {
     this.sourceColorTone = sourceColorHct.getTone();
   }
 
+  /**
+   * Returns the HCT color for the given dynamic palette color.
+   *
+   * @param dynamicPaletteColor the dynamic palette color descriptor
+   * @return the HCT color
+   */
   public Hct getHct(DynamicPaletteColor dynamicPaletteColor) {
     return dynamicPaletteColor.getHct(this);
   }
 
+  /**
+   * Returns the ARGB color value for the given dynamic palette color.
+   *
+   * @param dynamicPaletteColor the dynamic palette color descriptor
+   * @return the ARGB color value
+   */
   public int getArgb(DynamicPaletteColor dynamicPaletteColor) {
     return dynamicPaletteColor.getArgb(this);
   }
